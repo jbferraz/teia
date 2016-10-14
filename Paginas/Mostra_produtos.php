@@ -28,7 +28,10 @@ function toogle(){
 }
 function pegaIdProfd(x){
 document.getElementById("ProdId").value=x;  
-}
+    }
+ function pegaIdimg(x){
+alert(x) 
+    }
 window.onload = function() {
    toogle();
 }
@@ -41,7 +44,7 @@ window.onload = function() {
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../bootstrap-3.3.7-dist/js/jquery-3.1.1.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     </head>
     <body id="bd">
@@ -108,7 +111,7 @@ window.onload = function() {
                                      
                          </div>
                                   <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/Trocas.php">
-                                      <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
+                                <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
                                  <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
                                   <input type="hidden" name="Prod_interece" id="idtroca" value="<?php echo $Prod_interece; ?>">
                                    <input type="hidden" name="Prod_dono" id="idtroca" value="<?php echo $Prod_dono; ?>">
@@ -217,7 +220,7 @@ window.onload = function() {
              <form method="post" action="../funcao/p">   
                  <div>
                       <!-- Trigger the modal with a button -->
-            <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
+            <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdImg; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
   <!-- Modal -->
   
                  </div>
@@ -266,29 +269,29 @@ window.onload = function() {
               <select class="form-control" id="sel1" name="prodDono">
              <option value="" disabled selected>Selecione um produto</option>
             <?php
+             
                 $sqlUserI = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId"); 
                 while ($Produtos = mysql_fetch_object($sqlUserI)) {
                     $produto_id = $Produtos->IdProduto;
-                    $produto_nome = $Produtos->NomeProduto;
-                    
+                    $produto_nome = $Produtos->NomeProduto; 
+                    $produto_img=$Produtos->img;
+    
                    ?>
-                  echo "<option value='<?php echo "$produto_id";?>'><?php echo "$produto_nome";?></option> ";  
-              <?php     
+             <option  value='<?php echo "$produto_id";?>' icon="icons/icon_cart.gif"><?php echo "$produto_nome";?></option>  
+            
+                 <?php     
                 }
-                
                 ?>
       </select>
         <br>
             <div class="form-group">
         <input type="hidden" name="userI" value="<?php echo "$UserId";?>"/>
         <input id="ProdId" name="ProdutoId" type="hidden"/>
-        
     </div>
       </div>
- 
-        </div>
+     
         <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
         <button type="submit" class="btn btn-default">Oferecer Troca</button>
         </div>
            </form>
