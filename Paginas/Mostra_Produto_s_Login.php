@@ -86,9 +86,13 @@ include '../funcao/conecta.php';
             <p class="text-left small" style=""><h3><?php echo "Estado do produto: $ProdEstado"; ?></h3><p/>
             <p class="text-left small" style=""><h3><?php echo "Categoria do produto: $ProdCateg"; ?></h3></p>
             <p class="text-left small" style=""><h4> <?php echo "$ProdDecr";?></h4></p>
-       <form method="post" action="Cadastro.php">   
-             
+      
+          
  </div>
+      <form></form>
+      <form >    
+      <button id="btnOn" onclick="" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
+      </form>
          <div class="col-sm-1">
  </div>
  <!-- Fim do Produto -->
@@ -103,25 +107,36 @@ include '../funcao/conecta.php';
       
 
      <div class="col-sm-2"></div>
-     <div class="col-sm-12" align="center">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8" >
-       <div class="panel panel-default" >
-        <div class="panel-heading" style="background:black;color:white;">
-          
-            <div class="form-group">
-                <input type="hidden" name="userI" value="<?php echo "$UserId";?>"/>
-        <button type="submit" class="btn btn-default">Oferecer Troca</button>
-    </div>   
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-top:300px;min-height:200px;">
+        <div class="modal-header">
+            <div style="width:100%;height:100%;margin:0 auto" align="center" >
+            <h4 class="modal-title">Antes de oferecer uma troca faça login ou cadastro</h4>
+            </div>
+             </div>
+        <div class="modal-body" >
+         <div class="col-sm-12" style="padding:25px;">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+            <form method="post" action="Login.php">
+                <input class="btn btn-default btn-lg" type="submit" value="Entrar" style="min-width:90%">
             </form>
+                </div>
+            <div class="col-sm-2"></div>
+             <div class="col-sm-4">
+            <form method="post" action="Cadastro.php">
+                <input class="btn btn-default btn-lg" type="submit" value="Criar nova conta" style="min-width:90%">
+            </form>
+             </div>
+            <div class="col-sm-1"></div>
+            </div>
+      </div>
+      
     </div>
-    </div>
-        <div class="col-sm-2" ></div>
-    </div>
-    
-    <script>
-        
-    </script>
+</div>
+     </div>
 </body>
 </html>
 
