@@ -62,6 +62,15 @@
   </div>
           <div class="col-sm-1"></div>
           <div class="col-sm-4">
+              <div class="panel panel-default">
+    <div class="panel-heading">Senac-Gravataí</div>
+   
+    <div class="panel-body">
+      <button style="z-index:1" type="button" class="panel-body" data-toggle="modal" data-target="#myModal">
+      <iframe style="border:0;z-index:-1" class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.396381393985!2d-51.00047098443349!3d-29.93927518192075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95190b471d555555%3A0x2ea6a888bb7c3eb0!2sSenac!5e0!3m2!1spt-BR!2sbr!4v1476467404101" width="100%" height="250" frameborder="0"  allowfullscreen></iframe>
+  </button>      
+</div>
+              </div>
           </div> 
           <div class="col-sm-1"></div> 
   <!--<h2>Responsive Embed</h2>-->
@@ -76,8 +85,6 @@
         </div>
         <div class="modal-body">
        <iframe class="embed-responsive-item" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3457.396381393985!2d-51.00047098443349!3d-29.93927518192075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95190b471d555555%3A0x2ea6a888bb7c3eb0!2sSenac!5e0!3m2!1spt-BR!2sbr!4v1476467404101" width="100%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe></div>
-           
-        
     </div>
       </div>
  
