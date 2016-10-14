@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <?php 
 include '../funcao/conecta.php';
      

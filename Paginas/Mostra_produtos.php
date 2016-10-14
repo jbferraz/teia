@@ -222,7 +222,6 @@ window.onload = function() {
                       <!-- Trigger the modal with a button -->
             <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdImg; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
   <!-- Modal -->
-  
                  </div>
                    </form>
        </div>
