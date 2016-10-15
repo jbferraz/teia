@@ -106,8 +106,6 @@ include '../funcao/conecta.php';
                     }
   ?>
   </div>
-      
-
      <div class="col-sm-2"></div>
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

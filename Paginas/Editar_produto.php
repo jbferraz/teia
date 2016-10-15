@@ -58,28 +58,74 @@ function toogle(){
         <li><a href="#">Page 3</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
-               
+          <?php 
+        //teste 
+        $sql_not = mysql_query("SELECT COUNT(id_notificacao) as notif FROM view_notificacao where user_i = $UserId and status = 0");
+                    while ($Not= mysql_fetch_object($sql_not)) {
+                        $Not_num = $Not->notif;
+                        }                        
+                        if ($Not_num != 0 ) {
+                            
+                        
+       ?>
              <li class="dropdown" style="margin-right:30px;">
-                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-envelope" style="font-size:20px;"></span><span class="badge">1</span></a>
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-envelope" style="font-size:20px;"></span><span class="badge"><?php echo $Not_num; ?></span></a>
                  <ul class="dropdown-menu" style="min-width:300px;">
-                     <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black;">
-                         <div><a href="#" onclick="tFunction('')" style="color:black">
+        
+        <?php 
+        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
+                 
+        while ($Not_inf = mysql_fetch_object($sql_not_inf)){
+                  $id_troca = $Not_inf->id_troca;
+                  $user_interece = $Not_inf->nome_d;                  
+                   
+       ?>   
+               <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
+                         <div>
                          <div class="col-sm-4" >
                            <span class="glyphicon glyphicon-tags" style="font-size:50px;margin:auto; margin-top:4px;">   
                          </div>                         
                                  <div class="col-sm-8 text-left" style="margin-top:4px;">
-                             Carlos Eduardo fez uma proposta de troca para você
+                            <?php echo "$user_interece fez uma proposta de troca para você"; ?>
+                                     
+                         </div>
+                                  <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/Trocas.php">
+                                      <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
+                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">                                  
+                                 </form>
+                                     
+                         
+                         </div></div></li> 
+                         
+                         
+           <?php 
+                           }       
+       ?>                            
+          </ul>
+             </li>             
+          <?php
+                        }  else {
+            ?> 
+                                <li class="dropdown" style="margin-right:30px;">
+                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-envelope" style="font-size:20px;"></span><span class="badge"><?php echo $Not_num; ?></span></a>
+                 <ul class="dropdown-menu" style="min-width:300px;">
+                     <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black;">
+                         <div><a href="#" style="color:black">
+                                         
+                                 <div class="col-sm-12 text-left" style="margin-top:4px; margin-bottom: 5px; margin: auto">
+                             Não a o notifições para você.
                          </div>
                              </a>
                          </div></div></li>
-            
-                      
-             
- 
           </ul>
-
+             </li>
                  
-        </li> 
+            <?php
+                        }
+            ?>     
+                 
+             
+        </li>
         <li><a href="../funcao/sair.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
         
     </div>

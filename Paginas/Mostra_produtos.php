@@ -80,7 +80,8 @@ window.onload = function() {
       </ul>
          <ul class="nav navbar-nav navbar-right">
        <?php 
-        $sql_not = mysql_query("SELECT COUNT(idUsuarioINT) as notif FROM `trocaoferta`where `idUsuarioINT`= $UserId and status = 0");
+        //teste 
+        $sql_not = mysql_query("SELECT COUNT(id_notificacao) as notif FROM view_notificacao where user_i = $UserId and status = 0");
                     while ($Not= mysql_fetch_object($sql_not)) {
                         $Not_num = $Not->notif;
                         }                        
@@ -91,14 +92,13 @@ window.onload = function() {
              <li class="dropdown" style="margin-right:30px;">
                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-envelope" style="font-size:20px;"></span><span class="badge"><?php echo $Not_num; ?></span></a>
                  <ul class="dropdown-menu" style="min-width:300px;">
-                     <?php 
-        $sql_not_inf = mysql_query("SELECT idtroca , idUsuarioOF as id_interesse , usuario.nome as interesse ,idProdutoOF,idProdutoINT as prodI FROM `trocaoferta` , usuario WHERE `idUsuarioOF` = usuario.idUsuario and `idUsuarioINT` = $UserId and status = 0");
+        
+        <?php 
+        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
-                  $id_troca = $Not_inf->idtroca;
-                  $user_interece = $Not_inf->interesse;
-                  $Prod_interece = $Not_inf->idProdutoOF; 
-                  $Prod_dono = $Not_inf->prodI; 
+                  $id_troca = $Not_inf->id_troca;
+                  $user_interece = $Not_inf->nome_d;                  
                    
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
@@ -111,10 +111,8 @@ window.onload = function() {
                                      
                          </div>
                                   <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/Trocas.php">
-                                <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
-                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
-                                  <input type="hidden" name="Prod_interece" id="idtroca" value="<?php echo $Prod_interece; ?>">
-                                   <input type="hidden" name="Prod_dono" id="idtroca" value="<?php echo $Prod_dono; ?>">
+                                      <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
+                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">                                  
                                  </form>
                                      
                          
@@ -123,7 +121,7 @@ window.onload = function() {
                          
            <?php 
                            }       
-       ?>               
+       ?>                            
           </ul>
              </li>             
           <?php
@@ -147,7 +145,8 @@ window.onload = function() {
                         }
             ?>     
                  
-        </li> 
+             
+        </li>
           <li><a href="../funcao/sair.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
          </ul>
     </div>
