@@ -1,6 +1,22 @@
 <?php 
-$_id =$_POST['prod_id'];
 include '../funcao/conecta.php';
+      session_start();
+        if (!isset($_SESSION['Login'])) {  
+            die('<h2>Sessão não iniciada</h2>'); 
+        }
+    $_id =$_POST['prod_id'];    
+   $UserEmail = $_SESSION['Login'];
+    $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
+        while ($User = mysql_fetch_object($sql_user)) {
+            $UserId = $User->idUsuario;
+            $UserNome = $User->nome;
+            $UserImg= $User->idImagem;            
+        }
+            
+           
+     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
+    //executamos a instução SQL
+    //mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -14,8 +30,8 @@ include '../funcao/conecta.php';
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     </head>
-    <body id="bd">
-        
+    <body id="bd" >
+             
  <nav class="navbar navbar-inverse navbar-fixed-top" >
   <div class="container-fluid">
     <div class="navbar-header">
@@ -29,9 +45,9 @@ include '../funcao/conecta.php';
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
-         <span class="btn-sidbar navbar-toggle" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-tasks"></span></span>
+         <span class="btn-sidbar navbar-toggle" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-th-list"></span></span>
             </div>    
-     <span class="btn-sidbar navbar-collapse" onclick="toogle()"><span class="glyphicon glyphicon-tasks"></span></span><!--SITE NO NENU ABERTO-->
+     <span class="btn-sidbar navbar-collapse" onclick="toogle()"><span class="glyphicon glyphicon-th-list"></span></span><!--SITE NO NENU ABERTO-->
               </div></li>
           <li ><a href="../Paginas/index.php">Home</a></li>
         <li class="dropdown">
@@ -46,7 +62,7 @@ include '../funcao/conecta.php';
         <li><a href="#">Page 3</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
-       <?php 
+            <?php 
         //teste 
         $sql_not = mysql_query("SELECT COUNT(id_notificacao) as notif FROM view_notificacao where user_i = $UserId and status = 0");
                     while ($Not= mysql_fetch_object($sql_not)) {
@@ -65,8 +81,7 @@ include '../funcao/conecta.php';
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
                   $id_troca = $Not_inf->idTroca;
-                  $user_interece = $Not_inf->nome;                  
-                   
+                  $user_interece = $Not_inf->nome;        
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
@@ -113,8 +128,7 @@ include '../funcao/conecta.php';
             ?>     
                  
              
-        </li>
-        
+        </li> 
         <li><a href="../funcao/sair.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
         
     </div>
@@ -129,8 +143,8 @@ include '../funcao/conecta.php';
   <div id="mySidenav-tt" class="sidenav-tt">
       <div id="mySidenav" class="sidenav" align="center">
        <ul align="center" style="list-style:none;color:white;padding-left:5px"> 
-      <li><img class="img-responsive img-circle" src="../Imagens/logo.png" alt="Chania" style="min-height:150px;max-height:250px;"></li>
-      <li>Nome do usuario</li>
+     <li><img class="img-responsive img-circle" src="<?php echo" Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;"></li>
+      <li><?php echo $UserNome; ?></li>
       <hr style="width:75%">
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;"><a href="Mostra_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-shopping-cart"></span>Produtos</a></div></li>
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Cadastrar_produto.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-plus"></span> Adicionar Produto</a></div></li>
