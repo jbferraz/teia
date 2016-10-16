@@ -1,5 +1,5 @@
 <?php 
-header("Content-Type: text/html; charset=ISO-8859-1", true);
+
 include '../funcao/conecta.php';
       session_start();
         if (!isset($_SESSION['Login'])) {  
@@ -19,13 +19,13 @@ include '../funcao/conecta.php';
             $Prod_interece_id = $prod->idProdutoOF;
             $idUsuarioOF = $prod->idUsuarioOF;
             $idUsuarioINT = $prod->idUsuarioINT;
-            $Prod_dono_id = $prod->idProdutoINT ;           
+            $Prod_dono_id = $prod->idProdutoINT ;            
         }
         
         
        
            
-     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
+     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca and  status <> 2 and user_i = $UserId  " ;
     //executamos a instução SQL
     mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
@@ -162,6 +162,7 @@ include '../funcao/conecta.php';
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;"><a href="Mostra_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-shopping-cart"></span>Produtos</a></div></li>
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Cadastrar_produto.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-plus"></span> Adicionar Produto</a></div></li>
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="../Paginas/Meus_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-folder-open"></span> Meus Produto</a></div></li>
+      <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Historico_Oferta.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-folder-open"></span> Histórico de ofertas</a></div></li>
   </ul>    
 </div>
       <div class="btn-sidbar-tt">

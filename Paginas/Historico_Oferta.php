@@ -5,7 +5,7 @@ include '../funcao/conecta.php';
         if (!isset($_SESSION['Login'])) {  
             die('<h2>Sessão não iniciada</h2>'); 
         }
-    $_id =$_POST['prod_id'];    
+        
    $UserEmail = $_SESSION['Login'];
     $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
         while ($User = mysql_fetch_object($sql_user)) {
@@ -13,11 +13,6 @@ include '../funcao/conecta.php';
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;            
         }
-            
-           
-     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
-    //executamos a instução SQL
-    //mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -78,11 +73,12 @@ include '../funcao/conecta.php';
                  <ul class="dropdown-menu" style="min-width:300px;">
         
         <?php 
-        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
+         $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
                   $id_troca = $Not_inf->idTroca;
-                  $user_interece = $Not_inf->nome;        
+                  $user_interece = $Not_inf->nome;                 
+                   
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
@@ -142,100 +138,131 @@ include '../funcao/conecta.php';
 </div> 
   <!--Menu central do usuario menu-sidnav-->
   <div id="mySidenav-tt" class="sidenav-tt">
-      <div id="mySidenav" class="sidenav" align="center">
-       <ul align="center" style="list-style:none;color:white;padding-left:5px"> 
-     <li><img class="img-responsive img-circle" src="<?php echo" Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;"></li>
+  <div id="mySidenav" class="sidenav"align="center">
+ 
+  <ul align="center" style="list-style:none;color:white;padding-left:5px"> 
+      <li><img class="img-responsive img-circle" src="<?php echo" Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;"></li>
       <li><?php echo $UserNome; ?></li>
       <hr style="width:75%">
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;"><a href="Mostra_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-shopping-cart"></span>Produtos</a></div></li>
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Cadastrar_produto.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-plus"></span> Adicionar Produto</a></div></li>
-      <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Meus_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-folder-open"></span> Meus Produto</a></div></li>
+      <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="../Paginas/Meus_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-folder-open"></span> Meus Produto</a></div></li>
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Historico_Oferta.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-folder-open"></span> Histórico de ofertas</a></div></li>
-       </ul> 
+  </ul>    
 </div>
       <div class="btn-sidbar-tt">
           <button class="btn-sidbar-tt" onclick="toogle()" ></button>
       </div>
   </div>
-
-
-    <!-- fim menu-->    
-    <div class="container">
-    <div class="col-sm-4">
-       
-    </div> 
-   <div class="col-sm-4">
-  <h2>Editar produto</h2>
-  <?php
   
-  $sql = mysql_query("SELECT * FROM `listarproduto` WHERE `IdProduto` = '$_id' ");
-                while ($Produtos = mysql_fetch_object($sql)){
-                  $ProdId   = $Produtos->IdProduto;
-                  $ProdNome = $Produtos->NomeProduto;
-                  $UserNome = $Produtos->NomeUsuario;
-                  $ProdDecr = $Produtos->DescProduto;
-                  $ProdCateg =  $Produtos->categoria;
-                  $ProdEstado =  $Produtos->estado;
-                  $ProdImg =  $Produtos->img;
-                }
-                
+
+    <!-- fim menu-->
+    <div class="col-sm-12" align="center">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" >
+       <div class="panel panel-default">
+        <div class="panel-heading">
+        <h3>Histórico</h3>
+        </div>          
+        <div class="col-sm-2" ></div>
+    <br>
+    </div>
+    </div>
+               
+    </div>
+   
+     
+    <div class="col-sm-1" ></div>
+    <div class="col-sm-1" ></div>
+     <?php
+    $sql_prod = mysql_query("SELECT * FROM `trocaoferta` WHERE `idUsuarioOF` = $UserId or `idUsuarioINT` = $UserId ");
+        while ($prod = mysql_fetch_object($sql_prod)) {
+            $Prod_interece_id = $prod->idProdutoOF;
+            $idUsuarioOF = $prod->idUsuarioOF;
+            $idUsuarioINT = $prod->idUsuarioINT;
+            $Prod_dono_id = $prod->idProdutoINT ;           
+        
+   ?>
+    <div class="col-sm-4 ">         
+  <!-- Inicio da 1ª coluna de produtos-->
+  
+  <div class="col-sm-12 " style="margin-bottom:30px;">
+      
+      <?php
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
+                while ($Produtos = mysql_fetch_object($sql)) { 
+                  $ProdId_1   = $Produtos->IdProduto;
+                  $ProdNome_1 = $Produtos->NomeProduto;
+                  $UserNome_1 = $Produtos->NomeUsuario;
+                  $ProdDecr_1 = $Produtos->DescProduto;
+                  $ProdCateg_1 =  $Produtos->categoria;
+                  $ProdEstado_1 =  $Produtos->estado;
+                  $ProdImg_1 =  $Produtos->img;
+                  }
                 ?>
-  
-  <form class="form-horizontal"  method="post" action="../funcao/editarProd.php" enctype="multipart/form-data">
-    <div class="form-group">
-        <input name="ProdNome" type="text" class="form-control" id="email" value="<?php echo $ProdNome; ?>">
+      <div class="col-sm-5">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+ </div>
+     <div class="col-sm-1">
+ </div>
+       <div class="col-sm-4">          
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
+             <form method="post" action="../funcao/insere_troca.php">   
+              
+ </div>
+         <div class="col-sm-1">
+ </div>
+ <!-- Fim do Produto -->
+  </div>
+        
     </div>
-    <div class="form-group">
-        <input name="ProdDesc" type="text" class="form-control" id="senha" value="<?php echo $ProdDecr; ?>" >
-    </div>
-    <div class="form-group">
-      <select class="form-control" id="sel1" name="ProdEstado">
-        <option value="" disabled selected>Selecione o estado</option>
-         <?php
-                        $sql = mysql_query("SELECT * FROM `produtoestado`");
-                    while ($estado = mysql_fetch_object($sql)) {
-                        $estado_id = $estado->idProdutoEstado;
-                        $estado_desc = $estado->descricao;
-                        echo "<option value='$estado_id'>$estado_desc</option> ";
-                    }
-                    ?>
-      </select>
-    
-</div>
-<div class="form-group">
-      <select class="form-control" id="sel1" name="ProdCategoria">
-        <option value="" disabled selected>Selecione a categoria</option>
-         <?php
-                    $sql = mysql_query("SELECT * FROM `categoria`");
-                    while ($Categ = mysql_fetch_object($sql)) {
-                        $Categ_id = $Categ->idCategoria;
-                        $Categ_nome = $Categ->descricao;
-                        echo "<option value='$Categ_id'>$Categ_nome</option> ";
-                    }
-                    ?>
-      </select>
-    
-</div>
-     <div class="form-group">
-         <div class="col-sm-offset-1 col-sm-10">
-             <div class="well-lg">
-                 <input type="file" name="file" > 
-              </div> 
-    </div>
-     </div>
-
-      <div class="form-group">
-      <div class="col-sm-offset-4 col-sm-10">
-          <input type="hidden" name="prod_id" value="<?php echo "$ProdId";?>"/>
-          <button name="alterar" type="submit" class="btn btn-default">Editar</button>
+    <!-- Meio Entre as trocas-->
+  <div class="col-sm-1" >
+      
+      
+  </div>
+     <!-- Fim Meio Entre as trocas-->
+    <div class="col-sm-4 ">
+  <!-- Inicio da 2ª coluna de produtos-->
+<div class="col-sm-12 " style="margin-bottom:30px;">
+<?php
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
+                while ($Produtos2 = mysql_fetch_object($sql)) { 
+                  $ProdId_2   = $Produtos2->IdProduto;
+                  $ProdNome_2 = $Produtos2->NomeProduto;
+                  $UserNome_2 = $Produtos2->NomeUsuario;
+                  $ProdDecr_2 = $Produtos2->DescProduto;
+                  $ProdCateg_2 =  $Produtos2->categoria;
+                  $ProdEstado_2 =  $Produtos2->estado;
+                  $ProdImg_2 =  $Produtos2->img;
+                  }
+                ?>
+      <div class="col-sm-5">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+ </div>
+     <div class="col-sm-1">
+ </div>
+       <div class="col-sm-4">
           
-      </div>
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
+            
+              
+ </div>
+         <div class="col-sm-1">
+ </div>
+ <!-- Fim do Produto -->
+   </div>
+        
     </div>
-    
-  </form>
-</div>
-     <div class="col-sm-4">
-    </div> 
-        </div>
+
+     <?php 
+        }
+     ?>
     </body>
 </html>
