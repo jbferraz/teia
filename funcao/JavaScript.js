@@ -14,9 +14,6 @@ function toogle(){
 function pegaIdProfd(x){
 document.getElementById("ProdId").value=x;  
     }
- function pegaIdimg(x){
-alert(x) 
-    };
 window.onload = function() {
    toogle();
 };

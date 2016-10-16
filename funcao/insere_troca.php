@@ -1,6 +1,6 @@
 <?php
 include '../funcao/conecta.php';
-$ProdD = $_POST['prodDono'];
+    $ProdD = $_POST['prodDono'];
 $UserI = $_POST['userI'];
 $ProdInt = $_POST['ProdutoId'];
 $data = date('y-m-d H:i:s'); //pega data atual do sistema

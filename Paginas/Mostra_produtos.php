@@ -70,12 +70,12 @@ include '../funcao/conecta.php';
                  <ul class="dropdown-menu" style="min-width:300px;">
         
         <?php 
-        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
+        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_I = $UserId and status = 0");
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
                   $id_troca = $Not_inf->idTroca;
-                  $user_interece = $Not_inf->nome;                  
-                   
+                  $user_interece = $Not_inf->nome;  
+               $mensagem =  $Not_inf->mensagem;
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
@@ -83,7 +83,7 @@ include '../funcao/conecta.php';
                            <span class="glyphicon glyphicon-tags" style="font-size:50px;margin:auto; margin-top:4px;">   
                          </div>                         
                                  <div class="col-sm-8 text-left" style="margin-top:4px;">
-                            <?php echo "$user_interece fez uma proposta de troca para você"; ?>
+                            <?php echo "$user_interece $mensagem"; ?>
                                      
                          </div>
                                   <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/Trocas.php">
@@ -195,7 +195,7 @@ include '../funcao/conecta.php';
              <form method="post" action="../funcao/p">   
                  <div>
                       <!-- Trigger the modal with a button -->
-            <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdImg; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
+            <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
   <!-- Modal -->
                  </div>
                    </form>

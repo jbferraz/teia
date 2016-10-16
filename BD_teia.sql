@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Out-2016 às 19:07
+-- Generation Time: 16-Out-2016 às 20:05
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -109,7 +109,7 @@ INSERT INTO `nivelacesso` (`idNivel`, `descricao`) VALUES
 
 CREATE TABLE `notificacao` (
   `id_notificacao` int(11) NOT NULL,
-  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `data` datetime NOT NULL,
   `mensagem` varchar(500) NOT NULL,
   `user_d` int(11) NOT NULL,
   `user_i` int(11) NOT NULL,
@@ -122,11 +122,11 @@ CREATE TABLE `notificacao` (
 --
 
 INSERT INTO `notificacao` (`id_notificacao`, `data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`) VALUES
-(24, '2016-10-16 19:38:59', 'fez uma proposta de troca para você', 1, 2, 10, 0),
-(25, '2016-10-23 16:55:56', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2),
-(26, '2016-10-23 17:05:23', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2),
-(27, '2016-10-26 17:05:23', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2),
-(28, '2016-10-31 17:05:23', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2);
+(54, '2016-10-16 19:55:48', 'fez uma proposta de troca para você', 2, 1, 21, 1),
+(56, '2016-10-31 15:58:07', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 21, 1),
+(57, '2016-10-31 15:58:07', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 21, 1),
+(58, '2016-10-31 15:58:07', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 21, 1),
+(59, '2016-10-16 16:03:15', ' recusou a troca que você propos a ele', 1, 2, 21, 1);
 
 -- --------------------------------------------------------
 
@@ -197,7 +197,7 @@ CREATE TABLE `trocaoferta` (
 --
 
 INSERT INTO `trocaoferta` (`idTroca`, `idUsuarioOF`, `idProdutoOF`, `idUsuarioINT`, `idProdutoINT`, `dataOferta`, `status`) VALUES
-(10, 1, 13, 2, 6, '2016-10-16 19:38:59', 0);
+(21, 2, 6, 1, 13, '2016-10-16 21:55:48', 0);
 
 --
 -- Acionadores `trocaoferta`
@@ -231,22 +231,24 @@ CREATE TABLE `trocas` (
 --
 
 INSERT INTO `trocas` (`id`, `user_I`, `User_d`, `idTroca`, `dataTroca`, `D_Primera_notif`, `D_Segunda_notif`, `D_Terceira_notif`, `status`) VALUES
-(6, 2, 1, 10, '2016-10-16 16:46:26', '2016-10-23 16:46:26', '2016-10-26 16:46:26', '2016-10-31 16:46:26', 0),
-(7, 2, 1, 10, '2016-10-16 16:55:56', '2016-10-23 16:55:56', '2016-10-26 16:55:56', '2016-10-31 16:55:56', 1),
-(8, 2, 1, 10, '2016-10-16 17:05:14', '2016-10-23 17:05:14', '2016-10-26 17:05:14', '2016-10-31 17:05:14', 0),
-(9, 2, 1, 10, '2016-10-16 17:05:23', '2016-10-23 17:05:23', '2016-10-26 17:05:23', '2016-10-31 17:05:23', 1);
+(21, 1, 2, 21, '2016-10-16 17:56:38', '2016-10-23 17:56:38', '2016-10-26 17:56:38', '2016-10-31 17:56:38', 0),
+(22, 1, 2, 21, '2016-10-16 17:58:07', '2016-10-23 17:58:07', '2016-10-26 17:58:07', '2016-10-31 17:58:07', 1),
+(23, 1, 2, 21, '2016-10-16 18:03:15', '2016-10-23 18:03:15', '2016-10-26 18:03:15', '2016-10-31 18:03:15', 0);
 
 --
 -- Acionadores `trocas`
 --
 DELIMITER $$
-CREATE TRIGGER `trocas_aceita` AFTER INSERT ON `trocas` FOR EACH ROW IF(new.status = 1) THEN 
+CREATE TRIGGER `trocas` AFTER INSERT ON `trocas` FOR EACH ROW IF(new.status = 1) THEN 
   INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`)
-VALUES (new.D_Primera_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_i,new.user_d,new.idTroca,2);
+VALUES (new.D_Terceira_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_d,new.user_i,new.idTroca,2);
   INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`)
-VALUES (new.D_Segunda_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_i,new.user_d,new.idTroca,2);
+VALUES (new.D_Terceira_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_d,new.user_i,new.idTroca,2);
   INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`)
-VALUES (new.D_Terceira_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_i,new.user_d,new.idTroca,2);
+VALUES (new.D_Terceira_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_d,new.user_i,new.idTroca,2);
+ELSEIF(new.status = 0) THEN 
+INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`)
+VALUES (new.dataTroca,' recusou a troca que você propos a ele',new.user_i,new.user_d,new.idTroca,0);
 END IF
 $$
 DELIMITER ;
@@ -311,7 +313,7 @@ CREATE TABLE `view_notificacao` (
 ,`mensagem` varchar(500)
 ,`user_i` int(11)
 ,`status` int(1)
-,`data` timestamp
+,`data` datetime
 ,`idTroca` int(11)
 ,`user_d` int(11)
 );
@@ -428,7 +430,7 @@ ALTER TABLE `nivelacesso`
 -- AUTO_INCREMENT for table `notificacao`
 --
 ALTER TABLE `notificacao`
-  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT for table `produto`
 --
@@ -443,12 +445,12 @@ ALTER TABLE `produtoestado`
 -- AUTO_INCREMENT for table `trocaoferta`
 --
 ALTER TABLE `trocaoferta`
-  MODIFY `idTroca` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idTroca` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `trocas`
 --
 ALTER TABLE `trocas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
