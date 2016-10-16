@@ -16,7 +16,9 @@ include '../funcao/conecta.php';
         $sql_prod = mysql_query("SELECT * FROM `trocaoferta` WHERE `idTroca` = $id_troca");
         while ($prod = mysql_fetch_object($sql_prod)) {
             $Prod_interece_id = $prod->idProdutoOF;
-             $Prod_dono_id = $prod->idProdutoINT ;           
+            $idUsuarioOF = $prod->idUsuarioOF;
+            $idUsuarioINT = $prod->idUsuarioINT;
+            $Prod_dono_id = $prod->idProdutoINT ;           
         }
         
         
@@ -267,7 +269,9 @@ include '../funcao/conecta.php';
             </form>
             <form action="../funcao/troca_recusar.php" method="post">  
             <input class="btn-default " type="submit" value="Recusar" style="min-width:50%;min-height:30px">
-            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
+            <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
+            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
             </form>
            
         </div>
@@ -276,6 +280,8 @@ include '../funcao/conecta.php';
              <form action="../funcao/troca_aceita.php" method="post">
             <input class="btn-default left" type="submit" value="Aceitar" style="min-width:50%;min-height:30px">
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
+             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
+            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
         </form>
     </div>
        <div class="col-lg-1"></div> 

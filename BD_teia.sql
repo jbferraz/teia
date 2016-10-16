@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Out-2016 às 17:45
+-- Generation Time: 16-Out-2016 às 19:07
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -114,7 +114,7 @@ CREATE TABLE `notificacao` (
   `user_d` int(11) NOT NULL,
   `user_i` int(11) NOT NULL,
   `id_troca` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -122,7 +122,11 @@ CREATE TABLE `notificacao` (
 --
 
 INSERT INTO `notificacao` (`id_notificacao`, `data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`) VALUES
-(24, '2016-10-16 19:38:59', 'fez uma proposta de troca para você', 1, 2, 10, 0);
+(24, '2016-10-16 19:38:59', 'fez uma proposta de troca para você', 1, 2, 10, 0),
+(25, '2016-10-23 16:55:56', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2),
+(26, '2016-10-23 17:05:23', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2),
+(27, '2016-10-26 17:05:23', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2),
+(28, '2016-10-31 17:05:23', ' e você realizaram uma troca gostariamos de saber se ela foi concluida', 2, 1, 10, 2);
 
 -- --------------------------------------------------------
 
@@ -212,6 +216,8 @@ DELIMITER ;
 
 CREATE TABLE `trocas` (
   `id` int(11) NOT NULL,
+  `user_I` int(11) NOT NULL,
+  `User_d` int(11) NOT NULL,
   `idTroca` int(11) NOT NULL,
   `dataTroca` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `D_Primera_notif` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -219,6 +225,31 @@ CREATE TABLE `trocas` (
   `D_Terceira_notif` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `trocas`
+--
+
+INSERT INTO `trocas` (`id`, `user_I`, `User_d`, `idTroca`, `dataTroca`, `D_Primera_notif`, `D_Segunda_notif`, `D_Terceira_notif`, `status`) VALUES
+(6, 2, 1, 10, '2016-10-16 16:46:26', '2016-10-23 16:46:26', '2016-10-26 16:46:26', '2016-10-31 16:46:26', 0),
+(7, 2, 1, 10, '2016-10-16 16:55:56', '2016-10-23 16:55:56', '2016-10-26 16:55:56', '2016-10-31 16:55:56', 1),
+(8, 2, 1, 10, '2016-10-16 17:05:14', '2016-10-23 17:05:14', '2016-10-26 17:05:14', '2016-10-31 17:05:14', 0),
+(9, 2, 1, 10, '2016-10-16 17:05:23', '2016-10-23 17:05:23', '2016-10-26 17:05:23', '2016-10-31 17:05:23', 1);
+
+--
+-- Acionadores `trocas`
+--
+DELIMITER $$
+CREATE TRIGGER `trocas_aceita` AFTER INSERT ON `trocas` FOR EACH ROW IF(new.status = 1) THEN 
+  INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`)
+VALUES (new.D_Primera_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_i,new.user_d,new.idTroca,2);
+  INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`)
+VALUES (new.D_Segunda_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_i,new.user_d,new.idTroca,2);
+  INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`)
+VALUES (new.D_Terceira_notif,' e você realizaram uma troca gostariamos de saber se ela foi concluida',new.user_i,new.user_d,new.idTroca,2);
+END IF
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -279,7 +310,7 @@ CREATE TABLE `view_notificacao` (
 ,`nome` varchar(60)
 ,`mensagem` varchar(500)
 ,`user_i` int(11)
-,`status` tinyint(1)
+,`status` int(1)
 ,`data` timestamp
 ,`idTroca` int(11)
 ,`user_d` int(11)
@@ -397,7 +428,7 @@ ALTER TABLE `nivelacesso`
 -- AUTO_INCREMENT for table `notificacao`
 --
 ALTER TABLE `notificacao`
-  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT for table `produto`
 --
@@ -417,7 +448,7 @@ ALTER TABLE `trocaoferta`
 -- AUTO_INCREMENT for table `trocas`
 --
 ALTER TABLE `trocas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
