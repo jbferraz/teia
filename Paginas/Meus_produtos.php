@@ -211,7 +211,7 @@ $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId O
                     <div class="text-right" style="width:90%;margin:auto;margin-top:10px";>
                         <form action="Meus_produtos.php" method="post">
                             <input type="hidden" name="prod_id" value="<?php echo "$ProdId";?>"/>
-                             <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal1">Excluir</button>
+                             <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Excluir</button>
                           
                         </form> 
                     </div>
@@ -236,10 +236,12 @@ $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId O
         </div>
         <div class="modal-body">
             <form></form>
-            <form action="me">
-                
+            <form action="../funcao/excluirProd.php" method="post">
+                <input name="prod_id" id="ProdId" type="hidden">
+                <input type="submit" value="Confirmar" class="btn btn-default btn-lg">
+             <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">Cancelar</button>
             </form>
-            <form></form>
+            
       </div>
       
     </div>
