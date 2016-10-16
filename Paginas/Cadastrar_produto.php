@@ -5,6 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <?php 
+header("Content-Type: text/html; charset=ISO-8859-1", true);
 include '../funcao/conecta.php';
  session_start();
         if (!isset($_SESSION['Login'])) {

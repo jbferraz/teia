@@ -1,4 +1,5 @@
 <?php 
+header("Content-Type: text/html; charset=ISO-8859-1", true);
 include '../funcao/conecta.php';
       session_start();
         if (!isset($_SESSION['Login'])) {  
@@ -15,7 +16,7 @@ include '../funcao/conecta.php';
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 <html>
     <head>
-        <meta charset="UTF-8">
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title></title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
