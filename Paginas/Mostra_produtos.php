@@ -12,31 +12,7 @@ include '../funcao/conecta.php';
             $UserImg= $User->idImagem;
         }
 ?>
-<script>
-
-function toogle(){
-    var div = document.getElementById("mySidenav-tt");
-    if (div.style.display !=='none'){
-        div.style.display = 'none';
-        document.getElementById("bd").style.overflow="auto";
-    }
-    else {
-        div.style.display = 'block';
-        document.getElementById("bd").style.overflow="hidden" ;
-        
-    }
-}
-function pegaIdProfd(x){
-document.getElementById("ProdId").value=x;  
-    }
- function pegaIdimg(x){
-alert(x) 
-    }
-window.onload = function() {
-   toogle();
-}
-
-</script>
+<script language="javascript" src="../funcao/JavaScript.js"></script>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -238,18 +214,7 @@ window.onload = function() {
   </div>
       
 
-     <div class="col-sm-2"></div>
-     <div class="col-sm-12" align="center">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8" >
-       <div class="panel panel-default" >
-        <div class="panel-heading" style="background:black;color:white;">
-            
-        </div>
-    </div>
-    </div>
-        <div class="col-sm-2" ></div>
-    </div>
+     
     <!--                     ---------------                                  --> 
      <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -282,12 +247,11 @@ window.onload = function() {
                 ?>
       </select>
         <br>
-            <div class="form-group">
+           <div class="form-group">
         <input type="hidden" name="userI" value="<?php echo "$UserId";?>"/>
         <input id="ProdId" name="ProdutoId" type="hidden"/>
     </div>
       </div>
-     
         <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
         <button type="submit" class="btn btn-default">Oferecer Troca</button>

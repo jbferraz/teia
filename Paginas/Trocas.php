@@ -20,33 +20,14 @@ include '../funcao/conecta.php';
         }
         
         
-        /*
-        $id_troca = $_POST['id_troca'];
-        $sql_up_toca= "UPDATE `trocaoferta` SET `status`= true  WHERE `idTroca` = $id_troca";
+       
+           
+     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
     //executamos a instução SQL
-    mysql_query("$sql_up_toca") or die (mysql_error());    
-   
-      */
+    mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
-<script>
+<script language="javascript" src="../funcao/JavaScript.js"></script>
 
-function toogle(){
-    var div = document.getElementById("mySidenav-tt");
-    if (div.style.display !=='none'){
-        div.style.display = 'none';
-        document.getElementById("bd").style.overflow="auto";
-    }
-    else {
-        div.style.display = 'block';
-        document.getElementById("bd").style.overflow="hidden" ;
-        
-    }
-}
-window.onload = function() {
-   toogle();
-}
-
-</script>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -278,22 +259,25 @@ window.onload = function() {
   </div>
         
     </div>
-    <div class="col-sm-1" ></div>
+<div class="col-sm-1" ></div>
     <div class="col-sm-12" style="margin-top:20px;">
         <div class="col-lg-1"></div>
         <div class="col-lg-4"align="right">
-        <form action="#">
+            <form>         
+            </form>
+            <form action="../funcao/troca_recusar.php" method="post">  
             <input class="btn-default " type="submit" value="Recusar" style="min-width:50%;min-height:30px">
-        </form>
-        </>    
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
+            </form>
+           
         </div>
          <div class="col-lg-1"></div>
          <div class="col-lg-4 "align="left">
-        <form action="#">
+             <form action="../funcao/troca_aceita.php" method="post">
             <input class="btn-default left" type="submit" value="Aceitar" style="min-width:50%;min-height:30px">
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
         </form>
     </div>
        <div class="col-lg-1"></div> 
-   
     </body>
 </html>

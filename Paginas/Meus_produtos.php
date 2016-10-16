@@ -18,24 +18,8 @@ session_start();
  
    
 ?>
-<script>
+<script language="javascript" src="../funcao/JavaScript.js"></script>
 
-function toogle(){
-    var div = document.getElementById("mySidenav-tt");
-    if (div.style.display !=='none'){
-        div.style.display = 'none';
-        document.getElementById("bd").style.overflow="auto";
-    }
-    else {
-        div.style.display = 'block';
-        document.getElementById("bd").style.overflow="hidden" ;
-        
-    }
-}
-window.onload = function() {
-   toogle();
-}
-</script>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -234,12 +218,33 @@ $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId O
  </div>
          <div class="col-sm-1">
  </div>
+  </div>
+  
   <!-- Fim da 1ª coluna de produtos-->
    <?php 
                     }
   ?>
   </div>
+      <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-top:300px">
+        <div class="modal-header">
+  
+          <h4 class="modal-title">Deseja Excluir</h4>
+        </div>
+        <div class="modal-body">
+            <form></form>
+            <form action="me">
+                
+            </form>
+            <form></form>
+      </div>
       
+    </div>
+</div>
+     </div>
 
      
     </body>
