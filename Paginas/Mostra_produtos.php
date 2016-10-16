@@ -196,7 +196,7 @@ include '../funcao/conecta.php';
              <form method="post" action="../funcao/p">   
                  <div>
                       <!-- Trigger the modal with a button -->
-            <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
+            <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId;?>','<?php echo $ProdImg ;?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
   <!-- Modal -->
                  </div>
                    </form>
@@ -226,6 +226,19 @@ include '../funcao/conecta.php';
   
           <h4 class="modal-title">Escolha um produto</h4>
         </div>
+          <div class="modal-body">
+              <div class="col-sm-12">
+              <div class="col-sm-1"></div>
+              <div class="col-sm-4"style="height:150px;">
+                  <iframe class="img-responsive" id="ifr1"></iframe>
+              </div>
+              <div class="col-sm-1"></div>
+              <div class="col-sm-4"style="height:150px;">
+                  <iframe class="img-responsive" id="ifr2"></iframe>
+              </div>
+               <div class="col-sm-1"></div>
+          </div>
+              </div>
         <div class="modal-body">
             <form></form>
             <form method="post" action="../funcao/insere_troca.php">

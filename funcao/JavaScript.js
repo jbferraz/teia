@@ -11,9 +11,12 @@ function toogle(){
         
     }
 };
-function pegaIdProfd(x){
-document.getElementById("ProdId").value=x;  
-    }
+function pegaIdProfd(x,y){
+document.getElementById("ProdId").value=x;
+var t="Listar.php?codigo="+y+"";
+document.getElementById("ifr1").src=t};
+
+
 window.onload = function() {
    toogle();
 };
