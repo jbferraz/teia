@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16-Out-2016 às 16:33
+-- Generation Time: 16-Out-2016 às 17:45
 -- Versão do servidor: 10.1.16-MariaDB
 -- PHP Version: 5.6.24
 
@@ -122,17 +122,7 @@ CREATE TABLE `notificacao` (
 --
 
 INSERT INTO `notificacao` (`id_notificacao`, `data`, `mensagem`, `user_d`, `user_i`, `id_troca`, `status`) VALUES
-(7, '2016-10-15 02:36:15', 'fez uma proposta de troca para você', 1, 2, 44, 1),
-(11, '2016-10-15 00:19:53', 'fez uma proposta de troca para você', 2, 1, 48, 0),
-(12, '2016-10-15 00:47:12', 'fez uma proposta de troca para você', 0, 0, 49, 0),
-(13, '2016-10-15 00:48:44', 'fez uma proposta de troca para você', 0, 0, 50, 0),
-(14, '2016-10-15 00:49:38', 'fez uma proposta de troca para você', 0, 0, 51, 0),
-(15, '2016-10-15 00:51:28', 'fez uma proposta de troca para você', 0, 0, 52, 0),
-(16, '2016-10-15 01:23:50', 'fez uma proposta de troca para você', 2, 6, 53, 0),
-(17, '2016-10-15 01:26:00', 'fez uma proposta de troca para você', 6, 5, 54, 0),
-(18, '2016-10-15 02:22:35', 'fez uma proposta de troca para você', 2, 0, 55, 0),
-(19, '2016-10-15 02:22:37', 'fez uma proposta de troca para você', 0, 0, 56, 0),
-(20, '2016-10-16 03:00:00', 'fez uma proposta de troca para você', 2, 2, 0, 0);
+(24, '2016-10-16 19:38:59', 'fez uma proposta de troca para você', 1, 2, 10, 0);
 
 -- --------------------------------------------------------
 
@@ -194,7 +184,7 @@ CREATE TABLE `trocaoferta` (
   `idProdutoOF` int(11) DEFAULT NULL,
   `idUsuarioINT` int(11) DEFAULT NULL,
   `idProdutoINT` int(11) DEFAULT NULL,
-  `dataOferta` date DEFAULT NULL,
+  `dataOferta` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `status` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -203,21 +193,32 @@ CREATE TABLE `trocaoferta` (
 --
 
 INSERT INTO `trocaoferta` (`idTroca`, `idUsuarioOF`, `idProdutoOF`, `idUsuarioINT`, `idProdutoINT`, `dataOferta`, `status`) VALUES
-(1, 1, 8, 2, 5, '2016-10-08', 0),
-(2, 1, 8, 2, 6, '2016-10-08', 0),
-(3, 1, 8, 2, 7, '2016-10-08', 0),
-(4, 2, 5, 1, 4, '2016-10-08', 0),
-(5, 2, 5, 3, 9, '2016-10-08', 0),
-(6, 2, 0, 2, 6, '2016-10-16', 0);
+(10, 1, 13, 2, 6, '2016-10-16 19:38:59', 0);
 
 --
 -- Acionadores `trocaoferta`
 --
 DELIMITER $$
-CREATE TRIGGER `notificacaoTrigger` BEFORE INSERT ON `trocaoferta` FOR EACH ROW INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`, `user_i`) 
-VALUES (new.dataOferta,'fez uma proposta de troca para você',New.idUsuarioOF,new.idUsuarioINT)
+CREATE TRIGGER `notificacaoTrigger` AFTER INSERT ON `trocaoferta` FOR EACH ROW INSERT INTO `notificacao`(`data`, `mensagem`, `user_d`,`user_i`,`id_troca`) 
+VALUES (new.dataOferta,'fez uma proposta de troca para você',New.idUsuarioOF,new.idUsuarioINT,new.idTroca)
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `trocas`
+--
+
+CREATE TABLE `trocas` (
+  `id` int(11) NOT NULL,
+  `idTroca` int(11) NOT NULL,
+  `dataTroca` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `D_Primera_notif` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `D_Segunda_notif` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `D_Terceira_notif` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -280,7 +281,7 @@ CREATE TABLE `view_notificacao` (
 ,`user_i` int(11)
 ,`status` tinyint(1)
 ,`data` timestamp
-,`idTroca` bigint(20) unsigned
+,`idTroca` int(11)
 ,`user_d` int(11)
 );
 
@@ -300,7 +301,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `view_notificacao`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_notificacao`  AS  select `notificacao`.`id_notificacao` AS `id_notificacao`,`usuario`.`idUsuario` AS `idusuario`,`usuario`.`nome` AS `nome`,`notificacao`.`mensagem` AS `mensagem`,`notificacao`.`user_i` AS `user_i`,`notificacao`.`status` AS `status`,`notificacao`.`data` AS `data`,`trocaoferta`.`idTroca` AS `idTroca`,`notificacao`.`user_d` AS `user_d` from ((`usuario` join `notificacao`) join `trocaoferta`) where (`usuario`.`idUsuario` = `notificacao`.`user_d`) group by `notificacao`.`id_notificacao` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_notificacao`  AS  select `notificacao`.`id_notificacao` AS `id_notificacao`,`usuario`.`idUsuario` AS `idusuario`,`usuario`.`nome` AS `nome`,`notificacao`.`mensagem` AS `mensagem`,`notificacao`.`user_i` AS `user_i`,`notificacao`.`status` AS `status`,`notificacao`.`data` AS `data`,`notificacao`.`id_troca` AS `idTroca`,`notificacao`.`user_d` AS `user_d` from ((`usuario` join `notificacao`) join `trocaoferta`) where (`usuario`.`idUsuario` = `notificacao`.`user_d`) group by `notificacao`.`id_notificacao` ;
 
 --
 -- Indexes for dumped tables
@@ -354,6 +355,12 @@ ALTER TABLE `trocaoferta`
   ADD UNIQUE KEY `idTroca` (`idTroca`);
 
 --
+-- Indexes for table `trocas`
+--
+ALTER TABLE `trocas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `usuario`
 --
 ALTER TABLE `usuario`
@@ -390,7 +397,7 @@ ALTER TABLE `nivelacesso`
 -- AUTO_INCREMENT for table `notificacao`
 --
 ALTER TABLE `notificacao`
-  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_notificacao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `produto`
 --
@@ -405,7 +412,12 @@ ALTER TABLE `produtoestado`
 -- AUTO_INCREMENT for table `trocaoferta`
 --
 ALTER TABLE `trocaoferta`
-  MODIFY `idTroca` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idTroca` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `trocas`
+--
+ALTER TABLE `trocas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `usuario`
 --
@@ -419,4 +431,3 @@ ALTER TABLE `usuariocategoria`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

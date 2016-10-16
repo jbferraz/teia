@@ -24,7 +24,7 @@ include '../funcao/conecta.php';
            
      $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
     //executamos a instução SQL
-    mysql_query("$sql_up_toca") or die (mysql_error())
+    //mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
