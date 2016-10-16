@@ -170,99 +170,62 @@ include '../funcao/conecta.php';
     </div>
                
     </div>
+   <!--wille tem que ser aparti daqui-->
    
-     
-    <div class="col-sm-1" ></div>
-    <div class="col-sm-1" ></div>
-     <?php
-    $sql_prod = mysql_query("SELECT * FROM `trocaoferta` WHERE `idUsuarioOF` = $UserId or `idUsuarioINT` = $UserId ");
-        while ($prod = mysql_fetch_object($sql_prod)) {
-            $Prod_interece_id = $prod->idProdutoOF;
-            $idUsuarioOF = $prod->idUsuarioOF;
-            $idUsuarioINT = $prod->idUsuarioINT;
-            $Prod_dono_id = $prod->idProdutoINT ;           
-        
-   ?>
-    <div class="col-sm-4 ">         
-  <!-- Inicio da 1ª coluna de produtos-->
-  
-  <div class="col-sm-12 " style="margin-bottom:30px;">
-      
-      <?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
-                while ($Produtos = mysql_fetch_object($sql)) { 
-                  $ProdId_1   = $Produtos->IdProduto;
-                  $ProdNome_1 = $Produtos->NomeProduto;
-                  $UserNome_1 = $Produtos->NomeUsuario;
-                  $ProdDecr_1 = $Produtos->DescProduto;
-                  $ProdCateg_1 =  $Produtos->categoria;
-                  $ProdEstado_1 =  $Produtos->estado;
-                  $ProdImg_1 =  $Produtos->img;
-                  }
-                ?>
-      <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+  <div class="col-sm-12">
+    <div class="col-sm-1"></div>
+
+       <div class="col-sm-5">
+
+  <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
+        <div class="col-sm-1">
  </div>
-     <div class="col-sm-1">
- </div>
-       <div class="col-sm-4">          
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
-             <form method="post" action="../funcao/insere_troca.php">   
-              
- </div>
-         <div class="col-sm-1">
- </div>
- <!-- Fim do Produto -->
-  </div>
-        
-    </div>
-    <!-- Meio Entre as trocas-->
-  <div class="col-sm-1" >
-      
-      
-  </div>
-     <!-- Fim Meio Entre as trocas-->
-    <div class="col-sm-4 ">
-  <!-- Inicio da 2ª coluna de produtos-->
-<div class="col-sm-12 " style="margin-bottom:30px;">
-<?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
-                while ($Produtos2 = mysql_fetch_object($sql)) { 
-                  $ProdId_2   = $Produtos2->IdProduto;
-                  $ProdNome_2 = $Produtos2->NomeProduto;
-                  $UserNome_2 = $Produtos2->NomeUsuario;
-                  $ProdDecr_2 = $Produtos2->DescProduto;
-                  $ProdCateg_2 =  $Produtos2->categoria;
-                  $ProdEstado_2 =  $Produtos2->estado;
-                  $ProdImg_2 =  $Produtos2->img;
-                  }
-                ?>
-      <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+      <div class="col-sm-4">
+            <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:250px;max-height:250px;">
  </div>
      <div class="col-sm-1">
  </div>
        <div class="col-sm-4">
-          
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
-            
-              
- </div>
+           <p class="text-left lead" style=""> $ProdNome</h3></p>
+            <p class="text-left small" style=""><h3>$ProdEstado</h3><p/>
+            <p class="text-left small" style=""><h3>$ProdCateg</h3></p>
+            <p class="text-left small" style=""><h4>$ProdDecr</h4></p>
+
+       </div>
          <div class="col-sm-1">
  </div>
  <!-- Fim do Produto -->
-   </div>
-        
     </div>
+       </div>
+    
+    <!--meio-->
+     <div class="col-sm-2"></div>
+    <!--meio-->
+    <div class="col-sm-5">
 
-     <?php 
-        }
-     ?>
+  <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
+        <div class="col-sm-1">
+ </div>
+      <div class="col-sm-4">
+            <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:250px;max-height:250px;">
+ </div>
+     <div class="col-sm-1">
+ </div>
+       <div class="col-sm-4">
+           <p class="text-left lead" style=""> $ProdNome</h3></p>
+            <p class="text-left small" style=""><h3>$ProdEstado</h3><p/>
+            <p class="text-left small" style=""><h3>$ProdCateg</h3></p>
+            <p class="text-left small" style=""><h4>$ProdDecr</h4></p>
+
+       </div>
+         <div class="col-sm-1">
+ </div>
+ <!-- Fim do Produto -->
+    </div>
+       </div>
+  </div>
+    
+    
+    
     </body>
 </html>

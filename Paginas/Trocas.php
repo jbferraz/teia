@@ -185,8 +185,7 @@ include '../funcao/conecta.php';
         <br>
         <div class="col-sm-2" ></div>
     </div>
-    
-    <div class="col-sm-1" ></div>
+    <div class="col-sm12">
     <div class="col-sm-1" ></div>
     <div class="col-sm-4 ">
   <!-- Inicio da 1ª coluna de produtos-->
@@ -224,45 +223,11 @@ include '../funcao/conecta.php';
     </div>
     <!-- Meio Entre as trocas-->
   <div class="col-sm-1" >
-      
+   
       
   </div>
      <!-- Fim Meio Entre as trocas-->
-    <div class="col-sm-4 ">
-  <!-- Inicio da 2ª coluna de produtos-->
-<div class="col-sm-12 " style="margin-bottom:30px;">
-<?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
-                while ($Produtos2 = mysql_fetch_object($sql)) { 
-                  $ProdId_2   = $Produtos2->IdProduto;
-                  $ProdNome_2 = $Produtos2->NomeProduto;
-                  $UserNome_2 = $Produtos2->NomeUsuario;
-                  $ProdDecr_2 = $Produtos2->DescProduto;
-                  $ProdCateg_2 =  $Produtos2->categoria;
-                  $ProdEstado_2 =  $Produtos2->estado;
-                  $ProdImg_2 =  $Produtos2->img;
-                  }
-                ?>
-      <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
- </div>
-     <div class="col-sm-1">
- </div>
-       <div class="col-sm-4">
-          
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
-            
-              
- </div>
-         <div class="col-sm-1">
- </div>
- <!-- Fim do Produto -->
-  </div>
-        
-    </div>
+    
 <div class="col-sm-1" ></div>
     <div class="col-sm-12" style="margin-top:20px;">
         <div class="col-lg-1"></div>
@@ -286,6 +251,9 @@ include '../funcao/conecta.php';
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
         </form>
     </div>
+    </div>
        <div class="col-lg-1"></div> 
+    </div> 
     </body>
+    
 </html>
