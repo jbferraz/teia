@@ -191,7 +191,7 @@ $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId O
         <div class="col-sm-1">
  </div>
       <div class="col-sm-4">
-            <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:250px;max-height:250px;">
+      <li><img class="img-responsive " src="<?php echo"Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
  </div>
      <div class="col-sm-1">
  </div>
