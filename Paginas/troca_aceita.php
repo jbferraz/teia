@@ -23,9 +23,9 @@ include '../funcao/conecta.php';
             $Prod_dono_id = $prod->idProdutoINT ;            
         }
         
-          //$sql_up_toca="UPDATE `notificacao` SET `status`= 1 WHERE `id_notificacao` = $id_not";
+          $sql_up_toca="UPDATE `notificacao` SET `status`= 1 WHERE `id_notificacao` = $id_not";
 //executamos a instução SQL
-           // mysql_query("$sql_up_toca") or die (mysql_error());
+           mysql_query("$sql_up_toca") or die (mysql_error());
        
            
     
@@ -347,6 +347,7 @@ include '../funcao/conecta.php';
         </div>
         <div class="modal-body">
             <P> Obrigado por nós informar sobre a troca</p>
+            <P>Você será redirecionado para produtos disponiveis</p>
             <form action="../Paginas/Mostra_produtos.php" method="post">               
                 <input type="submit" value="Ok" class="btn btn-default btn-lg">             
             </form>

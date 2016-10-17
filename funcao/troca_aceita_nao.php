@@ -17,5 +17,10 @@
 //executamos a instução SQL
             mysql_query("$sql_2") or die (mysql_error());        
             
+            $sql_3="UPDATE `trocas` SET `status`= 0 WHERE `idTroca` = $id_troca";
+//executamos a instução SQL
+            mysql_query("$sql_3") or die (mysql_error());
             header('Location:../Paginas/Mostra_produtos.php');
+            
+            
         ?>
