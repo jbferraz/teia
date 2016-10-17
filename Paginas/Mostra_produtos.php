@@ -270,19 +270,8 @@ include '../funcao/conecta.php';
   
           <h4 class="modal-title">Escolha um produto</h4>
         </div>
-          <div class="modal-body">
-              <div class="col-sm-12">
-              <div class="col-sm-1"></div>
-              <div class="col-sm-4"style="height:200px;">
-                  <iframe class=" img-thumbnail" id="ifr1" ></iframe>
-              </div>
-              <div class="col-sm-1"></div>
-              <div class="col-sm-4"style="height:200px;">
-                  <iframe style="" class=" img-thumbnail" id="ifr2" src="../funcao/newEmptyPHPWebPage.php/?id=64"></iframe>
-              </div>
-               <div class="col-sm-1"></div>
-          </div>
-              </div>
+          
+          
         <div class="modal-body">
             <form></form>
             <form method="post" action="../funcao/insere_troca.php">
