@@ -229,12 +229,12 @@ include '../funcao/conecta.php';
           <div class="modal-body">
               <div class="col-sm-12">
               <div class="col-sm-1"></div>
-              <div class="col-sm-4"style="height:150px;">
-                  <iframe class="img-responsive" id="ifr1"></iframe>
+              <div class="col-sm-4"style="height:200px;">
+                  <iframe class=" img-thumbnail" id="ifr1" ></iframe>
               </div>
               <div class="col-sm-1"></div>
-              <div class="col-sm-4"style="height:150px;">
-                  <iframe class="img-responsive" id="ifr2"></iframe>
+              <div class="col-sm-4"style="height:200px;">
+                  <iframe style="" class=" img-thumbnail" id="ifr2" src="../funcao/newEmptyPHPWebPage.php/?id=64"></iframe>
               </div>
                <div class="col-sm-1"></div>
           </div>
@@ -252,10 +252,9 @@ include '../funcao/conecta.php';
                     $produto_id = $Produtos->IdProduto;
                     $produto_nome = $Produtos->NomeProduto; 
                     $produto_img=$Produtos->img;
-    
+                    $GLOBALS['$produto_id']=$produto_img;
                    ?>
-             <option  value='<?php echo "$produto_id";?>' icon="icons/icon_cart.gif"><?php echo "$produto_nome";?></option>  
-            
+             <option  value='<?php echo "$produto_id";?>' icon="icons/icon_cart.gif"><?php echo "$produto_nome";?></option> 
                  <?php     
                 }
                 ?>
