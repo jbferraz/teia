@@ -1,5 +1,6 @@
 <?php
 include '../funcao/conecta.php';
+header('Content-Type: text/html; charset=utf-8');
     $Nome = $_POST['ProdNome'];
     $Desc = $_POST['ProdDesc']; 
     $Catg = $_POST['ProdCategoria'];

@@ -23,9 +23,9 @@ include '../funcao/conecta.php';
             $Prod_dono_id = $prod->idProdutoINT ;            
         }
         
-          $sql_up_toca="UPDATE `notificacao` SET `status`= 1 WHERE `id_notificacao` = $id_not";
+          //$sql_up_toca="UPDATE `notificacao` SET `status`= 1 WHERE `id_notificacao` = $id_not";
 //executamos a instução SQL
-            mysql_query("$sql_up_toca") or die (mysql_error());
+           // mysql_query("$sql_up_toca") or die (mysql_error());
        
            
     
@@ -222,7 +222,7 @@ include '../funcao/conecta.php';
         <div class="col-sm-8" >
        <div class="panel panel-default">
         <div class="panel-heading">
-        <h3>Proposta de Troca</h3>
+        <h3>Informe se ocorreu a troca por favor.</h3>
         </div>
         
     </div>
@@ -314,8 +314,8 @@ include '../funcao/conecta.php';
         <div class="col-lg-4"align="right">
             <form>         
             </form>
-            <form action="..../funcao/troca_aceita_nao.php" method="post">  
-            <input class="btn-default " type="submit" value="não" style="min-width:50%;min-height:30px">
+            <form action="#" method="post">  
+                <input class="btn-default " type="button" data-toggle="modal" data-target="#myModal" value="não" style="min-width:50%;min-height:30px">
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
@@ -327,7 +327,7 @@ include '../funcao/conecta.php';
          <div class="col-lg-1"></div>
          <div class="col-lg-4 "align="left">
              <form action="../funcao/troca_aceita_sim.php" method="post">
-            <input class="btn-default left" type="submit" value="sim" style="min-width:50%;min-height:30px">
+                 <input class="btn-default left" data-toggle="modal" data-target="#myModal" type="button" value="sim" style="min-width:50%;min-height:30px">
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
              <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>">
@@ -336,5 +336,25 @@ include '../funcao/conecta.php';
         </form>
     </div>
        <div class="col-lg-1"></div> 
+       <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="margin-top:300px">
+        <div class="modal-header">
+  
+          <h4 class="modal-title">Obrigado</h4>
+        </div>
+        <div class="modal-body">
+            <P> Obrigado por nós informar sobre a troca</p>
+            <form action="../Paginas/Mostra_produtos.php" method="post">               
+                <input type="submit" value="Ok" class="btn btn-default btn-lg">             
+            </form>
+            
+      </div>
+      
+    </div>
+</div>
+     </div>
     </body>
 </html>

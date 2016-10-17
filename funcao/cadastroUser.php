@@ -1,6 +1,6 @@
 <?php
 include '../funcao/conecta.php';
-
+header('Content-Type: text/html; charset=utf-8');
 $_nome =$_POST['nome'];
 $_email =$_POST['email'];
 $_senha =$_POST['senha'];

@@ -269,7 +269,8 @@ $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId O
                     }
   ?>
   </div>
-      <div class="modal fade" id="myModal" role="dialog">
+     
+    <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
