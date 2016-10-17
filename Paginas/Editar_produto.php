@@ -5,7 +5,7 @@ include '../funcao/conecta.php';
         if (!isset($_SESSION['Login'])) {  
             die('<h2>Sessão não iniciada</h2>'); 
         }
-    $_id =$_POST['prod_id'];    
+      $_id = $_POST['prod_id']; 
    $UserEmail = $_SESSION['Login'];
     $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
         while ($User = mysql_fetch_object($sql_user)) {
@@ -234,18 +234,23 @@ include '../funcao/conecta.php';
         <input name="ProdDesc" type="text" class="form-control" id="senha" value="<?php echo $ProdDecr; ?>" >
     </div>
     <div class="form-group">
-      <select class="form-control" id="sel1" name="ProdEstado">
-        <option value="" disabled selected>Selecione o estado</option>
+      <select class="form-control" id="sel1" name="ProdEstado">        
          <?php
                         $sql = mysql_query("SELECT * FROM `produtoestado`");
                     while ($estado = mysql_fetch_object($sql)) {
                         $estado_id = $estado->idProdutoEstado;
                         $estado_desc = $estado->descricao;
-                        echo "<option value='$estado_id'>$estado_desc</option> ";
+                        if ($estado_id = $ProdEstado) {
+                            echo "<option value='$estado_id' selected='selected'>$estado_desc</option> ";
+                        }  else {
+                            echo "<option value='$estado_id'>$estado_desc</option> ";
+                        }
+                        
                     }
                     ?>
       </select>
-    
+      
+                  
 </div>
 <div class="form-group">
       <select class="form-control" id="sel1" name="ProdCategoria">
@@ -255,7 +260,12 @@ include '../funcao/conecta.php';
                     while ($Categ = mysql_fetch_object($sql)) {
                         $Categ_id = $Categ->idCategoria;
                         $Categ_nome = $Categ->descricao;
-                        echo "<option value='$Categ_id'>$Categ_nome</option> ";
+                        if ($Categ_id = $ProdCateg) {
+                            echo "<option value='$Categ_id' selected='selected'>$Categ_nome</option> ";
+                        }  else {
+                            echo "<option value='$Categ_id'>$Categ_nome</option> ";
+                        }
+                        
                     }
                     ?>
       </select>

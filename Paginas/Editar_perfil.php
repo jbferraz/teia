@@ -5,7 +5,7 @@ include '../funcao/conecta.php';
         if (!isset($_SESSION['Login'])) {  
             die('<h2>Sessão não iniciada</h2>'); 
         }
-    $_id =$_POST['prod_id'];    
+    
    $UserEmail = $_SESSION['Login'];
     $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
         while ($User = mysql_fetch_object($sql_user)) {
@@ -166,7 +166,7 @@ include '../funcao/conecta.php';
    
 <?php
   
-  $sql = mysql_query("SELECT * FROM `usuario` WHERE `idUsuario` ='1'");
+  $sql = mysql_query("SELECT * FROM `usuario` WHERE `idUsuario` =$UserId");
                 while ($Usuario = mysql_fetch_object($sql)){
                  $nome=$Usuario->nome;
                  $email=$Usuario->email;
@@ -194,10 +194,20 @@ include '../funcao/conecta.php';
       <select class="form-control" id="sel1" name="ProdCategoria">
         <option value="" disabled selected>Selecione a categoria</option>
          <?php
+                    $sql = mysql_query("SELECT * FROM `usuariocategoria` WHERE `idUsuario`= $UserId");
+                    while ($CategU = mysql_fetch_object($sql)) {
+                        $UserCateg_id = $CategU->idCategoria;
+                    }
                     $sql = mysql_query("SELECT * FROM `categoria`");
                     while ($Categ = mysql_fetch_object($sql)) {
                         $Categ_id = $Categ->idCategoria;
                         $Categ_nome = $Categ->descricao;
+                        
+                        if ($Categ_id = $UserCateg_id) {
+                            echo "<option value='$Categ_id' selected='selected'>$Categ_nome</option> ";
+                        }  else {
+                            echo "<option value='$Categ_id'>$Categ_nome</option> ";
+                        }
                         echo "<option value='$Categ_id'>$Categ_nome</option> ";
                     }
                     ?>
