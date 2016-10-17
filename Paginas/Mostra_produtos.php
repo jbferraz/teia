@@ -1,5 +1,5 @@
 <?php 
-header("Content-Type: text/html; charset=ISO-8859-1", true);
+
 include '../funcao/conecta.php';
       session_start();
         if (!isset($_SESSION['Login'])) {  
@@ -74,9 +74,11 @@ include '../funcao/conecta.php';
         $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_I = $UserId and status = 0");
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
+                    $id_not = $Not_inf->id_notificacao;
                   $id_troca = $Not_inf->idTroca;
                   $user_interece = $Not_inf->nome;  
-               $mensagem =  $Not_inf->mensagem;
+                  $mensagem =  $Not_inf->mensagem;
+                  $tipo = $Not_inf->tipo;
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
@@ -87,12 +89,54 @@ include '../funcao/conecta.php';
                             <?php echo "$user_interece $mensagem"; ?>
                                      
                          </div>
+                             <?php
+                                    if ($tipo == 0) {
+                                        
+                                   
+                             ?>
                                   <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/Trocas.php">
                                       <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
-                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">                                  
+                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">  
+                                 <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
                                  </form>
                                      
-                         
+                         <?php
+                                    }
+                                        
+                                   
+                             ?>
+                              <?php
+                                    if ($tipo == 1) {
+                                        
+                                   
+                             ?>
+                             <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../funcao/notificacao.php  ">
+                                      <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="Ok">
+                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">  
+                                 <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
+                                 </form>
+                                     
+                         <?php
+                                    }
+                                        
+                                   
+                             ?>
+                               <?php
+                                    if ($tipo == 2) {
+                                        
+                                   
+                             ?>
+                             <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/troca_aceita.php ">
+                                 <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
+                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">  
+                                 <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
+                                 </form>
+                                     
+                         <?php
+                                    }
+                                        
+                                   
+                             ?>
                          </div></div></li> 
                          
                          
