@@ -1,7 +1,8 @@
 <?php
-
 include '../funcao/conecta.php';
 ?>
+<script language="javascript" src="../funcao/JavaScript.js"></script>
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -59,10 +60,11 @@ include '../funcao/conecta.php';
         <input name="email" required type="email" class="form-control" id="email" placeholder="E-mail">
     </div>
     <div class="form-group">
-        <input name="senha" required type="password" class="form-control" id="senha" placeholder="Senha">
+        <input name="senha" required type="password" class="form-control" id="senha1" placeholder="Senha"><a href="#" data-toggle="popover" data-content="Senha Invalida"></a>
     </div>
     <div class="form-group">
-        <input name="confirmarSenha" required type="password" class="form-control" id="Senha" placeholder="Confirmar Senha">
+        <input onblur="testeSenha()" required name="confirmarSenha"  type="password" class="form-control" id="Senha2" placeholder="Confirmar Senha">
+        <a href="#" id="52" data-toggle="popover" title="Popover Header" data-content="As senhas não coincide"></a>
     </div>
      <div class="form-group">
       <select class="form-control" id="sel1" name="ProdCategoria">
@@ -87,7 +89,7 @@ include '../funcao/conecta.php';
      </div>
     <div class="form-group">
       <div class="col-sm-offset-4 col-sm-10">
-        <button type="submit" class="btn btn-default">Cadastrar</button>
+          <button id="Btn-Cadatrar" type="submit" class="btn btn-default">Cadastrar</button>
       </div>
     </div>
     
@@ -96,5 +98,6 @@ include '../funcao/conecta.php';
      <div class="col-sm-4">
     </div> 
         </div>
+    
     </body>
 </html>
