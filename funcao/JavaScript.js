@@ -24,12 +24,31 @@ function testeSenha(){
 var y=document.getElementById("senha1").value;    
 var x=document.getElementById("Senha2").value;
 var z=document.getElementById("Btn-Cadatrar").className;
-    if (x===y){ 
-        document.getElementById("Btn-Cadatrar").className=z;
-        
+    if (x===y){
+    document.getElementById("Btn-Cadatrar").className=z;
+    document.getElementById("falhaSenha").style.display="none";
     }else{
-        $('#52').popover('show')
-        sleep(500);
-        $('#52').popover('hide')
-         }
+      document.getElementById("falhaSenha").style.display="block";
+      
+      }
 };
+
+    function Testa_Email(){
+        var x=document.getElementById("email").value;
+	$.ajax({
+		type:'post',		//Definimos o método HTTP usado
+		dataType:'json',//Definimos o tipo de retorno
+		url: 'Teste_Email_Existe.php/?id='+x,//Definindo o arquivo onde serão buscados os dados
+		success: function(dados){
+                    alert(dados)
+                   var y=dados;
+                   if (y===x){
+                     document.getElementById("falhaEmail").style.display="block";   
+                   }else{
+                       document.getElementById("falhaEmail").style.display="none";   
+                   }
+                   
+	}
+        })
+};
+

@@ -57,14 +57,21 @@ include '../funcao/conecta.php';
         <input name="nome" required type="nome" class="form-control" id="email" placeholder="Nome Completo">
     </div>
     <div class="form-group">
-        <input name="email" required type="email" class="form-control" id="email" placeholder="E-mail">
+        <input onblur="Testa_Email()" name="email" required type="email" class="form-control" id="email" placeholder="E-mail">
+        <div id="falhaEmail" style="display:none;margin:0" class="row">
+	<div class="alert alert-danger">O email ja esta cadastrado</div>
+</div>
     </div>
     <div class="form-group">
-        <input name="senha" required type="password" class="form-control" id="senha1" placeholder="Senha"><a href="#" data-toggle="popover" data-content="Senha Invalida"></a>
-    </div>
+        <input name="senha" required type="password" class="form-control" id="senha1" placeholder="Senha">
+    </div>	
+
     <div class="form-group">
-        <input onblur="testeSenha()" required name="confirmarSenha"  type="password" class="form-control" id="Senha2" placeholder="Confirmar Senha">
-        <a href="#" id="52" data-toggle="popover" title="Popover Header" data-content="As senhas não coincide"></a>
+        <input style="margin-bottom:10px;" onblur="testeSenha()" required name="confirmarSenha"  type="password" class="form-control" id="Senha2" placeholder="Confirmar Senha">
+
+        <div id="falhaSenha" style="display:none;margin:0" class="row">
+	<div class="alert alert-danger">As senhas não considem</div>
+</div>
     </div>
      <div class="form-group">
       <select class="form-control" id="sel1" name="ProdCategoria">
