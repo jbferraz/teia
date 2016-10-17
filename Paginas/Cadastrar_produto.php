@@ -73,6 +73,7 @@ include '../funcao/conecta.php';
                         $Not_num = $Not->notif;
                         }                        
                         if ($Not_num != 0 ) {
+              
                             
                         
        ?>
