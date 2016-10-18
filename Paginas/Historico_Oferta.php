@@ -187,7 +187,7 @@ session_start();
   <div id="mySidenav" class="sidenav"align="center">
  
   <ul align="center" style="list-style:none;color:white;padding-left:5px"> 
-      <li><img class="img-responsive img-circle" src="<?php echo" Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;"></li>
+      <li><img class="img-responsive" src="<?php echo" Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;"></li>
       <li><?php echo $UserNome; ?></li>
       <hr style="width:75%">
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;"><a href="Mostra_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-shopping-cart"></span>Produtos</a></div></li>
