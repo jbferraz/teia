@@ -301,17 +301,38 @@ session_start();
   <ul class="pagination pagination-lg">
          
     <?php 
- for ($i = 1; $i <= $qtpaginas; $i++) {     
-     if ($pagatual == $i){        
+    if ($pagatual > 1 ) {
+         ?>
+      <li>
+      <a href="../Paginas/Meus_produtos.php?pag=<?php echo $pagatual -1;?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
      
+       <?php 
+     }
+ for ($i = 1; $i <= $qtpaginas; $i++) {
+     
+     if ($pagatual == $i){      
    ?>  
-      <li class="active"><a href="../Paginas/Mostra_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+      <li class="active"><a href="../Paginas/Meus_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
             <?php }  else {
  ?>
       <li><a href="../Paginas/Meus_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
     
- <?php } }?>
-   
+ <?php } }
+
+    if ($pagatual != $qtpaginas ) {
+         ?>
+      <li>
+      <a href="../Paginas/Meus_produtos.php?pag=<?php echo $pagatual +1;?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+     
+       <?php 
+     }
+ ?>    
   </ul>
       </div>
 </nav>

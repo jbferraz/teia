@@ -292,8 +292,16 @@ session_start();
   <nav aria-label="Page navigation">
       <div style="margin:0 auto">
   <ul class="pagination pagination-lg">
-         
-    <?php 
+      <?php 
+    if ($pagatual > 1 ) {
+         ?>
+      <li>
+      <a href="../Paginas/Mostra_produtos.php?pag=<?php echo $pagatual -1;?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>   
+    <?php
+    }
  for ($i = 1; $i <= $qtpaginas; $i++) {     
      if ($pagatual == $i){        
      
@@ -303,7 +311,19 @@ session_start();
  ?>
       <li><a href="../Paginas/Mostra_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
     
- <?php } }?>
+ <?php } }
+ 
+if ($pagatual != $qtpaginas ) {
+         ?>
+      <li>
+      <a href="../Paginas/Mostra_produtos.php?pag=<?php echo $pagatual +1;?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+     
+       <?php 
+     }
+ ?> 
    
   </ul>
       </div>

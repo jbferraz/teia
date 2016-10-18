@@ -5,7 +5,8 @@
         $user_i = $_POST['user_i'];
         $user_d = $_POST['user_d'];  
          $ProdId_1 = $_POST['ProdId_1'];
-          $ProdId_2 = $_POST['ProdId_2'];         
+          $ProdId_2 = $_POST['ProdId_2'];
+          
               $sql_up_toca="INSERT INTO `trocas`(`user_I`, `User_d`,`idTroca`, `D_Primera_notif`, `D_Segunda_notif`, `D_Terceira_notif`, `status`) "
                       . "VALUES ($user_i,$user_d ,$id_troca,'2016-02-16','2016-02-16','2016-02-16',1);";
 //executamos a instução SQL
