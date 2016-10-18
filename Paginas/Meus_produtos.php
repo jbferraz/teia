@@ -200,7 +200,7 @@ session_start();
 </nav>
     <!--Termina o menu -->
     <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
-    <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
+        <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
     <hr style="width:75%">
 </div> 
   <!--Menu central do usuario menu-sidnav-->
@@ -293,20 +293,30 @@ session_start();
                    }
  				
   ?>
+  
   <div class="col-sm-12" align="center">
+ 
   <nav aria-label="Page navigation">
+      <div style="margin:0 auto">
   <ul class="pagination pagination-lg">
-      
-      
+         
     <?php 
  for ($i = 1; $i <= $qtpaginas; $i++) {     
-   ?>      
+     if ($pagatual == $i){        
+     
+   ?>  
+      <li class="active"><a href="../Paginas/Mostra_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+            <?php }  else {
+ ?>
       <li><a href="../Paginas/Meus_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
-    <?php } ?>
+    
+ <?php } }?>
    
   </ul>
+      </div>
 </nav>
-        </div>
+
+  </div>
       
     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

@@ -199,7 +199,7 @@ session_start();
 </nav>
     <!--Termina o menu -->
     <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
-    <img class="img-responsive" src="../Imagens/logo.png" alt="Chania">
+     <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
     <hr style="width:75%">
 </div> 
   <!--Menu central do usuario menu-sidnav-->
@@ -295,9 +295,15 @@ session_start();
          
     <?php 
  for ($i = 1; $i <= $qtpaginas; $i++) {     
-   ?>      
+     if ($pagatual == $i){        
+     
+   ?>  
+      <li class="active"><a href="../Paginas/Mostra_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+            <?php }  else {
+ ?>
       <li><a href="../Paginas/Mostra_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
-    <?php } ?>
+    
+ <?php } }?>
    
   </ul>
       </div>
