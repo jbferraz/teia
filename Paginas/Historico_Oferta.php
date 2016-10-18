@@ -216,18 +216,22 @@ session_start();
         <br>
         <div class="col-sm-2" ></div>
     </div>
+    
     <div class="col-sm12">
     <div class="col-sm-2" ></div>
-    <div class="col-sm-4 ">
-  <!-- Inicio da 1ª coluna de produtos-->
-  <div class="col-sm-12 " style="margin-bottom:30px;">
-      <?php
+    <?php
          $sql_prod = mysql_query("select * FROM `trocaoferta` WHERE `idUsuarioOF`= $UserId or idUsuarioINT = $UserId  ORDER BY `idTroca` ASC");
     while ($prod = mysql_fetch_object($sql_prod)) {
             $Prod_interece_id = $prod->idProdutoOF;
             $idUsuarioOF = $prod->idUsuarioOF;
             $idUsuarioINT = $prod->idUsuarioINT;
-            $Prod_dono_id = $prod->idProdutoINT ;   
+            $Prod_dono_id = $prod->idProdutoINT ;
+            ?>
+        
+    <div class="col-sm-4 ">       
+  <!-- Inicio da 1ª coluna de produtos-->
+  <div class="col-sm-12 " style="margin-bottom:30px;">
+      <?php
             
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
