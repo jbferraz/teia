@@ -289,7 +289,8 @@ session_start();
   
   <!-- Fim da 1ª coluna de produtos-->
    <?php 
-                   } }
+                   }
+                   }
  				
   ?>
   <nav aria-label="Page navigation">
