@@ -1,32 +1,19 @@
 <?php 
 include '../funcao/conecta.php';
-      session_start();
-        if (!isset($_SESSION['Login'])) {  
-            die('<h2>Sessão não iniciada</h2>'); 
+session_start();
+        if (!isset($_SESSION['Login'])) {
+               
+            die('<h2>Sessão não iniciada</h2>');
+                
         }
-        
-   $UserEmail = $_SESSION['Login'];
+        // header('Location:../Paginas/s.php');
+ $UserEmail = $_SESSION['Login'];
     $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
         while ($User = mysql_fetch_object($sql_user)) {
             $UserId = $User->idUsuario;
             $UserNome = $User->nome;
-            $UserImg= $User->idImagem;            
-        }
-        $id_troca = $_POST['id_troca'];
-        $sql_prod = mysql_query("FROM `trocaoferta` WHERE `idUsuarioOF`=`$UserId`");
-        while ($prod = mysql_fetch_object($sql_prod)) {
-            $Prod_interece_id = $prod->idProdutoOF;
-            $idUsuarioOF = $prod->idUsuarioOF;
-            $idUsuarioINT = $prod->idUsuarioINT;
-            $Prod_dono_id = $prod->idProdutoINT ;            
-       
-        
-        
-       
-           
-     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca and  status <> 2 and user_i = $UserId  " ;
-    //executamos a instução SQL
-    mysql_query("$sql_up_toca") or die (mysql_error())
+            $UserImg= $User->idImagem;
+        }  
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -95,6 +82,7 @@ include '../funcao/conecta.php';
                   $user_interece = $Not_inf->nome;  
                   $mensagem =  $Not_inf->mensagem;
                   $tipo = $Not_inf->tipo;
+                  
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
@@ -234,6 +222,13 @@ include '../funcao/conecta.php';
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12 " style="margin-bottom:30px;">
       <?php
+         $sql_prod = mysql_query("select * FROM `trocaoferta` WHERE `idUsuarioOF`= $UserId or idUsuarioINT = $UserId  ORDER BY `idTroca` ASC");
+    while ($prod = mysql_fetch_object($sql_prod)) {
+            $Prod_interece_id = $prod->idProdutoOF;
+            $idUsuarioOF = $prod->idUsuarioOF;
+            $idUsuarioINT = $prod->idUsuarioINT;
+            $Prod_dono_id = $prod->idProdutoINT ;   
+            
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
                   $ProdId_1   = $Produtos->IdProduto;
@@ -246,7 +241,7 @@ include '../funcao/conecta.php';
                   }
                 ?>
       <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:50%;max-height:80%;margin-top:25px;">
  </div>
      <div class="col-sm-1">
  </div>
@@ -271,6 +266,8 @@ include '../funcao/conecta.php';
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12 " style="margin-bottom:30px;">
       <?php
+   
+            
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
                   $ProdId_2   = $Produtos->IdProduto;
@@ -283,7 +280,7 @@ include '../funcao/conecta.php';
                   }
                 ?>
       <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:50%;max-height:80%; margin-top:25px;">
  </div>
      <div class="col-sm-1">
  </div>
@@ -331,6 +328,9 @@ include '../funcao/conecta.php';
     </div> 
     </body>
     <?PHP 
+       
+                 
+    
     }
     ?>
 </html>
