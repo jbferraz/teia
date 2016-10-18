@@ -39,7 +39,7 @@ include '../funcao/conecta.php';
           </ul>
         </li>
         <li><a href="Mostra_Produto_s_Login.php">Trocas</a></li>
-        <li><a href="#">Ecopontos</a></li>
+        <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
          <li><a href="../Paginas/Cadastro.php"><span class="glyphicon glyphicon-user"></span> Cadastrar</a></li>
