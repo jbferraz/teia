@@ -6,6 +6,7 @@ session_start();
             die('<h2>Sessão não iniciada</h2>');
                 
         }
+        // header('Location:../Paginas/s.php');
  $UserEmail = $_SESSION['Login'];
     $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
         while ($User = mysql_fetch_object($sql_user)) {
@@ -13,10 +14,28 @@ session_start();
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;
         }
-        
-
+        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = '$UserId' ORDER BY `DataProduto` DESC");
+                    $linhas = mysql_num_rows($consulta);
+                //quantidade de conteudo exibido por pagina
+		$qtitenspag = 2;
+		$qtpaginas = ceil($linhas/$qtitenspag);
+		   
+               if (!$_GET["pag"] ){
+                    $pagatual = 1;
+                }  else {
+                 $pagatual = $_GET["pag"]; 
+                    } 
+                    if ($pagatual == 0) {
+                        $pagatual =1;
+    
+                    }
+                 
+		$aPartirDeQual = ($qtitenspag * ($pagatual-1));
  
-   
+                $terminaEm = $aPartirDeQual+$qtitenspag;
+		if($terminaEm > $linhas){
+			$terminaEm = $linhas;
+                }
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -28,7 +47,7 @@ session_start();
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     </head>
     <body id="bd">
         
@@ -62,8 +81,8 @@ session_start();
         <li><a href="#">Page 3</a></li>        
       </ul>
          <ul class="nav navbar-nav navbar-right">
-          <?php 
-        //teste 
+              <?php 
+          //teste 
         $sql_not = mysql_query("SELECT COUNT(id_notificacao) as notif FROM view_notificacao where user_i = $UserId and status = 0");
                     while ($Not= mysql_fetch_object($sql_not)) {
                         $Not_num = $Not->notif;
@@ -174,7 +193,6 @@ session_start();
                  
              
         </li>
-        
         <li><a href="../funcao/sair.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
         
     </div>
@@ -220,15 +238,19 @@ session_start();
     <div class="col-sm-2" ></div>
     <div class="col-sm-8">
                    <?php
-$sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId ORDER BY `DataProduto` DESC");
-                while ($Produtos = mysql_fetch_object($sql)) { 
-                  $ProdId   = $Produtos->IdProduto;
-                  $ProdNome = $Produtos->NomeProduto;
-                  $UserNome = $Produtos->NomeUsuario;
-                  $ProdDecr = $Produtos->DescProduto;
-                  $ProdCateg =  $Produtos->categoria;
-                  $ProdEstado =  $Produtos->estado;
-                  $ProdImg =  $Produtos->img;
+                   if ($linhas>0 ){
+		//echo "$aPartirDeQual - $terminaEm";
+			//selecione no banco as tabelas que deseja exibir
+			for($i=$aPartirDeQual; $i< $terminaEm; $i++){
+				$ProdId = mysql_result($consulta,$i,"IdProduto");
+				$ProdNome = mysql_result($consulta,$i,"NomeProduto");
+				$UserNome = mysql_result($consulta,$i,"NomeUsuario");
+				$ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                $ProdCateg = mysql_result($consulta,$i,"categoria");
+                                $ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                $ProdEstado = mysql_result($consulta,$i,"estado");
+                                 $ProdImg = mysql_result($consulta,$i,"img");
+		                
                 ?>
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12 " style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
@@ -262,14 +284,17 @@ $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId O
  </div>
          <div class="col-sm-1">
  </div>
+      
   </div>
   
   <!-- Fim da 1ª coluna de produtos-->
    <?php 
-                    }
+                   } }
+ 				
   ?>
-  </div>
-     
+  <nav aria-label="Page navigation">
+  <ul class="pagination pagination-lg">
+      
     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
     
@@ -293,6 +318,7 @@ $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId O
 </div>
      </div>
 
-     
+     </div>
+  
     </body>
 </html>
