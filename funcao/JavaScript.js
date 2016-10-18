@@ -53,4 +53,13 @@ var z=document.getElementById("Btn-Cadatrar").className;
 	}
         })
 };
-
+function esolhebtnsidbar(){
+    var x=document.getElementsByClassName("navbar-toggle").style.display;
+    if (x==="block"){
+           document.getElementById("sidbar-actv1").className=""; 
+       document.getElementById("sidbar-actv2").className=""; 
+    }else{
+        document.getElementById("sidbar-actv2").style.display="none"; 
+         document.getElementById("sidbar-actv1").style.display="block"; 
+    }
+}

@@ -25,7 +25,7 @@ and open the template in the editor.
                 <input id="res2" type="hidden" >
                 <label id="star3" onmouseover="mudaestar(3)" class="glyphicon glyphicon-star-empty" style="font-size:50px"></samp></label>
                 <input id="res3" type="hidden" >
-                <label id="star4" onmouseover="mudaestar(4)" class="glyphicon glyphicon-star-empty" style="font-size:50px"></label>
+                <label id="star4" onblur="mudaestar(4)" class="glyphicon glyphicon-star-empty" style="font-size:50px"></label>
                 <input id="res4" type="hidden" >
                 <label id="star5" onmouseover="mudaestar(5)" class="glyphicon glyphicon-star-empty" style="font-size:50px"></label>
                 <input id="res5" type="hidden" >

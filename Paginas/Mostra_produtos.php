@@ -63,7 +63,7 @@ session_start();
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
-         <span class="btn-sidbar navbar-toggle" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-th-list"></span></span>
+                 <span class="btn-sidbar navbar-toggle" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-th-list"></span></span>
             </div>    
      <span class="btn-sidbar " onclick="toogle()"><span class="glyphicon glyphicon-th-list"></span></span><!--SITE NO NENU ABERTO-->
               </div></li>
@@ -256,7 +256,7 @@ session_start();
         <div class="col-sm-1">
  </div>
       <div class="col-sm-4">
-            <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:250px;max-height:250px;">
+            <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:30%;max-height:80%;">
  </div>
      <div class="col-sm-1">
  </div>
@@ -264,7 +264,8 @@ session_start();
            <p class="text-left lead" style=""><h3><?php echo $ProdNome; ?></h3></p>
             <p class="text-left small" style=""><h3><?php echo "Estado do produto: $ProdEstado"; ?></h3><p/>
             <p class="text-left small" style=""><h3><?php echo "Categoria do produto: $ProdCateg"; ?></h3></p>
-            <p class="text-left small" style=""><h4> <?php echo "$ProdDecr";?></h4></p>
+                    <p class="text-left small" style=""><h4><?php echo "Dono: $UserNome"; ?></h4></p>
+            <p class="text-left small" style=""><h5> <?php echo "$ProdDecr";?></h5></p>
              <form method="post" action="../funcao/p">   
                  <div>
                       <!-- Trigger the modal with a button -->
@@ -285,10 +286,13 @@ session_start();
                    
                         }
   ?>
-    <nav aria-label="Page navigation">
+   </div>
+  <div class="col-sm-12" align="center">
+ 
+  <nav aria-label="Page navigation">
+      <div style="margin:0 auto">
   <ul class="pagination pagination-lg">
-      
-      
+         
     <?php 
  for ($i = 1; $i <= $qtpaginas; $i++) {     
    ?>      
@@ -296,7 +300,9 @@ session_start();
     <?php } ?>
    
   </ul>
+      </div>
 </nav>
+
   </div>
       
 

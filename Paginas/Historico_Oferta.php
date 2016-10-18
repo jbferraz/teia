@@ -1,5 +1,4 @@
 <?php 
-
 include '../funcao/conecta.php';
       session_start();
         if (!isset($_SESSION['Login'])) {  
@@ -13,6 +12,21 @@ include '../funcao/conecta.php';
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;            
         }
+        $id_troca = $_POST['id_troca'];
+        $sql_prod = mysql_query("FROM `trocaoferta` WHERE `idUsuarioOF`=`$UserId`");
+        while ($prod = mysql_fetch_object($sql_prod)) {
+            $Prod_interece_id = $prod->idProdutoOF;
+            $idUsuarioOF = $prod->idUsuarioOF;
+            $idUsuarioINT = $prod->idUsuarioINT;
+            $Prod_dono_id = $prod->idProdutoINT ;            
+       
+        
+        
+       
+           
+     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca and  status <> 2 and user_i = $UserId  " ;
+    //executamos a instução SQL
+    mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -54,11 +68,11 @@ include '../funcao/conecta.php';
             <li><a href="#">Material Educacional</a></li>
           </ul>
         </li>
-        <li><a href="Mostra_Produto_s_Login.php">Trocas</a></li>
-        <li><a href="Eco_Pontos.php">Ecopontos</a></li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
-            <?php 
+           <?php 
         //teste 
         $sql_not = mysql_query("SELECT COUNT(id_notificacao) as notif FROM view_notificacao where user_i = $UserId and status = 0");
                     while ($Not= mysql_fetch_object($sql_not)) {
@@ -206,70 +220,117 @@ include '../funcao/conecta.php';
         <div class="col-sm-8" >
        <div class="panel panel-default">
         <div class="panel-heading">
-        <h3>Histórico</h3>
-        </div>          
+        <h3>Proposta de Troca</h3>
+        </div>
+        
+    </div>
+    </div>
+        <br>
         <div class="col-sm-2" ></div>
-    <br>
     </div>
-    </div>
-               
-    </div>
-   <!--wille tem que ser aparti daqui-->
-   
-  <div class="col-sm-12">
-    <div class="col-sm-1"></div>
-
-       <div class="col-sm-5">
-
-  <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
-        <div class="col-sm-1">
- </div>
-      <div class="col-sm-4">
-            <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:250px;max-height:250px;">
+    <div class="col-sm12">
+    <div class="col-sm-2" ></div>
+    <div class="col-sm-4 ">
+  <!-- Inicio da 1ª coluna de produtos-->
+  <div class="col-sm-12 " style="margin-bottom:30px;">
+      <?php
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
+                while ($Produtos = mysql_fetch_object($sql)) { 
+                  $ProdId_1   = $Produtos->IdProduto;
+                  $ProdNome_1 = $Produtos->NomeProduto;
+                  $UserNome_1 = $Produtos->NomeUsuario;
+                  $ProdDecr_1 = $Produtos->DescProduto;
+                  $ProdCateg_1 =  $Produtos->categoria;
+                  $ProdEstado_1 =  $Produtos->estado;
+                  $ProdImg_1 =  $Produtos->img;
+                  }
+                ?>
+      <div class="col-sm-5">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
  </div>
      <div class="col-sm-1">
  </div>
-       <div class="col-sm-4">
-           <p class="text-left lead" style=""> $ProdNome</h3></p>
-            <p class="text-left small" style=""><h3>$ProdEstado</h3><p/>
-            <p class="text-left small" style=""><h3>$ProdCateg</h3></p>
-            <p class="text-left small" style=""><h4>$ProdDecr</h4></p>
-
-       </div>
+       <div class="col-sm-4">          
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
+             <form method="post" action="../funcao/insere_troca.php">   
+              
+ </div>
          <div class="col-sm-1">
  </div>
  <!-- Fim do Produto -->
-    </div>
-       </div>
-    
-    <!--meio-->
-     <div class="col-sm-2"></div>
-    <!--meio-->
-    <div class="col-sm-5">
-
-  <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
-        <div class="col-sm-1">
- </div>
-      <div class="col-sm-4">
-            <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:250px;max-height:250px;">
- </div>
-     <div class="col-sm-1">
- </div>
-       <div class="col-sm-4">
-           <p class="text-left lead" style=""> $ProdNome</h3></p>
-            <p class="text-left small" style=""><h3>$ProdEstado</h3><p/>
-            <p class="text-left small" style=""><h3>$ProdCateg</h3></p>
-            <p class="text-left small" style=""><h4>$ProdDecr</h4></p>
-
-       </div>
-         <div class="col-sm-1">
- </div>
- <!-- Fim do Produto -->
-    </div>
-       </div>
   </div>
-    
-    
-    
+        
+    </div>
+    <!-- Meio Entre as trocas-->
+
+     <!-- Fim Meio Entre as trocas-->
+   <div class="col-sm-4 ">
+  <!-- Inicio da 1ª coluna de produtos-->
+  <div class="col-sm-12 " style="margin-bottom:30px;">
+      <?php
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
+                while ($Produtos = mysql_fetch_object($sql)) { 
+                  $ProdId_2   = $Produtos->IdProduto;
+                  $ProdNome_2 = $Produtos->NomeProduto;
+                  $UserNome_2 = $Produtos->NomeUsuario;
+                  $ProdDecr_2 = $Produtos->DescProduto;
+                  $ProdCateg_2 =  $Produtos->categoria;
+                  $ProdEstado_2 =  $Produtos->estado;
+                  $ProdImg_2 =  $Produtos->img;
+                  }
+                ?>
+      <div class="col-sm-5">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+ </div>
+     <div class="col-sm-1">
+ </div>
+       <div class="col-sm-4">          
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
+             <form method="post" action="../funcao/insere_troca.php">   
+              
+ </div>
+         <div class="col-sm-1">
+ </div>
+        </div> 
+ <!-- Fim do Produto -->
+  </div>
+       </div> 
+        
+    </div> 
+<div class="col-sm-1" ></div>
+    <div class="col-sm-12" style="margin-top:20px;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4"align="right">
+            <form>         
+            </form>
+            <form action="../funcao/troca_recusar.php" method="post">  
+            <input class="btn-default " type="submit" value="Recusar" style="min-width:50%;min-height:30px">
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
+            <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
+            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
+            </form>
+           
+        </div>
+         <div class="col-lg-1"></div>
+         <div class="col-lg-4 "align="left">
+             <form action="../funcao/troca_aceita.php" method="post">
+            <input class="btn-default left" type="submit" value="Aceitar" style="min-width:50%;min-height:30px">
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
+             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
+            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
+        </form>
+    </div>
+    </div>
+       <div class="col-lg-1"></div> 
+    </div> 
     </body>
+    <?PHP 
+    }
+    ?>
 </html>

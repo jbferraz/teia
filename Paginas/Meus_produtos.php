@@ -54,7 +54,7 @@ session_start();
  <nav class="navbar navbar-inverse navbar-fixed-top" >
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <button  type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -257,7 +257,7 @@ session_start();
         <div class="col-sm-1">
  </div>
       <div class="col-sm-4">
-          <li style="list-style:none;"><img class="img-responsive " src="<?php echo"Listar.php?codigo=$ProdImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
+          <li style="list-style:none;"><img class="img-responsive " src="<?php echo"Listar.php?codigo=$ProdImg"; ?>" alt="Chania" style="min-height:30%;max-height:80%;"></li>
  </div>
      <div class="col-sm-1">
  </div>
@@ -293,6 +293,7 @@ session_start();
                    }
  				
   ?>
+  <div class="col-sm-12" align="center">
   <nav aria-label="Page navigation">
   <ul class="pagination pagination-lg">
       
@@ -305,6 +306,7 @@ session_start();
    
   </ul>
 </nav>
+        </div>
       
     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
