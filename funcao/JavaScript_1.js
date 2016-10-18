@@ -32,25 +32,14 @@ var z=document.getElementById("Btn-Cadatrar").className;
       
       }
 };
-
-
-
-    function Testa_Email(){
-        var x=document.getElementById("email").value;
-	$.ajax({
-		type:'post',		//Definimos o método HTTP usado
-		dataType:'json',//Definimos o tipo de retorno
-		url: 'Teste_Email_Existe.php/?id='+x,//Definindo o arquivo onde serão buscados os dados
-		success: function(dados){
-                    alert(dados)
-                   var y=dados;
-                   if (y===x){
-                     document.getElementById("falhaEmail").style.display="block";   
-                   }else{
-                       document.getElementById("falhaEmail").style.display="none";   
-                   }
-                   
-	}
-        })
+function  mudaestar(x){
+   var r="star"+x;
+   var cla=document.getElementById(r).className;
+    if(cla==="glyphicon glyphicon-star-empty"){
+        document.getElementById(r).className;
+        document.getElementById(r).className="glyphicon glyphicon-star";
+    }else{
+       document.getElementById(r).className;
+       document.getElementById(r).className="glyphicon glyphicon-star-empty"; 
+   }
 };
-
