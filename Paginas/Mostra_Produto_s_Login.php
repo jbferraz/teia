@@ -3,7 +3,29 @@
 
 <?php 
 include '../funcao/conecta.php';
-     
+     $consulta = mysql_query("SELECT * FROM `listarproduto`");
+                    $linhas = mysql_num_rows($consulta);
+                //quantidade de conteudo exibido por pagina
+		$qtitenspag = 10;
+		$qtpaginas = ceil($linhas/$qtitenspag);		   
+               if (!$_GET["pag"]){
+                    $pagatual = 1;
+                }  else {
+                 $pagatual = $_GET["pag"]; 
+                    } 
+                    if ($pagatual == 0) {
+                        $pagatual =1;
+    
+                    }
+                 
+		$aPartirDeQual = ($qtitenspag * ($pagatual-1));
+ 
+                $terminaEm = $aPartirDeQual+$qtitenspag;
+		if($terminaEm > $linhas){
+			$terminaEm = $linhas;
+  
+                        }
+                        
 ?>
 <html lang="en">
 <head>
@@ -38,7 +60,7 @@ include '../funcao/conecta.php';
             <li><a href="#">Material Educacional</a></li>
           </ul>
         </li>
-        <li><a href="Mostra_Produto_s_Login.php">Trocas</a></li>
+        <li><a href="Mostra_Produto_s_Login.php?pag=1">Trocas</a></li>
         <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
@@ -63,16 +85,20 @@ include '../funcao/conecta.php';
     
     <div class="col-sm-2" ></div>
     <div class="col-sm-8">
-        <?php
-        $sql = mysql_query("SELECT * FROM `listarproduto` ORDER BY `DataProduto` ASC");
-                while ($Produtos = mysql_fetch_object($sql)) { 
-                  $ProdId   = $Produtos->IdPoduto;
-                  $ProdNome = $Produtos->NomeProduto;
-                  $UserNome = $Produtos->NomeUsuario;
-                  $ProdDecr = $Produtos->DescProduto;
-                  $ProdCateg =  $Produtos->categoria;
-                  $ProdEstado =  $Produtos->estado;
-                  $ProdImg =  $Produtos->img;
+          <?php
+                   if ($linhas>0 ){
+		//echo "$aPartirDeQual - $terminaEm";
+			//selecione no banco as tabelas que deseja exibir
+			for($i=$aPartirDeQual; $i< $terminaEm; $i++){
+				$ProdId = mysql_result($consulta,$i,"IdProduto");
+				$ProdNome = mysql_result($consulta,$i,"NomeProduto");
+				$UserNome = mysql_result($consulta,$i,"NomeUsuario");
+				$ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                $ProdCateg = mysql_result($consulta,$i,"categoria");
+                                $ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                $ProdEstado = mysql_result($consulta,$i,"estado");
+                                 $ProdImg = mysql_result($consulta,$i,"img");
+		                
                 ?>
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
@@ -100,11 +126,51 @@ include '../funcao/conecta.php';
  <!-- Fim do Produto -->
     </div>
   
+ 
   
   <?php 
-  
-                    }
+                   }
+                   
+                        }
   ?>
+   </div>
+  <div class="col-sm-12" align="center">
+ 
+  <nav aria-label="Page navigation">
+      <div style="margin:0 auto">
+  <ul class="pagination pagination-lg">
+      <?php 
+    if ($pagatual > 1 ) {
+         ?>
+      <li>
+      <a href="../Paginas/Mostra_Produto_s_Login.php?pag=<?php echo $pagatual -1;?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>   
+    <?php
+    }
+ for ($i = 1; $i <= $qtpaginas; $i++) {     
+     if ($pagatual == $i){        
+     
+   ?>  
+      <li class="active"><a href="../Paginas/Mostra_Produto_s_Login.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+            <?php }  else {
+ ?>
+      <li><a href="../Paginas/Mostra_Produto_s_Login.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+    
+ <?php } }
+ 
+if ($pagatual != $qtpaginas ) {
+         ?>
+      <li>
+      <a href="../Paginas/Mostra_Produto_s_Login.php?pag=<?php echo $pagatual +1;?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+     
+       <?php 
+     }
+ ?> 
   </div>
      <div class="col-sm-2"></div>
 <div class="modal fade" id="myModal" role="dialog">

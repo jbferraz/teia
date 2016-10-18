@@ -37,7 +37,7 @@ include '../funcao/conecta.php';
           </ul>
         </li>
         
-        <li><a href="Mostra_Produto_s_Login.php">Trocas</a></li>
+        <li><a href="Mostra_Produto_s_Login.php?pag=1">Trocas</a></li>
         <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
