@@ -1,5 +1,4 @@
 <?php 
-
 include '../funcao/conecta.php';
       session_start();
         if (!isset($_SESSION['Login'])) {  
@@ -17,17 +16,17 @@ include '../funcao/conecta.php';
         $sql_prod = mysql_query("SELECT * FROM `trocaoferta` WHERE `idTroca` = $id_troca");
         while ($prod = mysql_fetch_object($sql_prod)) {
             $Prod_interece_id = $prod->idProdutoOF;
-            $idUsuarioOF = $prod->idUsuarioOF;
-            $idUsuarioINT = $prod->idUsuarioINT;
-            $Prod_dono_id = $prod->idProdutoINT ;            
+             $Prod_dono_id = $prod->idProdutoINT ; 
+             $idUsuarioINT = $prod->idUsuarioINT;
+             $idUsuarioOF= $prod->idUsuarioOF; 
         }
         
         
        
            
-     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca and  status <> 2 and user_i = $UserId  " ;
+     $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
     //executamos a instução SQL
-    mysql_query("$sql_up_toca") or die (mysql_error())
+    //mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -73,7 +72,7 @@ include '../funcao/conecta.php';
         <li><a href="#">Page 3</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
-           <?php 
+            <?php 
         //teste 
         $sql_not = mysql_query("SELECT COUNT(id_notificacao) as notif FROM view_notificacao where user_i = $UserId and status = 0");
                     while ($Not= mysql_fetch_object($sql_not)) {
@@ -88,14 +87,12 @@ include '../funcao/conecta.php';
                  <ul class="dropdown-menu" style="min-width:300px;">
         
         <?php 
-        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_I = $UserId and status = 0");
+        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
-                    $id_not = $Not_inf->id_notificacao;
-                  $id_troca = $Not_inf->idTroca;
-                  $user_interece = $Not_inf->nome;  
-                  $mensagem =  $Not_inf->mensagem;
-                  $tipo = $Not_inf->tipo;
+                  $id_troca = $Not_inf->id_troca;
+                  $user_interece = $Not_inf->nome_d;                  
+                   
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
@@ -103,57 +100,15 @@ include '../funcao/conecta.php';
                            <span class="glyphicon glyphicon-tags" style="font-size:50px;margin:auto; margin-top:4px;">   
                          </div>                         
                                  <div class="col-sm-8 text-left" style="margin-top:4px;">
-                            <?php echo "$user_interece $mensagem"; ?>
+                            <?php echo "$user_interece fez uma proposta de troca para você"; ?>
                                      
                          </div>
-                             <?php
-                                    if ($tipo == 0) {
-                                        
-                                   
-                             ?>
                                   <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/Trocas.php">
                                       <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
-                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">  
-                                 <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
+                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">                                  
                                  </form>
                                      
-                         <?php
-                                    }
-                                        
-                                   
-                             ?>
-                              <?php
-                                    if ($tipo == 1) {
-                                        
-                                   
-                             ?>
-                             <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../funcao/notificacao.php  ">
-                                      <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="Ok">
-                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">  
-                                 <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
-                                 </form>
-                                     
-                         <?php
-                                    }
-                                        
-                                   
-                             ?>
-                               <?php
-                                    if ($tipo == 2) {
-                                        
-                                   
-                             ?>
-                             <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/troca_aceita.php ">
-                                 <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
-                                 <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">  
-                                 <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
-                                 </form>
-                                     
-                         <?php
-                                    }
-                                        
-                                   
-                             ?>
+                         
                          </div></div></li> 
                          
                          
@@ -184,7 +139,7 @@ include '../funcao/conecta.php';
             ?>     
                  
              
-        </li>
+        </li> 
         <li><a href="../funcao/sair.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
         
     </div>
@@ -206,7 +161,6 @@ include '../funcao/conecta.php';
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;"><a href="Mostra_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-shopping-cart"></span>Produtos</a></div></li>
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Cadastrar_produto.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-plus"></span> Adicionar Produto</a></div></li>
       <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="../Paginas/Meus_produtos.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-folder-open"></span> Meus Produto</a></div></li>
-      <li><div style="border:1px solid white;border-radius:10px; width:90%;margin:auto;margin-bottom:10px;;"><a href="Historico_Oferta.php" style="margin:auto;font-size:18px;"><span class="glyphicon glyphicon-folder-open"></span> Histórico de ofertas</a></div></li>
   </ul>    
 </div>
       <div class="btn-sidbar-tt">
@@ -229,7 +183,8 @@ include '../funcao/conecta.php';
         <br>
         <div class="col-sm-2" ></div>
     </div>
-    <div class="col-sm12">
+    
+    <div class="col-sm-1" ></div>
     <div class="col-sm-1" ></div>
     <div class="col-sm-4 ">
   <!-- Inicio da 1ª coluna de produtos-->
@@ -267,11 +222,45 @@ include '../funcao/conecta.php';
     </div>
     <!-- Meio Entre as trocas-->
   <div class="col-sm-1" >
-   
+      
       
   </div>
      <!-- Fim Meio Entre as trocas-->
-    
+    <div class="col-sm-4 ">
+  <!-- Inicio da 2ª coluna de produtos-->
+<div class="col-sm-12 " style="margin-bottom:30px;">
+<?php
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
+                while ($Produtos2 = mysql_fetch_object($sql)) { 
+                  $ProdId_2   = $Produtos2->IdProduto;
+                  $ProdNome_2 = $Produtos2->NomeProduto;
+                  $UserNome_2 = $Produtos2->NomeUsuario;
+                  $ProdDecr_2 = $Produtos2->DescProduto;
+                  $ProdCateg_2 =  $Produtos2->categoria;
+                  $ProdEstado_2 =  $Produtos2->estado;
+                  $ProdImg_2 =  $Produtos2->img;
+                  }
+                ?>
+      <div class="col-sm-5">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+ </div>
+     <div class="col-sm-1">
+ </div>
+       <div class="col-sm-4">
+          
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
+            
+              
+ </div>
+         <div class="col-sm-1">
+ </div>
+ <!-- Fim do Produto -->
+  </div>
+        
+    </div>
 <div class="col-sm-1" ></div>
     <div class="col-sm-12" style="margin-top:20px;">
         <div class="col-lg-1"></div>
@@ -283,6 +272,8 @@ include '../funcao/conecta.php';
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
+            <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
+            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
             </form>
            
         </div>
@@ -293,11 +284,10 @@ include '../funcao/conecta.php';
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
              <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
+             <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
+            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
         </form>
     </div>
-    </div>
        <div class="col-lg-1"></div> 
-    </div> 
     </body>
-    
 </html>

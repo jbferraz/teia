@@ -17,7 +17,7 @@ session_start();
         $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = '$UserId' ORDER BY `DataProduto` DESC");
                     $linhas = mysql_num_rows($consulta);
                 //quantidade de conteudo exibido por pagina
-		$qtitenspag = 2;
+		$qtitenspag = 10;
 		$qtpaginas = ceil($linhas/$qtitenspag);
 		   
                if (!$_GET["pag"] ){
@@ -257,7 +257,7 @@ session_start();
         <div class="col-sm-1">
  </div>
       <div class="col-sm-4">
-      <li><img class="img-responsive " src="<?php echo"Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
+          <li style="list-style:none;"><img class="img-responsive " src="<?php echo"Listar.php?codigo=$ProdImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
  </div>
      <div class="col-sm-1">
  </div>
@@ -274,7 +274,7 @@ session_start();
                             <button type="submit" class="btn btn-default btn-lg">Editar</button> 
                         </form> 
                     </div>          
-                    <div class="text-right" style="width:90%;margin:auto;margin-top:10px";>
+                    <div class="text-right" style="width:90%;margin:auto;margin-top:10px">
                         <form action="Meus_produtos.php" method="post">
                             <input type="hidden" name="prod_id" value="<?php echo "$ProdId";?>"/>
                              <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId; ?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Excluir</button>
@@ -295,6 +295,16 @@ session_start();
   ?>
   <nav aria-label="Page navigation">
   <ul class="pagination pagination-lg">
+      
+      
+    <?php 
+ for ($i = 1; $i <= $qtpaginas; $i++) {     
+   ?>      
+      <li><a href="../Paginas/Meus_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+    <?php } ?>
+   
+  </ul>
+</nav>
       
     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

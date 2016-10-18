@@ -1,17 +1,41 @@
 <?php 
-
 include '../funcao/conecta.php';
-      session_start();
-        if (!isset($_SESSION['Login'])) {  
-            die('<h2>Sessão não iniciada</h2>'); 
+session_start();
+        if (!isset($_SESSION['Login'])) {
+               
+            die('<h2>Sessão não iniciada</h2>');
+                
         }
-   $UserEmail = $_SESSION['Login'];
+        // header('Location:../Paginas/s.php');
+ $UserEmail = $_SESSION['Login'];
     $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
         while ($User = mysql_fetch_object($sql_user)) {
             $UserId = $User->idUsuario;
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;
         }
+        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` <> '$UserId' ORDER BY `DataProduto` DESC");
+                    $linhas = mysql_num_rows($consulta);
+                //quantidade de conteudo exibido por pagina
+		$qtitenspag = 10;
+		$qtpaginas = ceil($linhas/$qtitenspag);
+		   
+               if (!$_GET["pag"] ){
+                    $pagatual = 1;
+                }  else {
+                 $pagatual = $_GET["pag"]; 
+                    } 
+                    if ($pagatual == 0) {
+                        $pagatual =1;
+    
+                    }
+                 
+		$aPartirDeQual = ($qtitenspag * ($pagatual-1));
+ 
+                $terminaEm = $aPartirDeQual+$qtitenspag;
+		if($terminaEm > $linhas){
+			$terminaEm = $linhas;
+                }
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 <html>
@@ -212,16 +236,20 @@ include '../funcao/conecta.php';
     
     <div class="col-sm-2" ></div>
     <div class="col-sm-8">
-        <?php
-        $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` <> '$UserId' ORDER BY `DataProduto` DESC");
-                while ($Produtos = mysql_fetch_object($sql)) { 
-                  $ProdId   = $Produtos->IdProduto;
-                  $ProdNome = $Produtos->NomeProduto;
-                  $UserNome = $Produtos->NomeUsuario;
-                  $ProdDecr = $Produtos->DescProduto;
-                  $ProdCateg =  $Produtos->categoria;
-                  $ProdEstado =  $Produtos->estado;
-                  $ProdImg =  $Produtos->img;
+       <?php
+                   if ($linhas>0 ){
+		//echo "$aPartirDeQual - $terminaEm";
+			//selecione no banco as tabelas que deseja exibir
+			for($i=$aPartirDeQual; $i< $terminaEm; $i++){
+				$ProdId = mysql_result($consulta,$i,"IdProduto");
+				$ProdNome = mysql_result($consulta,$i,"NomeProduto");
+				$UserNome = mysql_result($consulta,$i,"NomeUsuario");
+				$ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                $ProdCateg = mysql_result($consulta,$i,"categoria");
+                                $ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                $ProdEstado = mysql_result($consulta,$i,"estado");
+                                 $ProdImg = mysql_result($consulta,$i,"img");
+		                
                 ?>
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
@@ -253,9 +281,22 @@ include '../funcao/conecta.php';
 
   
   <?php 
-                    }
+                   }
+                   
+                        }
   ?>
-  
+    <nav aria-label="Page navigation">
+  <ul class="pagination pagination-lg">
+      
+      
+    <?php 
+ for ($i = 1; $i <= $qtpaginas; $i++) {     
+   ?>      
+      <li><a href="../Paginas/Mostra_produtos.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+    <?php } ?>
+   
+  </ul>
+</nav>
   </div>
       
 
