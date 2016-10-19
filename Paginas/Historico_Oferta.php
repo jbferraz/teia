@@ -227,8 +227,8 @@ session_start();
 
     <!-- fim menu-->
    <div class="col-sm-12" align="center">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8" >
+        <div class="col-sm-1"></div>
+        <div class="col-sm-10">
        <div class="panel panel-default">
         <div class="panel-heading">
         <h3>Proposta de Troca</h3>
@@ -238,7 +238,7 @@ session_start();
     </div>
         
         <br>
-        <div class="col-sm-2" ></div>
+        <div class="col-sm-1" ></div>
     </div>
     <!-- fim menu-->
 
