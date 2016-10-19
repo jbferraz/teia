@@ -20,10 +20,11 @@ session_start();
 		$qtitenspag = 10;
 		$qtpaginas = ceil($linhas/$qtitenspag);
 		   
-               if (!$_GET["pag"] ){
-                    $pagatual = 1;
+               if ($_GET["pag"]){
+                    $pagatual = $_GET["pag"]; 
                 }  else {
-                 $pagatual = $_GET["pag"]; 
+                    header('Location:../Paginas/Mostra_produtos.php?pag=1');
+                 
                     } 
                     if ($pagatual == 0) {
                         $pagatual =1;

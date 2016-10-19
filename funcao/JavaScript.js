@@ -12,7 +12,7 @@ function toogle(){
     }
 };
 function pegaIdProfd(x){
-document.getElementById("ProdIdExcluir").value=x; 
+document.getElementById("ProdId").value=x; 
 }
 window.onload = function() {
    toogle();
