@@ -202,7 +202,7 @@ session_start();
 </nav>
     <!--Termina o menu -->
     <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
-    <img class="img-responsive" src="../Imagens/logo.png" alt="Chania">
+        <img style="margin:0 auto" class="img-responsive" src="../Imagens/logo.png" alt="Chania">
     <hr style="width:75%">
 </div> 
   <!--Menu central do usuario menu-sidnav-->
@@ -226,7 +226,7 @@ session_start();
   
 
     <!-- fim menu-->
-    <div class="col-sm-12" align="center">
+   <div class="col-sm-12" align="center">
         <div class="col-sm-2"></div>
         <div class="col-sm-8" >
        <div class="panel panel-default">
@@ -240,9 +240,10 @@ session_start();
         <br>
         <div class="col-sm-2" ></div>
     </div>
-    <div>
+    <!-- fim menu-->
+
     <div class="col-sm12">
-    <div class="col-sm-2" ></div>
+   
     <?php
     
                    if ($linhas>0 ){
@@ -255,13 +256,12 @@ session_start();
 				$Prod_dono_id = mysql_result($consulta,$i,"idProdutoINT");
                       
             ?>
-        
-    <div class="col-sm-4 ">       
-  <!-- Inicio da 1ª coluna de produtos-->
-        <div class="col-sm-12 " style="margin-bottom:30px;">
-      <?php
+        <div class="col-lg-12">
             
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
+            <div class="col-lg-2"></div>
+            <div class="col-lg-4">
+                <?php
+                $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
                   $ProdId_1   = $Produtos->IdProduto;
                   $ProdNome_1 = $Produtos->NomeProduto;
@@ -272,32 +272,19 @@ session_start();
                   $ProdImg_1 =  $Produtos->img;
                   }
                 ?>
-      <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:50%;max-height:80%;margin-top:25px;">
- </div>
-     <div class="col-sm-1">
- </div>
-       <div class="col-sm-4">          
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
-             <form method="post" action="../funcao/insere_troca.php">   
-              
- </div>
-         <div class="col-sm-1">
- </div>
- <!-- Fim do Produto -->
-  </div>
-        
-    </div>
-    <!-- Meio Entre as trocas-->
-    
-     <!-- Fim Meio Entre as trocas-->
-   <div class="col-sm-4 ">
-  <!-- Inicio da 1ª coluna de produtos-->
-  <div class="col-sm-12 " style="margin-bottom:30px;">
-      <?php
+                <div class="col-lg-5" >
+                    <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:50%;max-height:80%;margin:0 auto;margin-top:25px;">
+                </div> 
+                <div class="col-lg-4">
+                <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
+                <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
+                <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
+                <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
+                </div>      
+            </div>
+           
+            <div class="col-lg-1"></div>
+            <?php
    
             
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
@@ -311,53 +298,19 @@ session_start();
                   $ProdImg_2 =  $Produtos->img;
                   }
                 ?>
-      <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:50%;max-height:80%; margin-top:25px;">
- </div>
-     <div class="col-sm-1">
- </div>
-       <div class="col-sm-4">          
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
-             <form method="post" action="../funcao/insere_troca.php">   
-              
- </div>
-         <div class="col-sm-1">
- </div>
-        </div> 
- <!-- Fim do Produto -->
-  </div>
-       </div> 
-        
-    </div> 
-<div class="col-sm-1" ></div>
-    <div class="col-sm-12" style="margin-top:20px;">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-4"align="right">
-            <form>         
-            </form>
-            <form action="../funcao/troca_recusar.php" method="post">  
-            <input class="btn-default " type="submit" value="Recusar" style="min-width:50%;min-height:30px">
-            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
-            <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
-            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
-            </form>
-           
+            <div class="col-lg-4">
+                <div class="col-lg-5">
+                    <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:50%;max-height:80%; margin-top:25px;">
+                 </div> 
+              <div class="col-lg-4"></div>         
+                    <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
+                    <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
+                    <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+                    <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
+            </div>
+            <div class="col-lg-2"></div>
         </div>
-         <div class="col-lg-1"></div>
-         <div class="col-lg-4 "align="left">
-             <form action="../funcao/troca_aceita.php" method="post">
-            <input class="btn-default left" type="submit" value="Aceitar" style="min-width:50%;min-height:30px">
-            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
-             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
-            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
-        </form>
-    </div>
-    </div>
-       <div class="col-lg-1"></div> 
-    </div>
+        
     <?PHP 
     }}
     ?>

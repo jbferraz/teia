@@ -39,7 +39,6 @@ session_start();
                 }
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
-<script language="javascript" src="../funcao/JavaScript_1.js"></script>
 
 <html>
     <head>
