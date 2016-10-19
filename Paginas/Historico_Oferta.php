@@ -14,6 +14,29 @@ session_start();
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;
         }  
+        $consulta = mysql_query("select * FROM `trocaoferta` WHERE `idUsuarioOF`= $UserId or idUsuarioINT = $UserId  ORDER BY `idTroca` ASC");
+                    $linhas = mysql_num_rows($consulta);
+                //quantidade de conteudo exibido por pagina
+		$qtitenspag = 10;
+		$qtpaginas = ceil($linhas/$qtitenspag);
+		   
+               if ($_GET["pag"]){
+                    $pagatual = $_GET["pag"]; 
+                }  else {
+                    header('Location:../Paginas/Historico_Oferta.php?pag=1');
+                 
+                    } 
+                    if ($pagatual == 0) {
+                        $pagatual =1;
+    
+                    }
+                 
+		$aPartirDeQual = ($qtitenspag * ($pagatual-1));
+ 
+                $terminaEm = $aPartirDeQual+$qtitenspag;
+		if($terminaEm > $linhas){
+			$terminaEm = $linhas;
+                }
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -210,27 +233,32 @@ session_start();
         <div class="panel-heading">
         <h3>Proposta de Troca</h3>
         </div>
+       
+    </div>
+    </div>
         
-    </div>
-    </div>
         <br>
         <div class="col-sm-2" ></div>
     </div>
-    
+    <div>
     <div class="col-sm12">
     <div class="col-sm-2" ></div>
     <?php
-         $sql_prod = mysql_query("select * FROM `trocaoferta` WHERE `idUsuarioOF`= $UserId or idUsuarioINT = $UserId  ORDER BY `idTroca` ASC");
-    while ($prod = mysql_fetch_object($sql_prod)) {
-            $Prod_interece_id = $prod->idProdutoOF;
-            $idUsuarioOF = $prod->idUsuarioOF;
-            $idUsuarioINT = $prod->idUsuarioINT;
-            $Prod_dono_id = $prod->idProdutoINT ;
+    
+                   if ($linhas>0 ){
+		//echo "$aPartirDeQual - $terminaEm";
+			//selecione no banco as tabelas que deseja exibir
+			for($i=$aPartirDeQual; $i< $terminaEm; $i++){
+				$Prod_interece_id = mysql_result($consulta,$i,"idProdutoOF");
+				$idUsuarioOF = mysql_result($consulta,$i,"idUsuarioOF");
+				$idUsuarioINT = mysql_result($consulta,$i,"idUsuarioINT");
+				$Prod_dono_id = mysql_result($consulta,$i,"idProdutoINT");
+                      
             ?>
         
     <div class="col-sm-4 ">       
   <!-- Inicio da 1ª coluna de produtos-->
-  <div class="col-sm-12 " style="margin-bottom:30px;">
+        <div class="col-sm-12 " style="margin-bottom:30px;">
       <?php
             
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
@@ -264,7 +292,7 @@ session_start();
         
     </div>
     <!-- Meio Entre as trocas-->
-
+    
      <!-- Fim Meio Entre as trocas-->
    <div class="col-sm-4 ">
   <!-- Inicio da 1ª coluna de produtos-->
@@ -329,12 +357,57 @@ session_start();
     </div>
     </div>
        <div class="col-lg-1"></div> 
-    </div> 
-    </body>
+    </div>
     <?PHP 
-       
-                 
-    
-    }
+    }}
     ?>
+    
+     <div class="col-sm-12" align="center">
+ 
+  <nav aria-label="Page navigation">
+      <div style="margin:0 auto">
+  <ul class="pagination pagination-lg">
+         
+    <?php 
+    if ($pagatual > 1 ) {
+         ?>
+      <li>
+      <a href="../Paginas/Historico_Oferta.php?pag=<?php echo $pagatual -1;?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+     
+       <?php 
+     }
+ for ($i = 1; $i <= $qtpaginas; $i++) {
+     
+     if ($pagatual == $i){      
+   ?>  
+      <li class="active"><a href="../Paginas/Historico_Oferta.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+            <?php }  else {
+ ?>
+      <li><a href="../Paginas/Historico_Oferta.php?pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+    
+ <?php } }
+
+    if ($pagatual != $qtpaginas ) {
+         ?>
+      <li>
+      <a href="../Paginas/Historico_Oferta.php?pag=<?php echo $pagatual +1;?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+     
+       <?php 
+     }
+ ?>    
+  </ul>
+      </div>
+</nav>
+
+  </div>
+    </body>
+    
+    
+    
 </html>
