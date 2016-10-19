@@ -14,6 +14,10 @@ function toogle(){
 function pegaIdProfd(x){
 document.getElementById("ProdId").value=x; 
 }
+function pegaIdProfdExcluir(x){
+document.getElementById("ProdIdExcluir").value=x; 
+}
+
 window.onload = function() {
    toogle();
 };

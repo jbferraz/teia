@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-
-
 <?php 
 include '../funcao/conecta.php';
      $consulta = mysql_query("SELECT * FROM `listarproduto`");

@@ -340,7 +340,7 @@ if ($pagatual != $qtpaginas ) {
     <div class="modal-dialog">
     
       <!-- Modal content-->
-      <div class="modal-content" style="margin-top:300px">
+      <div class="modal-content" style="margin-top:35%">
         <div class="modal-header">
   
           <h4 class="modal-title">Escolha um produto</h4>
@@ -350,11 +350,10 @@ if ($pagatual != $qtpaginas ) {
         <div class="modal-body">
             <form></form>
             <form method="post" action="../funcao/insere_troca.php">
-            <div class="form-group">
-              <select class="form-control" id="sel1" name="prodDono">
-             <option value="" disabled selected>Selecione um produto</option>
+           
+                <select class="form-control" id="sel1" name="prodDono">
+                  <option value="" disabled selected>Selecione um produto</option>
             <?php
-             
                 $sqlUserI = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId"); 
                 while ($Produtos = mysql_fetch_object($sqlUserI)) {
                     $produto_id = $Produtos->IdProduto;
