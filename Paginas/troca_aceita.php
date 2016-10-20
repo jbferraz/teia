@@ -344,10 +344,10 @@ include '../funcao/conecta.php';
             <p><h4>Avalie como foi sua troca</h4></p>
             
             <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass2()" id="star2" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass3()" id="star3" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass4()" id="star4" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass5()" id="star5" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
             
   
         </div>

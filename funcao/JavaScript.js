@@ -70,53 +70,53 @@ function esolhebtnsidbar(){
     }
 }
 function mudaclass(){
-        document.getElementById("star2").className="glyphicon glyphicon-star-empty"
-        document.getElementById("star3").className="glyphicon glyphicon-star-empty"
-        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
-        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt2").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt3").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt5").className="glyphicon glyphicon-star-empty"
         document.getElementById("nota").value="1";
 }
 function mudaclass2(){
-    var c=document.getElementById("star2").className;
+    var c=document.getElementById("vt2").className;
     if(c==="glyphicon glyphicon-star-empty"){
-        document.getElementById("star2").className="glyphicon glyphicon-star";
+        document.getElementById("vt2").className="glyphicon glyphicon-star";
         document.getElementById("nota").value="2";
     }else{
-        document.getElementById("star3").className="glyphicon glyphicon-star-empty"
-        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
-        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt3").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt5").className="glyphicon glyphicon-star-empty"
         document.getElementById("nota").value="2";
     }
 }
 function mudaclass3(){
     var c=document.getElementById("star3").className;
     if(c==="glyphicon glyphicon-star-empty"){
-        document.getElementById("star2").className="glyphicon glyphicon-star";
-        document.getElementById("star3").className="glyphicon glyphicon-star";
+        document.getElementById("vt2").className="glyphicon glyphicon-star";
+        document.getElementById("vt3").className="glyphicon glyphicon-star";
          document.getElementById("nota").value="3";
     }else{
-        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
-        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt5").className="glyphicon glyphicon-star-empty"
         document.getElementById("nota").value="3";
     }
 }
 function mudaclass4(){
-    var c=document.getElementById("star4").className;
+    var c=document.getElementById("vt4").className;
     if(c==="glyphicon glyphicon-star-empty"){
-        document.getElementById("star2").className="glyphicon glyphicon-star";
-        document.getElementById("star3").className="glyphicon glyphicon-star";
-        document.getElementById("star4").className="glyphicon glyphicon-star";
+        document.getElementById("vt2").className="glyphicon glyphicon-star";
+        document.getElementById("vt3").className="glyphicon glyphicon-star";
+        document.getElementById("vt4").className="glyphicon glyphicon-star";
          document.getElementById("nota").value="4";
     }else{
-        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("vt5").className="glyphicon glyphicon-star-empty"
         document.getElementById("nota").value="4";
     }
 }
 function mudaclass5(){
-        document.getElementById("star2").className="glyphicon glyphicon-star";
-        document.getElementById("star3").className="glyphicon glyphicon-star";
-        document.getElementById("star4").className="glyphicon glyphicon-star";
-        document.getElementById("star5").className="glyphicon glyphicon-star";
+        document.getElementById("vtr2").className="glyphicon glyphicon-star";
+        document.getElementById("vt3").className="glyphicon glyphicon-star";
+        document.getElementById("vt4").className="glyphicon glyphicon-star";
+        document.getElementById("vt5").className="glyphicon glyphicon-star";
         document.getElementById("nota").value="5";
 }
 
