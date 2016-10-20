@@ -14,7 +14,7 @@ session_start();
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;
         }
-        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` <> '$UserId' ORDER BY `DataProduto` DESC");
+        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` <> '$UserId' and `ativo` = 1 ORDER BY `DataProduto` DESC");
                     $linhas = mysql_num_rows($consulta);
                 //quantidade de conteudo exibido por pagina
 		$qtitenspag = 10;

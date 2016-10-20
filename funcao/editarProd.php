@@ -5,12 +5,22 @@ header('Content-Type: text/html; charset=utf-8');
     $Desc = $_POST['ProdDesc']; 
     $Catg = $_POST['ProdCategoria'];
     $estado = $_POST['ProdEstado'];
-    $id_p = $_POST['prod_id'];     
+    $id_p = $_POST['prod_id']; 
+    $id_img_a = $_POST['prod_img'];  
     $data = date('y-m-d H:i:s'); //pega data atual do sistema
     $img_nome = "Prod_$Nome".$data;    
+    //SELECT * FROM `categoria` WHERE `descricao` = 
     
-    if($_FILES['file']){        
-    $file_tmp = $_FILES["file"]["tmp_name"];
+    echo "Estado: $estado categoria: $Catg";
+if(file_exists($file_tmp = $_FILES["file"]["tmp_name"] )){       
+
+    $sql4 = "DELETE FROM `imagem` WHERE idImagem = $id_img_a";
+//executamos a instução SQL
+
+
+mysql_query("$sql4") or die ("Sql4: ".mysql_error());  
+
+$file_tmp = $_FILES["file"]["tmp_name"];
  //NOME DO ARQUIVO NO COMPUTADOR
 $file_name = $_FILES["file"]["name"];
 //TAMANHO DO ARQUIVO
@@ -33,6 +43,8 @@ $binario = mysql_real_escape_string($binario);
 $sql = "INSERT INTO `imagem`(`nomeArquivo`, `descricao`, `arquivo`, `tipo`, `tamanho`, `dataEnvio`)
     VALUES ('$img_nome','$file_name','$binario','$file_type','$file_size', '$data')";
 //executamos a instução SQL
+
+
 mysql_query("$sql") or die (mysql_error());    
 
 $sql2 = mysql_query("SELECT * FROM `imagem` WHERE nomeArquivo ='".$img_nome."'");
@@ -40,30 +52,36 @@ $sql2 = mysql_query("SELECT * FROM `imagem` WHERE nomeArquivo ='".$img_nome."'")
                     $imgID = $img->idImagem;
                     }
                     echo $imgID;
+                   
+        //montamos o SQL para envio dos dados
+$sql3 = "UPDATE `produto` SET
+         `idProdutoEstado`='$estado',
+        `idCategoria`='$Catg',        
+        `nomeProduto`='$Nome',
+        `descricao`='$Desc',
+        `dataAdicao`= now()
+        ,`idImagem`= '$imgID'
+        WHERE  `idProduto`= '$id_p'";
+//executamos a instução SQL
+
+mysql_query("$sql3") or die ("Sql3: ".mysql_error());  
 
 
-$sql3 = "UPDATE `produto` SET `idProdutoEstado`=$estado, `idCategoria`=$Catg, `nomeProduto`='$Nome', 
-            `descricao`='$Desc',`idImagem`= $imgID WHERE `idProduto`= '$id_p'";
-    
-    $res = mysql_query($sql3);
-   
-if ($res){
-    echo "<script>window.location='../Paginas/Meus_produtos.php';</script>";
-}  else {
-    echo "Falha ao tentar inserir".mysql_errno()." -- ".mysql_errno();
-}   
-        
+
+
     }  else {
-     $sql3 = "UPDATE `produto` SET `idProdutoEstado`=$estado, `idCategoria`=$Catg, `nomeProduto`='$Nome', 
-            `descricao`='$Desc' WHERE `idProduto`= '$id_p'";
-    
-    $res = mysql_query($sql3);
-   
-if ($res){
-    echo "<script>window.location='../Paginas/Meus_produtos.php';</script>";
-}  else {
-    echo "Falha ao tentar inserir".mysql_errno()." -- ".mysql_errno();
-}   
+        $sql5 = "UPDATE `produto` SET
+         `idProdutoEstado`='$estado',
+        `idCategoria`='$Catg',        
+        `nomeProduto`='$Nome',
+        `descricao`='$Desc',
+        `dataAdicao`= now()
+        WHERE  `idProduto`= '$id_p'";
+//executamos a instução SQL
+
+mysql_query("$sql5") or die ("Sql5: ".mysql_error());    
 }
-    
+
+
+header('Location:../Paginas/Mostra_produtos.php?pag=1');
 ?>

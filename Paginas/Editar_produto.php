@@ -239,12 +239,8 @@ include '../funcao/conecta.php';
                         $sql = mysql_query("SELECT * FROM `produtoestado`");
                     while ($estado = mysql_fetch_object($sql)) {
                         $estado_id = $estado->idProdutoEstado;
-                        $estado_desc = $estado->descricao;
-                        if ($estado_id = $ProdEstado) {
-                            echo "<option value='$estado_id' selected='selected'>$estado_desc</option> ";
-                        }  else {
-                            echo "<option value='$estado_id'>$estado_desc</option> ";
-                        }
+                        $estado_desc = $estado->descricao;                        
+                            echo "<option value='$estado_id'>$estado_desc</option> ";                     
                         
                     }
                     ?>
@@ -253,18 +249,13 @@ include '../funcao/conecta.php';
                   
 </div>
 <div class="form-group">
-      <select class="form-control" id="sel1" name="ProdCategoria">
-        <option value="" disabled selected>Selecione a categoria</option>
+      <select class="form-control" id="sel1" name="ProdCategoria">        
          <?php
                     $sql = mysql_query("SELECT * FROM `categoria`");
                     while ($Categ = mysql_fetch_object($sql)) {
                         $Categ_id = $Categ->idCategoria;
                         $Categ_nome = $Categ->descricao;
-                        if ($Categ_id = $ProdCateg) {
-                            echo "<option value='$Categ_id' selected='selected'>$Categ_nome</option> ";
-                        }  else {
-                            echo "<option value='$Categ_id'>$Categ_nome</option> ";
-                        }
+                        echo "<option value='$Categ_id'>$Categ_nome</option> ";
                         
                     }
                     ?>
@@ -282,6 +273,7 @@ include '../funcao/conecta.php';
       <div class="form-group">
       <div class="col-sm-offset-4 col-sm-10">
           <input type="hidden" name="prod_id" value="<?php echo "$ProdId";?>"/>
+           <input type="hidden" name="prod_img" value="<?php echo "$ProdImg";?>"/>
           <button name="alterar" type="submit" class="btn btn-default">Editar</button>
           
       </div>

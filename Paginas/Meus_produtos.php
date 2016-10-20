@@ -6,7 +6,11 @@ session_start();
             die('<h2>Sessão não iniciada</h2>');
                 
         }
-        // header('Location:../Paginas/s.php');
+        if ($_GET["pag"]){
+                    $pagatual = $_GET["pag"]; 
+                }  else {
+                  header('Location:../Paginas/Meus_produtos.php?pag=1');
+                }
  $UserEmail = $_SESSION['Login'];
     $sql_user = mysql_query("SELECT * FROM `usuario` where `email` = '$UserEmail'");
         while ($User = mysql_fetch_object($sql_user)) {
@@ -14,7 +18,7 @@ session_start();
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;
         }
-        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = '$UserId' ORDER BY `DataProduto` DESC");
+        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = '$UserId' and `ativo` = 1  ORDER BY `DataProduto` DESC");
                     $linhas = mysql_num_rows($consulta);
                 //quantidade de conteudo exibido por pagina
 		$qtitenspag = 10;
