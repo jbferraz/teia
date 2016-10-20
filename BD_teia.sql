@@ -1,3 +1,13 @@
+--view
+select `teia`.`produto`.`idProduto` AS `IdProduto`,`teia`.`produto`.`nomeProduto` AS `NomeProduto`,
+`teia`.`produto`.`dataAdicao` AS `DataProduto`,`teia`.`produto`.`descricao` AS `DescProduto`,
+`teia`.`usuario`.`idUsuario` AS `idUsuario`,`teia`.`usuario`.`nome` AS `NomeUsuario`,
+`teia`.`categoria`.`descricao` AS `categoria`,`teia`.`produtoestado`.`descricao` AS `estado`,
+`teia`.`produto`.`idImagem` AS `img`,`teia`.`produto`.`ativo` AS `ativo`,`teia`.`usuario`.`idImagem` AS `idImagemUser` 
+from (((`teia`.`usuario` join `teia`.`produto`) join `teia`.`categoria`) join `teia`.`produtoestado`)
+ where ((`teia`.`usuario`.`idUsuario` = `teia`.`produto`.`idUsuario`) and (`teia`.`categoria`.`idCategoria` = `teia`.`produto`.`idCategoria`)
+ and (`teia`.`produtoestado`.`idProdutoEstado` = `teia`.`produto`.`idProdutoEstado`)) group by `teia`.`produto`.`idProduto`
+
 -- phpMyAdmin SQL Dump
 -- version 4.5.1
 -- http://www.phpmyadmin.net
