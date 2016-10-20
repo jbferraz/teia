@@ -205,7 +205,7 @@ include '../funcao/conecta.php';
                   }
                 ?>
       <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
  </div>
      <div class="col-sm-1">
  </div>
@@ -213,6 +213,11 @@ include '../funcao/conecta.php';
            <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
             <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
             <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
+  
+           <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$ProdImg_1";?>"alt="Chania" style="min-height:70%;max-height:80%;">
+           <br>
+                 <h4><?php echo "Dono: $UserNome_1"; ?></h4>
+          
        <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
              <form method="post" action="../funcao/insere_troca.php">   
               
@@ -245,7 +250,7 @@ include '../funcao/conecta.php';
                   }
                 ?>
       <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+        <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
  </div>
      <div class="col-sm-1">
  </div>
@@ -254,6 +259,11 @@ include '../funcao/conecta.php';
            <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
             <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
             <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+           <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:70%;max-height:80%;">
+           <bR>
+                 <h4><?php echo "Dono: $UserNome_2"; ?></h4>
+               
+         
        <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
             
               
@@ -292,7 +302,8 @@ include '../funcao/conecta.php';
         </form>
     </div>
        <div class="col-lg-1"></div> 
-       <?php echo "id_TRoca : $id_troca <br>"; ?>
-       
+       <br>
+       <br>
+       <br>
     </body>
 </html>

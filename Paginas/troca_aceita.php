@@ -11,7 +11,8 @@ include '../funcao/conecta.php';
         while ($User = mysql_fetch_object($sql_user)) {
             $UserId = $User->idUsuario;
             $UserNome = $User->nome;
-            $UserImg= $User->idImagem;            
+            $UserImg= $User->idImagem; 
+            
         }
         $id_troca = $_POST['id_troca'];
         $id_not = $_POST['id_not'];
@@ -257,6 +258,7 @@ include '../funcao/conecta.php';
            <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
             <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
             <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
+    
        <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
              <form method="post" action="../funcao/insere_troca.php">   
               
