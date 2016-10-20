@@ -25,7 +25,7 @@ include '../funcao/conecta.php';
         
           $sql_up_toca="UPDATE `notificacao` SET `status`= 1 WHERE `id_notificacao` = $id_not";
 //executamos a instução SQL
-           mysql_query("$sql_up_toca") or die (mysql_error());
+           //mysql_query("$sql_up_toca") or die (mysql_error());
        
            
     
@@ -314,25 +314,26 @@ include '../funcao/conecta.php';
         <div class="col-lg-4"align="right">
             <form>         
             </form>
-            <form action="#" method="post">  
-                <input class="btn-default " type="button" data-toggle="modal" data-target="#myModal" value="não" style="min-width:50%;min-height:30px">
+            <form action="../funcao/troca_aceita_nao.php" method="post">  
+                <input class="btn-default " type="submit"  value="não" style="min-width:50%;min-height:30px">
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
-            <input type="hidden" name="$ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
-            <input type="hidden" name="$ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
+            <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
+            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
+             <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
             </form>
-           
+  
         </div>
          <div class="col-lg-1"></div>
          <div class="col-lg-4 "align="left">
              <form action="../funcao/troca_aceita_sim.php" method="post">
-                 <input class="btn-default left" data-toggle="modal" data-target="#myModal" type="button" value="sim" style="min-width:50%;min-height:30px">
+                 <input class="btn-default left"  type="submit" value="sim" style="min-width:50%;min-height:30px">
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
              <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>">
-            <input type="hidden" name="$ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
-            <input type="hidden" name="$ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
+            <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
+            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
         </form>
     </div>
        <div class="col-lg-1"></div> 

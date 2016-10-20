@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
 include '../funcao/conecta.php';
-     $consulta = mysql_query("SELECT * FROM `listarproduto`");
+     $consulta = mysql_query("SELECT * FROM `listarproduto` where`ativo` = 1");
                     $linhas = mysql_num_rows($consulta);
                 //quantidade de conteudo exibido por pagina
 		$qtitenspag = 10;
