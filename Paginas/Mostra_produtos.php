@@ -251,7 +251,8 @@ session_start();
                                 $ProdDecr = mysql_result($consulta,$i,"DescProduto");
                                 $ProdEstado = mysql_result($consulta,$i,"estado");
                                  $ProdImg = mysql_result($consulta,$i,"img");
-		                
+		        
+                                 
                 ?>
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
