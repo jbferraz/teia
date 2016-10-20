@@ -19,16 +19,7 @@ and open the template in the editor.
     </head>
     <body>
         <form></form>
-        <form>
-            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:50px;"/></label>
-            <label><samp onmouseover="mudaclass2()" id="star2" class="glyphicon glyphicon-star-empty" style="font-size:50px;"/></label>
-            <label><samp onmouseover="mudaclass3()" id="star3" class="glyphicon glyphicon-star-empty" style="font-size:50px;"/></label>
-            <label><samp onmouseover="mudaclass4()" id="star4" class="glyphicon glyphicon-star-empty" style="font-size:50px;"/></label>
-            <label><samp onmouseover="mudaclass5()" id="star5" class="glyphicon glyphicon-star-empty" style="font-size:50px;"/></label>
-            <input type="hidden" id="nota">
-            <button onclick="valorranking()">Votar</button>
-        </form>
-
+        
 
     </body>
 </html>
