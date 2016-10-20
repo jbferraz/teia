@@ -9,7 +9,7 @@ include '../funcao/conecta.php';
                if ($_GET["pag"]){
                     $pagatual = $_GET["pag"]; 
                 }  else {
-                    header('Location:../Paginas/Mostra_produtos.php?pag=1');
+                    header('Location:../Paginas/Mostra_Produto_s_Login.php?pag=1');
                  
                     }
                     if ($pagatual == 0) {
