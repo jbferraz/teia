@@ -14,7 +14,8 @@ session_start();
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;
         }
-        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` <> '$UserId' and `ativo` = 1 ORDER BY `DataProduto` DESC");
+         $_DonoPag=$_POST['idDono'];
+        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = ' $_DonoPag' and `ativo` = 1 ORDER BY `DataProduto` DESC");
                     $linhas = mysql_num_rows($consulta);
                 //quantidade de conteudo exibido por pagina
 		$qtitenspag = 10;
@@ -37,6 +38,7 @@ session_start();
 		if($terminaEm > $linhas){
 			$terminaEm = $linhas;
                 }
+               
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 <html>
@@ -229,19 +231,40 @@ session_start();
       
       </ul> 
 </div>
+      <!----------------------------------------------------------------------------------------------------------------->
       <div class="btn-sidbar-tt">
           <button class="btn-sidbar-tt" onclick="toogle()" ></button>
       </div>
   </div>
-
-
-    <!-- fim menu-->
-        <div class="col-sm-12" align="center">
+  <div class="col-sm-12">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4" align="center">
+        <img class="img-responsive " src="<?php echo"Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;">
+        <div class="col-sm-12">
+         <div class="col-sm-2"></div>
+      <div class="col-sm-8" align="center">   
+        <h3><?php echo $UserNome; ?></h3>
+        </div>
+      </div>
+       
+                 <h4>Rank</h4>
+            
+            <label><samp  class="glyphicon glyphicon-star" style="font-size:200%;"/></label>
+            <label><samp  id="star2o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
+            <label><samp  id="star3o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
+            <label><samp  id="star4o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
+            <label><samp  id="star5o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
+        
+      </div>
+      <div class="col-sm-2"></div>
+  </div>
+  
+  <div class="col-sm-12" align="center" style="margin-top:50px">
             <div class="col-sm-2"></div>
             <div class="col-sm-8" >
            <div class="panel panel-default">
             <div class="panel-heading">
-            <h3>Produtos disponiveis</h3>
+            <h3>Produtos do Usuario</h3>
             </div>
         </div>
         </div>
@@ -258,7 +281,6 @@ session_start();
                                     $ProdId = mysql_result($consulta,$i,"IdProduto");
                                     $ProdNome = mysql_result($consulta,$i,"NomeProduto");
                                     $UserNome = mysql_result($consulta,$i,"NomeUsuario");
-                                    $DonoId=mysql_result($consulta,$i,"idUsuario");
                                     $ProdDecr = mysql_result($consulta,$i,"DescProduto");
                                     $ProdCateg = mysql_result($consulta,$i,"categoria");
                                     $ProdDecr = mysql_result($consulta,$i,"DescProduto");
@@ -284,16 +306,9 @@ session_start();
            <div class="col-sm-12"style="float:left">
                <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser";?>" alt="Chania" style="min-height:25%;max-height:50%;">
                     <div class="col-sm-8  text-left small">
-                        <form></form>
-                        <form method="post" action="Mostra_Usuario.php">
-                            <input name="idDono" type="hidden" id="idDono" value="<?php echo $DonoId; ?>">
-                            <input style="background:transparent;border:0" type="submit" value="<?php echo"Dono:$UserNome"; ?>">
-                        </form>
+                     <h4><?php echo "Dono: $UserNome"; ?></h4>
                     </div>
                 </div>
-           <br>
-           <br>
-           <br>
                 <p class="text-left small" style=""><h5> <?php echo "$ProdDecr";?></h5></p>
                  <form method="post" action="../funcao/p">   
                      <div>
@@ -408,6 +423,6 @@ session_start();
 
         </div>
     </div>
-         </div>
+         </div>    
     </body>
 </html>
