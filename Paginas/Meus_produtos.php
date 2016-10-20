@@ -23,13 +23,7 @@ session_start();
                 //quantidade de conteudo exibido por pagina
 		$qtitenspag = 10;
 		$qtpaginas = ceil($linhas/$qtitenspag);
-		   
-               if ($_GET["pag"]){
-                    $pagatual = $_GET["pag"]; 
-                }  else {
-                    header('Location:../Paginas/Mostra_produtos.php?pag=1');
-                 
-                    } 
+		 
                     if ($pagatual == 0) {
                         $pagatual =1;
     

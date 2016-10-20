@@ -73,13 +73,17 @@ include '../funcao/conecta.php';
                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-envelope" style="font-size:20px;"></span><span class="badge"><?php echo $Not_num; ?></span></a>
                  <ul class="dropdown-menu" style="min-width:300px;">
         
-        <?php 
-        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
+         <?php 
+         $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_I = $UserId and status = 0");
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
+                    $id_not = $Not_inf->id_notificacao;
                   $id_troca = $Not_inf->idTroca;
-                  $user_interece = $Not_inf->nome;        
-       ?>   
+                  $user_interece = $Not_inf->nome;  
+                  $mensagem =  $Not_inf->mensagem;
+                  $tipo = $Not_inf->tipo;
+          
+       ?> 
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
                          <div class="col-sm-4" >

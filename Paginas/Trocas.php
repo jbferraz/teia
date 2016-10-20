@@ -86,12 +86,15 @@ include '../funcao/conecta.php';
                  <ul class="dropdown-menu" style="min-width:300px;">
         
         <?php 
-        $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_i = $UserId and status = 0");
+         $sql_not_inf = mysql_query("SELECT * FROM view_notificacao where user_I = $UserId and status = 0");
                  
         while ($Not_inf = mysql_fetch_object($sql_not_inf)){
-                  $id_troca = $Not_inf->id_troca;
-                  $user_interece = $Not_inf->nome_d;                  
-                   
+                    $id_not = $Not_inf->id_notificacao;
+                  $id_troca = $Not_inf->idTroca;
+                  $user_interece = $Not_inf->nome;  
+                  $mensagem =  $Not_inf->mensagem;
+                  $tipo = $Not_inf->tipo;
+          
        ?>   
                <li><div class="col-sm-12" style="width:100%;padding:2px; border-bottom:0.5px solid black; margin-bottom: 5px">
                          <div>
@@ -289,5 +292,7 @@ include '../funcao/conecta.php';
         </form>
     </div>
        <div class="col-lg-1"></div> 
+       <?php echo "id_TRoca : $id_troca <br>"; ?>
+       
     </body>
 </html>
