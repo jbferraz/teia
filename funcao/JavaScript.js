@@ -113,7 +113,7 @@ function mudaclass4(){
     }
 }
 function mudaclass5(){
-        document.getElementById("vtr2").className="glyphicon glyphicon-star";
+        document.getElementById("vt2").className="glyphicon glyphicon-star";
         document.getElementById("vt3").className="glyphicon glyphicon-star";
         document.getElementById("vt4").className="glyphicon glyphicon-star";
         document.getElementById("vt5").className="glyphicon glyphicon-star";
