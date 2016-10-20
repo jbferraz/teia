@@ -65,7 +65,7 @@ $sql3 = "UPDATE `produto` SET
 //executamos a instução SQL
 
 mysql_query("$sql3") or die ("Sql3: ".mysql_error());  
-
+header('Location:../Paginas/Meus_produtos.php?pag=1');
 
 
 
@@ -80,8 +80,9 @@ mysql_query("$sql3") or die ("Sql3: ".mysql_error());
 //executamos a instução SQL
 
 mysql_query("$sql5") or die ("Sql5: ".mysql_error());    
+header('Location:../Paginas/Meus_produtos.php?pag=1');
 }
 
 
-header('Location:../Paginas/Mostra_produtos.php?pag=1');
+
 ?>
