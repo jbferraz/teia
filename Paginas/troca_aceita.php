@@ -268,8 +268,8 @@ include '../funcao/conecta.php';
         
     </div>
     <!-- Meio Entre as trocas-->
-  <div class="col-sm-1" >
-      
+  <div class="col-sm-2" >
+       
       
   </div>
      <!-- Fim Meio Entre as trocas-->
@@ -322,20 +322,34 @@ include '../funcao/conecta.php';
             <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
             <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
              <input type="hidden" name="id_not" id="idtroca" value="<?php echo $id_not; ?>"> 
-            </form>
+             </form>
   
         </div>
-         <div class="col-lg-1"></div>
+        <form action="../funcao/troca_aceita_sim.php" method="post">
+        <div class="col-lg-2" align="center">
+            
+            <p><h4>Avalie como foi sua troca</h4></p>
+            
+            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass2()" id="star2" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass3()" id="star3" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass4()" id="star4" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            <label><samp onmouseover="mudaclass5()" id="star5" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
+            
+  
+        </div>
          <div class="col-lg-4 "align="left">
-             <form action="../funcao/troca_aceita_sim.php" method="post">
-                 <input class="btn-default left"  type="submit" value="sim" style="min-width:50%;min-height:30px">
+             
+             <input class="btn-default left" type="submit" value="sim" style="min-width:50%;min-height:30px">
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
              <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>">
             <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
             <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
-        </form>
+            <input name="nota_Avaliacao" type="hidden" id="nota">
     </div>
+                </form>
+
        <div class="col-lg-1"></div> 
        <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -347,9 +361,10 @@ include '../funcao/conecta.php';
           <h4 class="modal-title">Obrigado</h4>
         </div>
         <div class="modal-body">
+            
             <P> Obrigado por nós informar sobre a troca</p>
             <P>Você será redirecionado para produtos disponiveis</p>
-            <form action="../Paginas/Mostra_produtos.php" method="post">               
+                        
                 <input type="submit" value="Ok" class="btn btn-default btn-lg">             
             </form>
             

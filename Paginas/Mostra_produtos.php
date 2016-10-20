@@ -266,7 +266,14 @@ session_start();
            <p class="text-left lead" style=""><h3><?php echo $ProdNome; ?></h3></p>
             <p class="text-left small" style=""><h3><?php echo "Estado do produto: $ProdEstado"; ?></h3><p/>
             <p class="text-left small" style=""><h3><?php echo "Categoria do produto: $ProdCateg"; ?></h3></p>
-                    <p class="text-left small" style=""><h4><?php echo "Dono: $UserNome"; ?></h4></p>
+            <div class="col-sm-12">
+                <div class="col-sm-4"
+                <img class="img-thumbnail" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="max-height:50%;max-width:50%">
+                </div>
+                <div class="col-sm-8  text-left small">
+                 <h4><?php echo "Dono: $UserNome"; ?></h4>
+                </div>
+            </div>
             <p class="text-left small" style=""><h5> <?php echo "$ProdDecr";?></h5></p>
              <form method="post" action="../funcao/p">   
                  <div>

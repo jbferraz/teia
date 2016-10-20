@@ -1,7 +1,6 @@
     <?php
      $sql="INSERT INTO rank(idTroca,Nota,idUsuario)VALUES('1','$nota','3')";
       mysql_query("$sql") or die (mysql_error());
-    
     ?>
 <html>
     <head>

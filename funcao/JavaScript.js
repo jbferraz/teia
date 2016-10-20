@@ -119,9 +119,4 @@ function mudaclass5(){
         document.getElementById("star5").className="glyphicon glyphicon-star";
         document.getElementById("nota").value="5";
 }
-function valorranking(){
 
-    var x=document.getElementById("nota").value;
-   window.open("rmostra.php/?nota="+x);
-
-}
