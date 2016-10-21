@@ -287,8 +287,9 @@ session_start();
                <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser";?>" alt="Chania" style="min-height:25%;max-height:50%;">
                     <div class="col-sm-8  text-left small">
                         <form></form>
-                        <form method="post" action="Mostra_Usuario.php?pag=1">
+                        <form method="get" action="Mostra_Usuario.php?pag=1">
                             <input name="idDono" type="hidden" id="idDono" value="<?php echo $DonoId; ?>">
+                            <input name="pag" type="hidden" id="idDono" value="1">                            
                             <input style="background:transparent;border:0" type="submit" value="<?php echo"Dono:$UserNome"; ?>">
                         </form>
                     </div>
