@@ -270,7 +270,7 @@ session_start();
         <div class="col-lg-12" >
             
             <div class="col-lg-2"></div>
-            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:250px;">
+            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:350px;">
                 <?php
                 $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
@@ -309,7 +309,7 @@ session_start();
                   $ProdImg_2 =  $Produtos->img;
                   }
                 ?>
-            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:250px;">
+            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:350px;">
                 <div class="col-lg-5">
                     <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:50%;max-height:80%; margin-top:25px;">
                  </div> 
