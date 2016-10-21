@@ -14,20 +14,21 @@ session_start();
             $UserNome = $User->nome;
             $UserImg= $User->idImagem;
         }
-         $_DonoPag=$_POST['idDono'];
         
-        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario`='$_DonoPag' and `ativo` = 1 ORDER BY `DataProduto` DESC");
+         $_DonoPag=$_GET['idDono'];        
+        $consulta = mysql_query("SELECT * FROM `listarproduto`  WHERE   `IdUsuario`='$_DonoPag' and `ativo` = 1 ORDER BY `DataProduto` DESC");
                     $linhas = mysql_num_rows($consulta);
                 //quantidade de conteudo exibido por pagina
 		$qtitenspag = 10;
 		$qtpaginas = ceil($linhas/$qtitenspag);
-		   
+		/*   
                if ($_GET["pag"]){
                     $pagatual = $_GET["pag"];
                 }  else {
                     header('Location:../Paginas/Mostra_Usuario.php?pag=1');
 
-                    } 
+                    } */
+                $pagatual = $_GET["pag"];
                     if ($pagatual == 0) {
                         $pagatual =1;
     
@@ -265,8 +266,167 @@ session_start();
             <label><samp  id="star5o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
         
       </div>
+      
       <div class="col-sm-2"></div>
   </div>
+
+  <div class="col-sm-2" ></div>
+    <div class="col-sm-8">
+                    <?php
+                       if ($linhas>0 ){
+                    //echo "$aPartirDeQual - $terminaEm";
+                            //selecione no banco as tabelas que deseja exibir
+                            for($i=$aPartirDeQual; $i< $terminaEm; $i++){
+                                    $ProdId = mysql_result($consulta,$i,"IdProduto");
+                                    $ProdNome = mysql_result($consulta,$i,"NomeProduto");
+                                    $UserNome = mysql_result($consulta,$i,"NomeUsuario");
+                                    $DonoId=mysql_result($consulta,$i,"idUsuario");
+                                    $ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                    $ProdCateg = mysql_result($consulta,$i,"categoria");
+                                    $ProdDecr = mysql_result($consulta,$i,"DescProduto");
+                                    $ProdEstado = mysql_result($consulta,$i,"estado");
+                                     $ProdImg = mysql_result($consulta,$i,"img");
+                                     $idImagemUser = mysql_result($consulta,$i,"idImagemUser");
+
+                    ?>
+
+      <!-- Inicio da 1ª coluna de produtos-->
+      <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
+            <div class="col-sm-1">
+     </div>
+          <div class="col-sm-4">
+                <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:30%;max-height:80%;">
+     </div>
+         <div class="col-sm-1">
+     </div>
+           <div class="col-sm-4">
+               <p class="text-left lead" style=""><h3><?php echo $ProdNome; ?></h3></p>
+                <p class="text-left small" style=""><h3><?php echo "Estado do produto: $ProdEstado"; ?></h3><p/>
+                <p class="text-left small" style=""><h3><?php echo "Categoria do produto: $ProdCateg"; ?></h3></p>
+           <div class="col-sm-12"style="float:left">
+               <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser";?>" alt="Chania" style="min-height:25%;max-height:50%;">
+                    <div class="col-sm-8  text-left small">
+                        <form></form>
+                        <form method="get" action="Mostra_Usuario.php?pag=1">
+                            <input name="idDono" type="hidden" id="idDono" value="<?php echo $DonoId; ?>">
+                            <input name="pag" type="hidden" id="idDono" value="1">                            
+                            <input style="background:transparent;border:0" type="submit" value="<?php echo"Dono:$UserNome"; ?>">
+                        </form>
+                    </div>
+                </div>
+           <br>
+           <br>
+           <br>
+                <p class="text-left small" style=""><h5> <?php echo "$ProdDecr";?></h5></p>
+                 <form method="post" action="../funcao/p">   
+                     <div>
+                          <!-- Trigger the modal with a button -->
+                <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId;?>','<?php echo $ProdImg ;?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
+      <!-- Modal -->
+                     </div>
+                       </form>
+           </div>
+             <div class="col-sm-1">
+     </div>
+     <!-- Fim do Produto -->
+        </div>  
+
+
+
+      <?php 
+                       }
+
+                            }
+      ?>
+  
+  <div class="col-sm-12" align="center">
  
+  <nav aria-label="Page navigation">
+      <div style="margin:0 auto">
+  <ul class="pagination pagination-lg">
+         
+    <?php 
+    if ($pagatual > 1 ) {
+         ?>
+      <li>
+      <a href="../Paginas/Mostra_Usuario.php?idDono=<?php echo $_DonoPag;?>&pag=<?php echo $pagatual -1;?>" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+     
+       <?php 
+     }
+ for ($i = 1; $i <= $qtpaginas; $i++) {
+     
+     if ($pagatual == $i){      
+   ?>  
+      <li class="active"><a href="../Paginas/Mostra_Usuario.php?idDono=<?php echo $_DonoPag;?>&pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+            <?php }  else {
+ ?>
+      <li><a href="../Paginas/Mostra_Usuario.php?idDono=<?php echo $_DonoPag;?>&pag=<?php echo "$i";?>"><?php echo "$i";?></a></li>
+    
+ <?php } }
+
+    if ($pagatual != $qtpaginas ) {
+         ?>
+      <li>
+      <a href="../Paginas/Mostra_Usuario.php?idDono=<?php echo $_DonoPag;?>&pag=<?php echo $pagatual +1;?>" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+     
+       <?php 
+     }
+ ?>    
+  </ul>
+      </div>
+   <!--                     ---------------                                  --> 
+         <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content" style="margin-top:35%">
+            <div class="modal-header">
+
+              <h4 class="modal-title">Escolha um produto</h4>
+            </div>
+
+
+            <div class="modal-body">
+                <form></form>
+                <form method="post" action="../funcao/insere_troca_user.php">
+
+                    <select class="form-control" id="sel1" name="prodDono">
+                      <option value="" disabled selected>Selecione um produto</option>
+                <?php
+                    $sqlUserI = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId"); 
+                    while ($Produtos = mysql_fetch_object($sqlUserI)) {
+                        $produto_id = $Produtos->IdProduto;
+                        $produto_nome = $Produtos->NomeProduto; 
+                        $produto_img=$Produtos->img;
+                        $GLOBALS['$produto_id']=$produto_img;
+                       ?>
+                 <option  value='<?php echo "$produto_id";?>' icon="icons/icon_cart.gif"><?php echo "$produto_nome";?></option> 
+                     <?php     
+                    }
+                    ?>
+          </select>
+            <br>
+               <div class="form-group">
+            <input type="hidden" name="userI" value="<?php echo "$UserId";?>"/>
+            <input type="hidden" name="idDono" value="<?php echo "$_DonoPag";?>"/>
+             <input type="hidden" name="pag" value="<?php echo "$pagatual ";?>"/>
+            <input id="ProdId" name="ProdutoId" type="hidden"/>
+        </div>
+          </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-default">Oferecer Troca</button>
+            </div>
+               </form>
+          </div>
+
+        </div>
+    </div>
   </body>
 </html>
