@@ -243,6 +243,7 @@ session_start();
                     $usuarioPagNome = $Userd->NomeUsuario;
                   $usuarioPagImag = $Userd->idImagemUser;
         }
+        
        ?> 
   <div class="col-sm-12">
       <div class="col-sm-4"></div>
