@@ -229,6 +229,31 @@ include '../funcao/conecta.php';
   
 
     <!-- fim menu-->
+      <?php
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
+                while ($Produtos2 = mysql_fetch_object($sql)) { 
+                  $ProdId_2   = $Produtos2->IdProduto;
+                  $ProdNome_2 = $Produtos2->NomeProduto;
+                  $UserNome_2 = $Produtos2->NomeUsuario;
+                  $ProdDecr_2 = $Produtos2->DescProduto;
+                  $ProdCateg_2 =  $Produtos2->categoria;
+                  $ProdEstado_2 =  $Produtos2->estado;
+                  $ProdImg_2 =  $Produtos2->img;
+                 $idImagemUser2 = $Produtos2->idImagemUser;
+                  }
+     
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
+                while ($Produtos = mysql_fetch_object($sql)) { 
+                  $ProdId_1   = $Produtos->IdProduto;
+                  $ProdNome_1 = $Produtos->NomeProduto;
+                  $UserNome_1 = $Produtos->NomeUsuario;
+                  $ProdDecr_1 = $Produtos->DescProduto;
+                  $ProdCateg_1 =  $Produtos->categoria;
+                  $ProdEstado_1 =  $Produtos->estado;
+                  $ProdImg_1 =  $Produtos->img;
+                  $idImagemUser1 = $Produtos->idImagemUser;
+                  }
+                ?>
     <div class="col-sm-12" align="center">
         <div class="col-sm-2"></div>
         <div class="col-sm-8" >
@@ -242,76 +267,93 @@ include '../funcao/conecta.php';
         <br>
         <div class="col-sm-2" ></div>
     </div>
+  
     
+     <div class="col-sm-12" align="center">
+        
+            
+       
+        <div class="col-sm-2"></div>
+     
+       <div class="col-sm-8" >
+           <div class="col-sm-12"style="background-color:#0d1e04;max-height:80px;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px;">
+               <div class="col-sm-5">
+           <img id="imguser" class="img-circle col-sm-3 " src="<?php echo"Listar.php?codigo=$idImagemUser2";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
+         
+           <h4 style="margin:10px 5px;width:40%;float:left;"><?php echo "$UserNome_2"; ?></h4> <BR> 
+          <h5 style="width:40%;float:center;">DONO</h5>
+           
+           </div>
+               <div class="col-sm-1" >
+       
+  </div>
+           
+                <div class="col-sm-4">
+           <img id="imguser" class="img-circle col-sm-3 " src="<?php echo "Listar.php?codigo=$idImagemUser1";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
+          <h4 style="margin:10px 5px;width:40%;float:left;"><?php echo "$UserNome_1"; ?></h4>
+           <h5 style="width:40%;float:center;">INTERESSADO</h5>
+                  
+                </div>
+               <div class="col-lg-2" align="center">
+            
+            <p><h6>Avalie como foi sua troca</h6></p>
+            
+            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:10px;"/></label>
+            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:10px;"/></label>
+            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:10px;"/></label>
+            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:10px;"/></label>
+            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:10px;"/></label>
+            
+  
+        </div>
+         
+           </div>
+    </div>
+    </div>
     <div class="col-sm-1" ></div>
     <div class="col-sm-1" ></div>
+         <div class="col-sm-1">
+ </div>
     <div class="col-sm-4 ">
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12 " style="margin-bottom:30px;">
-      <?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
-                while ($Produtos = mysql_fetch_object($sql)) { 
-                  $ProdId_1   = $Produtos->IdProduto;
-                  $ProdNome_1 = $Produtos->NomeProduto;
-                  $UserNome_1 = $Produtos->NomeUsuario;
-                  $ProdDecr_1 = $Produtos->DescProduto;
-                  $ProdCateg_1 =  $Produtos->categoria;
-                  $ProdEstado_1 =  $Produtos->estado;
-                  $ProdImg_1 =  $Produtos->img;
-                  }
-                ?>
-      <div class="col-sm-5">
-          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
- </div>
-     <div class="col-sm-1">
- </div>
-       <div class="col-sm-4">          
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
     
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
-             <form method="post" action="../funcao/insere_troca.php">   
-              
- </div>
-         <div class="col-sm-1">
- </div>
- <!-- Fim do Produto -->
-  </div>
-        
-    </div>
-    <!-- Meio Entre as trocas-->
-  <div class="col-sm-2" >
-       
-      
-  </div>
-     <!-- Fim Meio Entre as trocas-->
-    <div class="col-sm-4 ">
-  <!-- Inicio da 2ª coluna de produtos-->
-<div class="col-sm-12 " style="margin-bottom:30px;">
-<?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
-                while ($Produtos2 = mysql_fetch_object($sql)) { 
-                  $ProdId_2   = $Produtos2->IdProduto;
-                  $ProdNome_2 = $Produtos2->NomeProduto;
-                  $UserNome_2 = $Produtos2->NomeUsuario;
-                  $ProdDecr_2 = $Produtos2->DescProduto;
-                  $ProdCateg_2 =  $Produtos2->categoria;
-                  $ProdEstado_2 =  $Produtos2->estado;
-                  $ProdImg_2 =  $Produtos2->img;
-                  }
-                ?>
       <div class="col-sm-5">
           <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
  </div>
      <div class="col-sm-1">
  </div>
-       <div class="col-sm-4">
-          
+       <div class="col-sm-4">          
            <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
             <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
             <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+    
        <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
+             <form method="post" action="../funcao/insere_troca.php">   
+              
+ </div>
+
+ <!-- Fim do Produto -->
+  </div>
+        
+    </div>
+    <!-- Meio Entre as trocas-->
+
+     <!-- Fim Meio Entre as trocas-->
+    <div class="col-sm-4 ">
+  <!-- Inicio da 2ª coluna de produtos-->
+<div class="col-sm-12 " style="margin-bottom:30px;">
+
+      <div class="col-sm-5">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:200px;max-height:200px; margin-top:25px;">
+ </div>
+   
+       <div class="col-sm-4">
+          
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
             
               
  </div>
@@ -338,19 +380,9 @@ include '../funcao/conecta.php';
              </form>
   
         </div>
+        <div class="col-sm-2"></div>
         <form action="../funcao/troca_aceita_sim.php" method="post">
-        <div class="col-lg-2" align="center">
-            
-            <p><h4>Avalie como foi sua troca</h4></p>
-            
-            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
-            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:35px;"/></label>
-            
-  
-        </div>
+      
          <div class="col-lg-4 "align="left">
              
              <input class="btn-default left" type="submit" value="sim" style="min-width:50%;min-height:30px">
@@ -362,7 +394,7 @@ include '../funcao/conecta.php';
             <input name="nota_Avaliacao" type="hidden" id="nota">
     </div>
                 </form>
-
+        <div class="col-sm-12"style="margin-bottom:100px"></div>
        <div class="col-lg-1"></div> 
        <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">

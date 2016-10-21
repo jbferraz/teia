@@ -37,11 +37,13 @@ include '../funcao/conecta.php';
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
+  <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     </head>
     <body id="bd" >
- <nav class="navbar navbar-inverse navbar-fixed-top" >
+ <nav class="navbar navbar-verde navbar-default navbar-fixed-top" >
   <div class="container-fluid">
     <div class="navbar-header">
         <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -184,6 +186,32 @@ include '../funcao/conecta.php';
   
 
     <!-- fim menu-->
+        <?php
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
+                while ($Produtos = mysql_fetch_object($sql)) { 
+                  $ProdId_1   = $Produtos->IdProduto;
+                  $ProdNome_1 = $Produtos->NomeProduto;
+                  $UserNome_1 = $Produtos->NomeUsuario;
+                  $ProdDecr_1 = $Produtos->DescProduto;
+                  $ProdCateg_1 =  $Produtos->categoria;
+                  $ProdEstado_1 =  $Produtos->estado;
+                  $ProdImg_1 =  $Produtos->img;
+                  $idImagemUser1 = $Produtos->idImagemUser;
+                }
+                
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
+                while ($Produtos2 = mysql_fetch_object($sql)) { 
+                  $ProdId_2   = $Produtos2->IdProduto;
+                  $ProdNome_2 = $Produtos2->NomeProduto;
+                  $UserNome_2 = $Produtos2->NomeUsuario;
+                  $ProdDecr_2 = $Produtos2->DescProduto;
+                  $ProdCateg_2 =  $Produtos2->categoria;
+                  $ProdEstado_2 =  $Produtos2->estado;
+                  $ProdImg_2 =  $Produtos2->img;
+                  $idImagemUser2 = $Produtos2->idImagemUser;
+                  }
+                ?>
+              
     <div class="col-sm-12" align="center">
         <div class="col-sm-2"></div>
         <div class="col-sm-8" >
@@ -198,29 +226,43 @@ include '../funcao/conecta.php';
         <div class="col-sm-2" ></div>
     </div>
     
+    <div class="col-sm-12" align="center">
+        
+            
+       
+        <div class="col-sm-2"></div>
+     
+       <div class="col-sm-8" >
+           <div class="col-sm-12"style="background-color:#0d1e04;max-height:80px;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px;">
+               <div class="col-sm-5">
+           <img id="imguser" class="img-circle col-sm-3 " src="<?php echo "Listar.php?codigo=$idImagemUser1";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
+         
+           <h4 style="margin:5px 5px;width:40%;float:left;"><?php echo "$UserNome_1"; ?></h4><BR>
+             <h5 style="width:40%;float:left;">DONO</h5>
+           </div>
+               <div class="col-sm-1" >
+       
+  </div>
+           
+                <div class="col-sm-5">
+           <img id="imguser" class="img-circle col-sm-3 " src="<?php echo "Listar.php?codigo=$idImagemUser2";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
+           <h4 style="margin:5px 5px;width:40%;float:left;"><?php echo "$UserNome_2"; ?></h4><BR>
+          <h5 style="width:40%;float:left;">INTERESSADO</h5>
+                </div>
+         
+           </div>
+    </div>
+    </div>
+        
+  
+    
     <div class="col-sm-1" ></div>
     <div class="col-sm-1" ></div>
     <div class="col-sm-4 " style="margin-bottom:30px;margin-top:30px;">
   <!-- Inicio da 1ª coluna de produtos-->
   <div class="col-sm-12 " >
-      <?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
-                while ($Produtos = mysql_fetch_object($sql)) { 
-                  $ProdId_1   = $Produtos->IdProduto;
-                  $ProdNome_1 = $Produtos->NomeProduto;
-                  $UserNome_1 = $Produtos->NomeUsuario;
-                  $ProdDecr_1 = $Produtos->DescProduto;
-                  $ProdCateg_1 =  $Produtos->categoria;
-                  $ProdEstado_1 =  $Produtos->estado;
-                  $ProdImg_1 =  $Produtos->img;
-                  $idImagemUser1 = $Produtos->idImagemUser;
-                }
-                ?>
-      <div class="col-sm-12" style="background-color:#0d1e04;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px">
-           <img id="imguser" class="img-circle col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser1";?>"alt="Chania" style="min-height:70%;max-height:80%;">
-           <br>
-                 <h4><?php echo "$UserNome_1"; ?></h4>   
-      </div>
+  
+      
       <div class="col-sm-5">
           <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
  </div>
@@ -241,36 +283,18 @@ include '../funcao/conecta.php';
  </div>
  <!-- Fim do Produto -->
   </div>
-        
+      
     </div>
+    
     <!-- Meio Entre as trocas-->
-  <div class="col-sm-1" >
-      
-      
-      
-  </div>
+
+
      <!-- Fim Meio Entre as trocas-->
      <div class="col-sm-4 " style="margin-bottom:30px;margin-top:30px;">
   <!-- Inicio da 2ª coluna de produtos-->
 <div class="col-sm-12 " style="">
-<?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
-                while ($Produtos2 = mysql_fetch_object($sql)) { 
-                  $ProdId_2   = $Produtos2->IdProduto;
-                  $ProdNome_2 = $Produtos2->NomeProduto;
-                  $UserNome_2 = $Produtos2->NomeUsuario;
-                  $ProdDecr_2 = $Produtos2->DescProduto;
-                  $ProdCateg_2 =  $Produtos2->categoria;
-                  $ProdEstado_2 =  $Produtos2->estado;
-                  $ProdImg_2 =  $Produtos2->img;
-                  $idImagemUser2 = $Produtos2->idImagemUser;
-                  }
-                ?>
-    <div class="col-sm-12" style="background-color:#0d1e04;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px">
-           <img id="imguser" class="img-circle col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser2";?>"alt="Chania" style="min-height:70%;max-height:80%;">
-           <br>
-                 <h4><?php echo "$UserNome_2"; ?></h4>   
-      </div>
+
+    
       <div class="col-sm-5">
         <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
  </div>
@@ -281,11 +305,7 @@ include '../funcao/conecta.php';
            <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
             <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
             <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
-           <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:70%;max-height:80%;">
-           <bR>
-                 <h4><?php echo "Dono: $UserNome_2"; ?></h4>
-               
-         
+           
        <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
             
               
@@ -323,7 +343,7 @@ include '../funcao/conecta.php';
             <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
         </form>
     </div>
-       <div class="col-lg-1"></div> 
+         <div class="col-lg-1" style="margin-bottom:100px"></div> 
        <br>
        <br>
        <br>
