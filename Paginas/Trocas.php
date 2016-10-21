@@ -200,9 +200,9 @@ include '../funcao/conecta.php';
     
     <div class="col-sm-1" ></div>
     <div class="col-sm-1" ></div>
-    <div class="col-sm-4 ">
+    <div class="col-sm-4 " style="margin-bottom:30px;margin-top:30px;">
   <!-- Inicio da 1ª coluna de produtos-->
-  <div class="col-sm-12 " style="margin-bottom:30px;">
+  <div class="col-sm-12 " >
       <?php
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
@@ -213,8 +213,14 @@ include '../funcao/conecta.php';
                   $ProdCateg_1 =  $Produtos->categoria;
                   $ProdEstado_1 =  $Produtos->estado;
                   $ProdImg_1 =  $Produtos->img;
-                  }
+                  $idImagemUser1 = $Produtos->idImagemUser;
+                }
                 ?>
+      <div class="col-sm-12" style="background-color:#0d1e04;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px">
+           <img id="imguser" class="img-circle col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser1";?>"alt="Chania" style="min-height:70%;max-height:80%;">
+           <br>
+                 <h4><?php echo "$UserNome_1"; ?></h4>   
+      </div>
       <div class="col-sm-5">
           <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
  </div>
@@ -225,9 +231,7 @@ include '../funcao/conecta.php';
             <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
             <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
   
-           <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$ProdImg_1";?>"alt="Chania" style="min-height:70%;max-height:80%;">
-           <br>
-                 <h4><?php echo "Dono: $UserNome_1"; ?></h4>
+          
           
        <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
              <form method="post" action="../funcao/insere_troca.php">   
@@ -245,9 +249,9 @@ include '../funcao/conecta.php';
       
   </div>
      <!-- Fim Meio Entre as trocas-->
-    <div class="col-sm-4 ">
+     <div class="col-sm-4 " style="margin-bottom:30px;margin-top:30px;">
   <!-- Inicio da 2ª coluna de produtos-->
-<div class="col-sm-12 " style="margin-bottom:30px;">
+<div class="col-sm-12 " style="">
 <?php
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
                 while ($Produtos2 = mysql_fetch_object($sql)) { 
@@ -258,8 +262,14 @@ include '../funcao/conecta.php';
                   $ProdCateg_2 =  $Produtos2->categoria;
                   $ProdEstado_2 =  $Produtos2->estado;
                   $ProdImg_2 =  $Produtos2->img;
+                  $idImagemUser2 = $Produtos2->idImagemUser;
                   }
                 ?>
+    <div class="col-sm-12" style="background-color:#0d1e04;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px">
+           <img id="imguser" class="img-circle col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser2";?>"alt="Chania" style="min-height:70%;max-height:80%;">
+           <br>
+                 <h4><?php echo "$UserNome_2"; ?></h4>   
+      </div>
       <div class="col-sm-5">
         <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
  </div>
@@ -286,7 +296,7 @@ include '../funcao/conecta.php';
         
     </div>
 <div class="col-sm-1" ></div>
-    <div class="col-sm-12" style="margin-top:20px;">
+    <div class="col-sm-12" style="margin-bottom:30px;margin-top:30px;">
         <div class="col-lg-1"></div>
         <div class="col-lg-4"align="right">
             <form>         

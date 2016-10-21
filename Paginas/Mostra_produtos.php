@@ -48,21 +48,21 @@ session_start();
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
+  <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
   <script src="../bootstrap-3.3.7-dist/js/jquery-3.1.1.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     </head>
     <body id="bd">
-        
- <nav class="navbar navbar-inverse navbar-fixed-top" >
+       <!-- <div class="col-sm-12" style="position:fixed;width:100%;height:100%;background-color:#156305;opacity:0.8;z-index:-1;">
+         </div>-->     
+       <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
         <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="glyphicon glyphicon-th-list"></span>
       </button>
     </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="collapse navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
@@ -201,16 +201,19 @@ session_start();
   </div>
 </nav>
     <!--Termina o menu -->
-    <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
-     <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
-    <hr style="width:75%">
+    <div class="jumbotron text-center" style="margin-top:40px;background:#FFF" align="center">
+        <img  style="margin:0 auto"class="img-responsive" src="Listar.php?codigo=1" alt="Chania">
+   
 </div> 
   <!--Menu central do usuario menu-sidnav-->
   <div id="mySidenav-tt" class="sidenav-tt">
   <div id="mySidenav" class="sidenav" align="center">
  
-  <ul align="center" style="list-style:none;color:white;padding-left:5px"> 
-      <li><img class="img-responsive " src="<?php echo"Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
+  <ul align="center" style="list-style:none;color:white;padding-left:5px;"> 
+      <li><div style="min-height:200px;max-height:200px;margin:auto;border-radius:100%">
+              <img class="img-responsive" src="<?php echo"Listar.php?codigo=$UserImg";?>" alt="Chania" style="max-height:100%;" >
+          </div>
+          </li>
       <li style="margin-top:10px;font-size:20px"><?php echo $UserNome; ?></li>
       <hr style="width:75%;margin:10px auto">
       <li style="padding:10px">
@@ -252,6 +255,7 @@ session_start();
 
         <div class="col-sm-2" ></div>
         <div class="col-sm-8">
+       
            <?php
                        if ($linhas>0 ){
                     //echo "$aPartirDeQual - $terminaEm";
@@ -271,11 +275,11 @@ session_start();
                     ?>
 
       <!-- Inicio da 1ª coluna de produtos-->
-      <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 2px lightgray;padding:20px;">
+      <div class="col-sm-12" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
             <div class="col-sm-1">
      </div>
-          <div class="col-sm-4">
-                <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:30%;max-height:80%;">
+          <div class="col-sm-4" >
+                <img class="img-responsive"src="<?php echo "Listar.php?codigo=$ProdImg";?>" alt="Chania" style="min-height:20%;max-height:70%;">
      </div>
          <div class="col-sm-1">
      </div>
@@ -411,5 +415,6 @@ session_start();
         </div>
     </div>
          </div>
+         
     </body>
 </html>
