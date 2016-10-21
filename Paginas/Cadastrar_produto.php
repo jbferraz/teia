@@ -24,6 +24,7 @@ include '../funcao/conecta.php';
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
+
 <html>
     <head>
         <meta charset="UTF-8">
@@ -33,25 +34,23 @@ include '../funcao/conecta.php';
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
     </head>
     <body id="bd">
-        
- <nav class="navbar navbar-inverse navbar-fixed-top" >
+     <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="glyphicon glyphicon-th-list"></span>
       </button>
     </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="collapse navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
-         <span class="btn-sidbar navbar-toggle" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-tasks"></span></span>
+                 <span id="menuSitemobile" class="btn-sidbar navbar-toggle" style="float:left;display:none" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-th-list"></span></span>
             </div>    
-     <span class="btn-sidbar navbar-collapse" onclick="toogle()"><span class="glyphicon glyphicon-tasks"></span></span><!--SITE NO NENU ABERTO-->
+                 <span id="menuSitepc" style="display:block" class="btn-sidbar navbar-collapse" onclick="toogle()"><span class="glyphicon glyphicon-th-list"></span></span><!--SITE NO NENU ABERTO-->
               </div></li>
           <li ><a href="../Paginas/index.php">Home</a></li>
         <li class="dropdown">
@@ -62,7 +61,7 @@ include '../funcao/conecta.php';
             <li><a href="#">Material Educacional</a></li>
           </ul>
         </li>
-        <li><a href="Mostra_Produto_s_Login.php">Trocas</a></li>
+   
         <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">

@@ -216,6 +216,38 @@ session_start();
       <hr style="width:75%;margin:10px auto">
       <li style="padding:10px">
           <h4>Rank</h4>
+           <?php         
+             $sql_user = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserId");
+        while ($User = mysql_fetch_object($sql_user)) {        
+            $Usernota= $User->media_poderada;
+            $Usernota= ceil($Usernota);
+            $Usernota = 2;
+            if (!empty($Usernota)) {
+                  
+            
+            if ($Usernota = 1) {
+               
+            }
+            if ($Usernota = 2) {
+                echo "<script>window.onload = function(){setrank2()}</script>";
+            }
+            if ($Usernota = 3) {
+                echo "<script>window.onload = function(){setrank3()}</script>";
+            }
+            if ($Usernota = 4) {
+                echo "<script>window.onload = function(){setrank4()}</script>";
+            }
+            if ($Usernota = 5) {
+                echo "<script>window.onload = function(){setrank5()}</script>";
+            }
+            }  else {
+                echo "<script>window.onload = function(){setrank()}</script>";
+            }     
+            
+        }
+          
+          
+          ?>     
 <form>
             <label><samp  class="glyphicon glyphicon-star" style="font-size:300%;"/></label>
             <label><samp  id="star2" class="glyphicon glyphicon-star-empty" style="font-size:300%;"/></label>
@@ -258,7 +290,37 @@ session_start();
       </div>
        
                  <h4>Rank</h4>
+            <?php         
+             $sql_user1 = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $_DonoPag");
+        while ($User1 = mysql_fetch_object($sql_user1)) {        
+            $Usernota1= $User1->media_poderada;
+            $Usernota1= ceil($Usernota1);            
+            if (!empty($Usernota1)) {
+                  
             
+            if ($Usernota1 == 1) {
+               
+            }
+            if ($Usernota1 == 2) {
+                echo "<script>window.onload = function(){setrank2o()}</script>";
+            }
+            if ($Usernota1 == 3) {
+                echo "<script>window.onload = function(){setrank3o()}</script>";
+            }
+            if ($Usernota1 == 4) {
+                echo "<script>window.onload = function(){setrank4o()}</script>";
+            }
+            if ($Usernota1 == 5) {
+                echo "<script>window.onload = function(){setrank5o()}</script>";
+            }
+            }  else {
+                echo "<script>window.onload = function(){setranko   ()}</script>";
+            }     
+            
+        }
+          
+          
+          ?>    
             <label><samp  class="glyphicon glyphicon-star" style="font-size:200%;"/></label>
             <label><samp  id="star2o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
             <label><samp  id="star3o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>

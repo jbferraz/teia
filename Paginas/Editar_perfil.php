@@ -27,18 +27,17 @@ include '../funcao/conecta.php';
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
     </head>
-    <body id="bd" >
-  <nav class="navbar navbar-inverse navbar-fixed-top" >
+    <body id="bd">
+     <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
         <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="glyphicon glyphicon-th-list"></span>
       </button>
     </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="collapse navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
@@ -55,7 +54,7 @@ include '../funcao/conecta.php';
             <li><a href="#">Material Educacional</a></li>
           </ul>
         </li>
-        <li><a href="Mostra_Produto_s_Login.php?pag=1">Trocas</a></li>
+   
         <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
@@ -136,9 +135,9 @@ include '../funcao/conecta.php';
   </div>
 </nav>
     <!--Termina o menu -->
-    <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
-    <img class="img-responsive" src="../Imagens/logo.png" alt="Chania">
-    <hr style="width:75%">
+    <div class="jumbotron text-center" style="margin-top:40px;background:#FFF" align="center">
+        <img  style="margin:0 auto"class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
+   <hr style="width:75%">
 </div> 
   <!--Menu central do usuario menu-sidnav-->
   <div id="mySidenav-tt" class="sidenav-tt">

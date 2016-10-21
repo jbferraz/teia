@@ -8,5 +8,11 @@
                       VALUES ($user_i,$user_d ,$id_troca,ADDDATE( now(), INTERVAL 7 DAY),ADDDATE( now(), INTERVAL 10 DAY),ADDDATE( now(), INTERVAL 15 DAY),0)";
 //executamos a instução SQL
             mysql_query("$sql_up_toca") or die (mysql_error());
+            
+          $sql_3="UPDATE `trocaoferta` SET `status`=1 WHERE `idUsuarioINT` = $user_i";
+//executamos a instução SQL
+            mysql_query("$sql_3") or die ("sql2 ".mysql_error()); 
+            
             header('Location:../Paginas/Mostra_produtos.php');
+            
         ?>

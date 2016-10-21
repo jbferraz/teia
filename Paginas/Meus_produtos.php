@@ -46,20 +46,18 @@ session_start();
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+  <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
     </head>
     <body id="bd">
-        
- <nav class="navbar navbar-inverse navbar-fixed-top" >
+     <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
         <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="glyphicon glyphicon-th-list"></span>
       </button>
     </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="collapse navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
@@ -67,7 +65,7 @@ session_start();
             </div>    
                  <span id="menuSitepc" style="display:block" class="btn-sidbar navbar-collapse" onclick="toogle()"><span class="glyphicon glyphicon-th-list"></span></span><!--SITE NO NENU ABERTO-->
               </div></li>
-          <li style=""><a href="../Paginas/index.php">Home</a></li>
+          <li ><a href="../Paginas/index.php">Home</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sobre nos<span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -76,8 +74,8 @@ session_start();
             <li><a href="#">Material Educacional</a></li>
           </ul>
         </li>
-      
-        <li><a href="Eco_Pontos.php">Ecopontos</a></li>       
+   
+        <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
               <?php 
@@ -197,6 +195,7 @@ session_start();
     </div>
   </div>
 </nav>
+
     <!--Termina o menu -->
     <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
         <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
@@ -213,6 +212,7 @@ session_start();
       <li style="padding:10px">
           <h4>Rank</h4>
 <form>
+  
             <label><samp  class="glyphicon glyphicon-star" style="font-size:300%;"/></label>
             <label><samp  id="star2" class="glyphicon glyphicon-star-empty" style="font-size:300%;"/></label>
             <label><samp  id="star3" class="glyphicon glyphicon-star-empty" style="font-size:300%;"/></label>

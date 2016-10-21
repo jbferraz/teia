@@ -34,12 +34,13 @@ include '../funcao/conecta.php';
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
 </head>
 <body>
     <div class="jumbotron text-center" style="background:white">
     <img class="img-responsive" src="../Imagens/logo.png" alt="Chania">
 </div> 
- <nav class="navbar navbar-inverse">
+ <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

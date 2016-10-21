@@ -27,6 +27,9 @@
 //executamos a instução SQL
             mysql_query("$sql_2") or die ("sql2 ".mysql_error());        
             
+            $sql_3="UPDATE `trocaoferta` SET `status`=1 WHERE `idUsuarioINT` = $user_i";
+//executamos a instução SQL
+            mysql_query("$sql_3") or die ("sql2 ".mysql_error()); 
             header('Location:../Paginas/Mostra_produtos.php');
            
         ?>

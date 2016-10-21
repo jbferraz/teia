@@ -35,26 +35,24 @@ include '../funcao/conecta.php';
 
 <html>
     <head>
-        <meta charset="UTF-8">
+      <meta charset="UTF-8">
         <title></title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
     </head>
-    <body id="bd" >
-             
-  <nav class="navbar navbar-inverse navbar-fixed-top" >
+    <body id="bd">
+     <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
         <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <span class="glyphicon glyphicon-th-list"></span>
       </button>
     </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="collapse navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
@@ -71,7 +69,7 @@ include '../funcao/conecta.php';
             <li><a href="#">Material Educacional</a></li>
           </ul>
         </li>
-       <li><a href="Mostra_Produto_s_Login.php">Trocas</a></li>
+   
         <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">

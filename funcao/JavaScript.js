@@ -124,3 +124,103 @@ function pagUsuario(x){
     
 };
 
+function setrank(){
+        document.getElementById("star2").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star3").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="1";
+}
+function setrank2(){
+    var c=document.getElementById("star2").className;
+    if(c==="glyphicon glyphicon-star-empty"){
+        document.getElementById("star2").className="glyphicon glyphicon-star";
+        document.getElementById("nota").value="2";
+    }else{
+        document.getElementById("star3").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="2";
+    }
+}
+function setrank3(){
+    var c=document.getElementById("star3").className;
+    if(c==="glyphicon glyphicon-star-empty"){
+        document.getElementById("star2").className="glyphicon glyphicon-star";
+        document.getElementById("star3").className="glyphicon glyphicon-star";
+         document.getElementById("nota").value="3";
+    }else{
+        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="3";
+    }
+}
+function setrank4(){
+    var c=document.getElementById("star4").className;
+    if(c==="glyphicon glyphicon-star-empty"){
+        document.getElementById("star2").className="glyphicon glyphicon-star";
+        document.getElementById("star3").className="glyphicon glyphicon-star";
+        document.getElementById("star4").className="glyphicon glyphicon-star";
+         document.getElementById("nota").value="4";
+    }else{
+        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="4";
+    }
+}
+function setrank5(){
+        document.getElementById("star2").className="glyphicon glyphicon-star";
+        document.getElementById("star3").className="glyphicon glyphicon-star";
+        document.getElementById("star4").className="glyphicon glyphicon-star";
+        document.getElementById("star5").className="glyphicon glyphicon-star";
+        document.getElementById("nota").value="5";
+}
+function setranko(){
+        document.getElementById("star2").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star3").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="1";
+}
+function setrank2o(){
+    var c=document.getElementById("star2o").className;
+    if(c==="glyphicon glyphicon-star-empty"){
+        document.getElementById("star2o").className="glyphicon glyphicon-star";
+        document.getElementById("nota").value="2";
+    }else{
+        document.getElementById("star3o").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star4o").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star5o").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="2";
+    }
+}
+function setrank3o(){
+    var c=document.getElementById("star3o").className;
+    if(c==="glyphicon glyphicon-star-empty"){
+        document.getElementById("star2o").className="glyphicon glyphicon-star";
+        document.getElementById("star3o").className="glyphicon glyphicon-star";
+         document.getElementById("notao").value="3";
+    }else{
+        document.getElementById("star4o").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star5o").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="3";
+    }
+}
+function setrank4o(){
+    var c=document.getElementById("star4o").className;
+    if(c==="glyphicon glyphicon-star-empty"){
+        document.getElementById("star2o").className="glyphicon glyphicon-star";
+        document.getElementById("star3o").className="glyphicon glyphicon-star";
+        document.getElementById("star4o").className="glyphicon glyphicon-star";
+         document.getElementById("notao").value="4";
+    }else{
+        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
+        document.getElementById("nota").value="4";
+    }
+}
+function setrank5o(){
+        document.getElementById("star2o").className="glyphicon glyphicon-star";
+        document.getElementById("star3o").className="glyphicon glyphicon-star";
+        document.getElementById("star4o").className="glyphicon glyphicon-star";
+        document.getElementById("star5o").className="glyphicon glyphicon-star";
+        document.getElementById("nota").value="5";
+}

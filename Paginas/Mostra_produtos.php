@@ -41,21 +41,20 @@ session_start();
                 }
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
+  
 <html>
     <head>
-       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+       <meta charset="UTF-8">
         <title></title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
-  <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
-  <script src="../bootstrap-3.3.7-dist/js/jquery-3.1.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
     </head>
     <body id="bd">
-       <!-- <div class="col-sm-12" style="position:fixed;width:100%;height:100%;background-color:#156305;opacity:0.8;z-index:-1;">
-         </div>-->     
-       <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
+     <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
         <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -202,7 +201,7 @@ session_start();
 </nav>
     <!--Termina o menu -->
     <div class="jumbotron text-center" style="margin-top:40px;background:#FFF" align="center">
-        <img  style="margin:0 auto"class="img-responsive" src="Listar.php?codigo=1" alt="Chania">
+        <img  style="margin:0 auto"class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
    
 </div> 
   <!--Menu central do usuario menu-sidnav-->
@@ -218,6 +217,38 @@ session_start();
       <hr style="width:75%;margin:10px auto">
       <li style="padding:10px">
           <h4>Rank</h4>
+          
+          <?php         
+             $sql_user = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserId");
+        while ($User = mysql_fetch_object($sql_user)) {        
+            $Usernota= $User->media_poderada;
+            $Usernota= ceil($Usernota);
+            
+            if (!empty($Usernota)) {
+                  
+            
+            if ($Usernota = 1) {
+               
+            }
+            if ($Usernota = 2) {
+                 echo "<script>window.onload = function(){setrank2()}</script>";
+            }
+            if ($Usernota = 3) {
+                echo "<script>window.onload = function(){setrank3()}</script>";
+            }
+            if ($Usernota = 4) {
+                echo "<script>window.onload = function(){setrank4()}</script>";
+            }
+            if ($Usernota = 5) {
+                echo "<script>window.onload = function(){setrank5()}</script>";
+            }
+            }     
+            
+        }
+          
+          
+          ?>     
+            
 <form>
             <label><samp  class="glyphicon glyphicon-star" style="font-size:300%;"/></label>
             <label><samp  id="star2" class="glyphicon glyphicon-star-empty" style="font-size:300%;"/></label>

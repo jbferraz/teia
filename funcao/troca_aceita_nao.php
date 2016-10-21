@@ -30,6 +30,9 @@
             mysql_query("$sql_3") or die (mysql_error());
             header('Location:../Paginas/Mostra_produtos.php');
             
+            $sql_4="UPDATE `trocaoferta` SET `status`=1 WHERE `idUsuarioINT` = $user_i";
+//executamos a instução SQL
+            mysql_query("$sql_4") or die ("sql2 ".mysql_error()); 
            
         ?>
  

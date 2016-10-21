@@ -42,32 +42,30 @@ session_start();
 
 <html>
     <head>
-        <meta charset="UTF-8">
+        <<meta charset="UTF-8">
         <title></title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
     </head>
-    <body id="bd" >
-             
- <nav class="navbar navbar-inverse navbar-fixed-top" >
+    <body id="bd">
+     <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+        <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="glyphicon glyphicon-th-list"></span>
       </button>
     </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
+      <div class="collapse navbar-collapse " id="myNavbar">
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
              <div class="navbar-header">
-         <span class="btn-sidbar navbar-toggle" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-th-list"></span></span>
+                 <span id="menuSitemobile" class="btn-sidbar navbar-toggle" style="float:left;display:none" onclick="toogle()" data-toggle="collapse" data-target="#myNavbar"><span class="glyphicon glyphicon-th-list"></span></span>
             </div>    
-     <span class="btn-sidbar navbar-collapse" onclick="toogle()"><span class="glyphicon glyphicon-th-list"></span></span><!--SITE NO NENU ABERTO-->
+                 <span id="menuSitepc" style="display:block" class="btn-sidbar navbar-collapse" onclick="toogle()"><span class="glyphicon glyphicon-th-list"></span></span><!--SITE NO NENU ABERTO-->
               </div></li>
           <li ><a href="../Paginas/index.php">Home</a></li>
         <li class="dropdown">
@@ -78,7 +76,7 @@ session_start();
             <li><a href="#">Material Educacional</a></li>
           </ul>
         </li>
-       <li><a href="Mostra_Produto_s_Login.php">Trocas</a></li>
+   
         <li><a href="Eco_Pontos.php">Ecopontos</a></li>
       </ul>
          <ul class="nav navbar-nav navbar-right">
@@ -265,6 +263,7 @@ session_start();
 				$idUsuarioOF = mysql_result($consulta,$i,"idUsuarioOF");
 				$idUsuarioINT = mysql_result($consulta,$i,"idUsuarioINT");
 				$Prod_dono_id = mysql_result($consulta,$i,"idProdutoINT");
+                                $status = mysql_result($consulta,$i,"status");
                       
             ?>
         <div class="col-lg-12" >
@@ -323,7 +322,44 @@ session_start();
         </div>
         
     <?PHP 
-    }}
+            if ($status == 0) {
+               ?>  
+        <div class="col-lg-12" ></div>
+      
+    <div class="col-sm-12" style="margin-bottom:30px;margin-top:30px;">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-4"align="right">
+            <form>         
+            </form>
+            <form action="../funcao/troca_recusar.php" method="post">  
+            <input class="btn-default " type="submit" value="Recusar" style="min-width:50%;min-height:30px">
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
+            <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
+            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
+            <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
+            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
+            </form>
+           
+        </div>
+         <div class="col-lg-1"></div>
+         <div class="col-lg-4 "align="left">
+             <form>         
+            </form>
+             <form action="../funcao/troca_aceita.php" method="post">
+            <input class="btn-default left" type="submit" value="Aceitar" style="min-width:50%;min-height:30px">
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
+             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
+            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
+             <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
+            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
+        </form>
+    </div>
+        
+        
+        
+        
+      <?PHP 
+                   }}}
     ?>
     
      <div class="col-sm-12" align="center">
