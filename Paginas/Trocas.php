@@ -247,6 +247,7 @@ include '../funcao/conecta.php';
   <div class="col-sm-1" >
       
       
+      
   </div>
      <!-- Fim Meio Entre as trocas-->
      <div class="col-sm-4 " style="margin-bottom:30px;margin-top:30px;">
