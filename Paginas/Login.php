@@ -1,7 +1,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Login - Projeto teia</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -28,9 +28,9 @@
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sobre nos<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">O Projeto</a></li>
-            <li><a href="#">Historia</a></li>
-            <li><a href="#">Material Educacional</a></li>
+           <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
+            <li><a href="../Paginas/Colaboradores.php">Colaboradores</a></li>
+            <!--<li><a href="#">Material Educacional</a></li>-->
           </ul>
         </li>
         

@@ -43,7 +43,7 @@ session_start();
 <html>
     <head>
         <<meta charset="UTF-8">
-        <title></title>
+        <title>Historico de Troca - Projeto teia</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
@@ -71,9 +71,9 @@ session_start();
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sobre nos<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">O Projeto</a></li>
-            <li><a href="#">Historia</a></li>
-            <li><a href="#">Material Educacional</a></li>
+          <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
+            <li><a href="../Paginas/Colaboradores.php">Colaboradores</a></li>
+            <!--<li><a href="#">Material Educacional</a></li>-->
           </ul>
         </li>
    
@@ -219,7 +219,7 @@ session_start();
         while ($User = mysql_fetch_object($sql_user)) {        
             $Usernota= $User->media_poderada;
             $Usernota= ceil($Usernota);
-            echo "$Usernota";
+            
             if (!empty($Usernota)) {
                   
             
@@ -272,7 +272,7 @@ session_start();
         <div class="col-sm-10">
        <div class="panel panel-default">
         <div class="panel-heading">
-        <h3>Proposta de Troca</h3>
+        <h3>Historico de Troca</h3>
         </div>
        
     </div>
