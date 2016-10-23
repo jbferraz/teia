@@ -15,7 +15,7 @@ session_start();
             $UserImg= $User->idImagem;
         }  
         $consulta = mysql_query("select * FROM `trocaoferta` WHERE `idUsuarioOF`= $UserId or idUsuarioINT = $UserId  ORDER BY `idTroca` ASC");
-                    $linhas = mysql_num_rows($consulta);
+                $linhas = mysql_num_rows($consulta);
                 //quantidade de conteudo exibido por pagina
 		$qtitenspag = 10;
 		$qtpaginas = ceil($linhas/$qtitenspag);
@@ -283,7 +283,7 @@ session_start();
     </div>
     <!-- fim menu-->
 
-    <div class="col-sm-12">
+    <div class="col-sm-12" >
    
     <?php
     
@@ -296,14 +296,9 @@ session_start();
 				$idUsuarioINT = mysql_result($consulta,$i,"idUsuarioINT");
 				$Prod_dono_id = mysql_result($consulta,$i,"idProdutoINT");
                                 $status = mysql_result($consulta,$i,"status");
-                      
-            ?>
-        <div class="col-lg-12" >
-            
-            <div class="col-lg-2"></div>
-            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:300;">
-                <?php
-                $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
+                                $idTroca = mysql_result($consulta,$i,"idTroca");
+       
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
                   $ProdId_1   = $Produtos->IdProduto;
                   $ProdNome_1 = $Produtos->NomeProduto;
@@ -312,71 +307,174 @@ session_start();
                   $ProdCateg_1 =  $Produtos->categoria;
                   $ProdEstado_1 =  $Produtos->estado;
                   $ProdImg_1 =  $Produtos->img;
-                  }
-                ?>
-                <div class="col-lg-5" >
-                    <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:50%;max-height:80%;margin:0 auto;margin-top:25px;">
-                </div> 
-                <div class="col-lg-4">
-                <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
-                <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
-                <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
-                <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
-                </div>      
-            </div>
-           
-            <div class="col-lg-1"></div>
-            <?php
-   
-            
+                  $idImagemUser1 = $Produtos->idImagemUser;
+                }
+                
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
-                while ($Produtos = mysql_fetch_object($sql)) { 
-                  $ProdId_2   = $Produtos->IdProduto;
-                  $ProdNome_2 = $Produtos->NomeProduto;
-                  $UserNome_2 = $Produtos->NomeUsuario;
-                  $ProdDecr_2 = $Produtos->DescProduto;
-                  $ProdCateg_2 =  $Produtos->categoria;
-                  $ProdEstado_2 =  $Produtos->estado;
-                  $ProdImg_2 =  $Produtos->img;
+                while ($Produtos2 = mysql_fetch_object($sql)) { 
+                  $ProdId_2   = $Produtos2->IdProduto;
+                  $ProdNome_2 = $Produtos2->NomeProduto;
+                  $UserNome_2 = $Produtos2->NomeUsuario;
+                  $ProdDecr_2 = $Produtos2->DescProduto;
+                  $ProdCateg_2 =  $Produtos2->categoria;
+                  $ProdEstado_2 =  $Produtos2->estado;
+                  $ProdImg_2 =  $Produtos2->img;
+                  $idImagemUser2 = $Produtos2->idImagemUser;
                   }
                 ?>
-            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:300px;">
-                <div class="col-lg-5">
-                    <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:50%;max-height:80%; margin-top:25px;">
-                 </div> 
-              <div class="col-lg-4">         
-                    <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
-                    <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
-                    <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
-                    <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
-           </div>
-             
-            <div class="col-sm-4">
-           
-        </div> </div>
+              
+   
+    
+    
+    <div class="col-sm-12" align="center" >
         
-    <?PHP 
+            
+       
+        <div class="col-sm-2"></div>
+     
+       <div class="col-sm-8" >
+           <div class="col-sm-12"style="background-color:#0d1e04;max-height:150;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px;">
+               <div class="col-sm-5">
+           <img id="imguser" class="img-circle col-sm-3 " src="<?php echo "Listar.php?codigo=$idImagemUser1";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
+         
+           <h4 style="margin:5px 5px;width:40%;float:left;"><?php echo "$UserNome_1"; ?></h4><BR>
+             <h5 style="width:40%;float:left;">DONO</h5>
+             
+             <div class="col-sm-12">
+         
+            
+            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            
+  
+                 
+             </div>
+           </div>
+               <div class="col-sm-1" >
+       
+  </div>
+           
+                <div class="col-sm-5">
+           <img id="imguser" class="img-circle col-sm-3 " src="<?php echo "Listar.php?codigo=$idImagemUser2";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
+           <h4 style="margin:5px 5px;width:40%;float:left;"><?php echo "$UserNome_2"; ?></h4><BR>
+          <h5 style="width:40%;float:left;">INTERESSADO</h5>
+             <div class="col-sm-12">
+         
+            
+            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            
+  
+    
+             </div>
+           
+        </div>
+       
+    
+           <div class="col-sm-12" id="25">
+                                     <?PHP 
             if ($status == 0) {
                ?>        
-    <div class="col-sm-12" style="margin-bottom:30px;margin-top:30px;">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-4"align="center">
+           <div class="col-sm-12 right">
+        
+               <div class="col-sm-12">
             <form>         
             </form>
             <form action="../Paginas/Trocas.php" method="post">  
-            <input class="btn-default " type="submit" value="Abir troca" style="min-width:50%;min-height:30px">
-            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
-            <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
-            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
-            <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
-            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
-            </form>
+            <input class="btn-default " type="submit" value="Responder Proposta" style="min-width:50%;min-height:30px;background:transparent;border:0;color:white">
+            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $idTroca; ?>">  
+            </form>  </div>
+          </div>
+         <?PHP 
+            }
+               ?> 
            
-        </div>
+                </div>
+         </div>
+           </div>
+    </div>
+    </div>
+        
+  
+    
+    <div class="col-sm-1" ></div>
+    <div class="col-sm-1" ></div>
+    <div class="col-sm-4 " style="margin-bottom:30px;margin-top:30px;">
+  <!-- Inicio da 1ª coluna de produtos-->
+  <div class="col-sm-12 " style="margin-bottom:50px">
+  
+      
+      <div class="col-sm-5">
+          <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_1";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
+ </div>
+     <div class="col-sm-1">
+ </div>
+       <div class="col-sm-4">          
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
+  
+          
+          
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
+             <form method="post" action="../funcao/insere_troca.php">   
+              
+ </div>
+         <div class="col-sm-1">
+ </div>
+ <!-- Fim do Produto -->
+  </div>
+      
+    </div>
+    
+    <!-- Meio Entre as trocas-->
+
+
+     <!-- Fim Meio Entre as trocas-->
+     <div class="col-sm-4 " style="margin-bottom:30px;margin-top:30px;">
+  <!-- Inicio da 2ª coluna de produtos-->
+<div class="col-sm-12 " style="">
+
+    
+      <div class="col-sm-5">
+        <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:30%;max-height:80%;margin-top:25px;">
+ </div>
+     <div class="col-sm-1">
+ </div>
+       <div class="col-sm-4">
+          
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+           
+       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
+            
+              
+ </div>
+         <div class="col-sm-1">
+ </div>
+ <!-- Fim do Produto -->
+  </div>
+        
+    </div>
+<div class="col-sm-1" ></div>
+    
+             
+    
       <?PHP 
-                   }}}
+                   }}
     ?>
     
+     </div>     
+  
+         <div class="col-lg-1" style="margin-bottom:100px"></div> 
+   
      <div class="col-sm-12" align="center">
  
   <nav aria-label="Page navigation">
@@ -421,6 +519,7 @@ session_start();
 </nav>
 
   </div>
+    </div>
     </body>
     
     
