@@ -97,13 +97,113 @@
       <p class="text-justify">Coordenador dos cursos de informática do Senac Gravataí e desenvolvedor Web.</p>
     </div>
   </div>       
-            
-            
-            
-            
+   <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Adriana.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Adriana zimmerman</h4>
+      <p class="text-justify">Coordenadora do curso Técnico em meio ambiente, é o braço de ferro do projeto, assim fazendo parte de todas os eixos do projeto.</p>
+    </div>
+  </div>         
+     <!------->
+               
+   <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Camill]a.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Camila Helena</h4>
+      <p class="text-justify">Professora do curso Técnico em meio ambiente, coordenadora de ações envolvendo a comunidade.</p>
+    </div>
+  </div> 
+     <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/IMG-20161021-WA0005.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Paulo Mendes Souza</h4>
+      <p class="text-justify">Professor de design gráfico, auxilia no desenvolvimento do material gráfico do projeto.</p>
+    </div>
+  </div>
+             <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Sandro.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Sandro Teixeira </h4>
+      <p class="text-justify">Professor de Marketing, auxilia no planejamento de marketing do projeto</p>
+    </div>
+  </div>
+    <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Vitor.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Vitor Hugo</h4>
+      <p class="text-justify">Deu ínicio ao projeto em 2015, Responsável pela manutenção dos computadores e oficinas de informática,palestrante do projeto.</p>
+    </div>
+  </div>                    
+    <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Joao.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">João Vitor</h4>
+      <p class="text-justify">Se uniu ao projeto em Fevereiro de 2016, agregando muito valor, responsável pela parte de conscientização da população,palestrante do projeto.</p>
+    </div>
+  </div>          
+      
+      <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Paulo.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Paulo da Silva</h4>
+      <p class="text-justify">Se uniu ao projeto em Fevereiro de 2016, assumindo a parte de parcerias com empresas, palestrante do projeto.</p>
+    </div>
+  </div>   
+        <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Ismael.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Ismael Silva</h4>
+      <p class="text-justify">Desenvolvedor mobile responsável pelo aplicativo do projeto a ferramenta mais importante do projeto.</p>
+    </div>
+  </div> 
+               <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Matheus.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Matheus Pellisoli</h4>
+      <p class="text-justify">Desenvolvedor do web site.</p>
+    </div>
+  </div> 
+                      <!------->
+  <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
+    <div class="media-left">
+        <img src="../Imagens/Colaboradores/Lucas.jpg" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading text-justify">Lucas Pellisoli</h4>
+      <p class="text-justify">Desenvolvedor do web site.</p>
+    </div>
+  </div> 
+      
+      
+      
         <div class="col-sm-1" ></div>
     </div>
-    
     
     <div class="col-sm-12" style="margin-bottom:100px"></div>
 </body>

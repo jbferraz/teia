@@ -118,7 +118,7 @@ include '../funcao/conecta.php';
           
  </div>
       <form></form>
-      <form >    
+      <form class="col-sm-12" align="center">    
       <button id="btnOn" onclick="" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
       </form>
          <div class="col-sm-1">

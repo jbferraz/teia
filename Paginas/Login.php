@@ -10,7 +10,7 @@
     </head>
     <body>
         <div class="jumbotron text-center" style="margin-top:40px;background:#FFF" align="center">
-        <img  style="margin:0 auto"class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
+            <img  style="margin:0 auto"class="img-responsive" src="../Imagens/logo.png" alt="Chania">
    
 </div> 
   <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
