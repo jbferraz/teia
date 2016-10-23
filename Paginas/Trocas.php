@@ -23,7 +23,7 @@ include '../funcao/conecta.php';
              
      $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
     //executamos a instução SQL
-    mysql_query("$sql_up_toca") or die (mysql_error())
+    //mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
 
@@ -164,23 +164,23 @@ include '../funcao/conecta.php';
         while ($User = mysql_fetch_object($sql_user)) {        
             $Usernota= $User->media_poderada;
             $Usernota= ceil($Usernota);
-            echo "$Usernota";
+            
             if (!empty($Usernota)) {
                   
             
-            if ($Usernota == 1) {
+            if ($Usernota = 1) {
                
             }
-            if ($Usernota == 2) {
+            if ($Usernota = 2) {
                  echo "<script>window.onload = function(){setrank2()}</script>";
             }
-            if ($Usernota == 3) {
+            if ($Usernota = 3) {
                 echo "<script>window.onload = function(){setrank3()}</script>";
             }
-            if ($Usernota == 4) {
+            if ($Usernota = 4) {
                 echo "<script>window.onload = function(){setrank4()}</script>";
             }
-            if ($Usernota == 5) {
+            if ($Usernota = 5) {
                 echo "<script>window.onload = function(){setrank5()}</script>";
             }
             }     
@@ -223,6 +223,7 @@ include '../funcao/conecta.php';
                   $ProdEstado_1 =  $Produtos->estado;
                   $ProdImg_1 =  $Produtos->img;
                   $idImagemUser1 = $Produtos->idImagemUser;
+                  $UserID_1 = $Produtos->idUsuario;
                 }
                 
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
@@ -235,6 +236,7 @@ include '../funcao/conecta.php';
                   $ProdEstado_2 =  $Produtos2->estado;
                   $ProdImg_2 =  $Produtos2->img;
                   $idImagemUser2 = $Produtos2->idImagemUser;
+                  $UserID_2 = $Produtos2->idUsuario;
                   }
                 ?>
               
@@ -267,13 +269,45 @@ include '../funcao/conecta.php';
              <h5 style="width:40%;float:left;">DONO</h5>
              
              <div class="col-sm-12">
-         
+                  <?php         
+             $sql_user1 = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserID_1");
+        while ($User1 = mysql_fetch_object($sql_user1)) {        
+            $Usernota1= $User1->media_poderada;
+            $Usernota1= ceil($Usernota1); 
             
-            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            if (!empty($Usernota1)) {
+                  
+            
+            if ($Usernota1 == 1) {
+               
+            }
+            if ($Usernota1 == 2) {
+                echo "<script>window.onload = function(){setrank2o()}</script>";
+            }
+            if ($Usernota1 == 3) {
+                echo "<script>window.onload = function(){setrank3o()}</script>";
+            }
+            if ($Usernota1 == 4) {
+                echo "<script>window.onload = function(){setrank4o()}</script>";
+            }
+            if ($Usernota1 == 5) {
+                echo "<script>window.onload = function(){setrank5o()}</script>";
+            }
+            }  else {
+                echo "<script>window.onload = function(){setranko   ()}</script>";
+            }     
+            
+        }
+          
+          
+          ?>  
+            
+            <label><samp  class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp  id="star2o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star3o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star4o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star5o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+          
             
   
                  
@@ -288,17 +322,49 @@ include '../funcao/conecta.php';
            <h4 style="margin:5px 5px;width:40%;float:left;"><?php echo "$UserNome_2"; ?></h4><BR>
           <h5 style="width:40%;float:left;">INTERESSADO</h5>
              <div class="col-sm-12">
-         
+                  <?php         
+             $sql_user1 = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserID_2");
+        while ($User1 = mysql_fetch_object($sql_user1)) {        
+            $Usernota1= $User1->media_poderada;
+            $Usernota1= ceil($Usernota1); 
             
-            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            if (!empty($Usernota1)) {
+                  
+            
+            if ($Usernota1 == 1) {
+               
+            }
+            if ($Usernota1 == 2) {
+                echo "<script>window.onload = function(){setrank2o1()}</script>";
+            }
+            if ($Usernota1 == 3) {
+                echo "<script>window.onload = function(){setrank3o1()}</script>";
+            }
+            if ($Usernota1 == 4) {
+                echo "<script>window.onload = function(){setrank4o1()}</script>";
+            }
+            if ($Usernota1 == 5) {
+                echo "<script>window.onload = function(){setrank5o1()}</script>";
+            }
+            }  else {
+                echo "<script>window.onload = function(){setranko1()}</script>";
+            }     
+            
+        }
+          
+          
+          ?>  
+            
+            <label><samp  class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp  id="star2o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star3o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star4o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star5o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+          
             
   
                  
-             </div>    
+             </div>  
                 </div>
          
            </div>
