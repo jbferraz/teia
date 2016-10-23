@@ -308,6 +308,7 @@ session_start();
                   $ProdEstado_1 =  $Produtos->estado;
                   $ProdImg_1 =  $Produtos->img;
                   $idImagemUser1 = $Produtos->idImagemUser;
+                  $UserID_1 = $Produtos->idUsuario;
                 }
                 
     $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
@@ -320,6 +321,7 @@ session_start();
                   $ProdEstado_2 =  $Produtos2->estado;
                   $ProdImg_2 =  $Produtos2->img;
                   $idImagemUser2 = $Produtos2->idImagemUser;
+                  $UserID_2 = $Produtos2->idUsuario;
                   }
                 ?>
               
@@ -341,15 +343,46 @@ session_start();
              <h5 style="width:40%;float:left;">DONO</h5>
              
              <div class="col-sm-12">
-         
+         <?php         
+             $sql_user1 = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserID_1");
+        while ($User1 = mysql_fetch_object($sql_user1)) {        
+            $Usernota1= $User1->media_poderada;
+            $Usernota1= ceil($Usernota1); 
             
-            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            if (!empty($Usernota1)) {
+                  
             
-  
+            if ($Usernota1 == 1) {
+               
+            }
+            if ($Usernota1 == 2) {
+                echo "<script>window.onload = function(){setrank2o()}</script>";
+            }
+            if ($Usernota1 == 3) {
+                echo "<script>window.onload = function(){setrank3o()}</script>";
+            }
+            if ($Usernota1 == 4) {
+                echo "<script>window.onload = function(){setrank4o()}</script>";
+            }
+            if ($Usernota1 == 5) {
+                echo "<script>window.onload = function(){setrank5o()}</script>";
+            }
+            }  else {
+                echo "<script>window.onload = function(){setranko   ()}</script>";
+            }     
+            
+        }
+          
+          
+          ?>  
+            
+            <label><samp  class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp  id="star2o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star3o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star4o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star5o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+          
+            
                  
              </div>
            </div>
@@ -363,12 +396,45 @@ session_start();
           <h5 style="width:40%;float:left;">INTERESSADO</h5>
              <div class="col-sm-12">
          
+             <?php         
+             $sql_user2 = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserID_2");
+        while ($User2 = mysql_fetch_object($sql_user1)) {        
+            $Usernota2= $User2->media_poderada;
+            $Usernota2= ceil($Usernota2); 
             
-            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
-            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            if (!empty($Usernota2)) {
+                  
+            
+            if ($Usernota2 == 1) {
+               
+            }
+            if ($Usernota2 == 2) {
+                echo "<script>window.onload = function(){setrank2o1()}</script>";
+            }
+            if ($Usernota2 == 3) {
+                echo "<script>window.onload = function(){setrank3o1()}</script>";
+            }
+            if ($Usernota2 == 4) {
+                echo "<script>window.onload = function(){setrank4o1()}</script>";
+            }
+            if ($Usernota2 == 5) {
+                echo "<script>window.onload = function(){setrank5o1()}</script>";
+            }
+            }  else {
+                echo "<script>window.onload = function(){setranko1()}</script>";
+            }     
+            
+        }
+          
+          
+          ?>  
+            
+            <label><samp  class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp  id="star2o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star3o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star4o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp  id="star5o" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+          
             
   
     
