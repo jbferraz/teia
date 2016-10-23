@@ -148,6 +148,38 @@ include '../funcao/conecta.php';
       <hr style="width:75%;margin:10px auto">
       <li style="padding:10px">
           <h4>Rank</h4>
+          
+          <?php         
+             $sql_user = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserId");
+        while ($User = mysql_fetch_object($sql_user)) {        
+            $Usernota= $User->media_poderada;
+            $Usernota= ceil($Usernota);
+            echo "$Usernota";
+            if (!empty($Usernota)) {
+                  
+            
+            if ($Usernota == 1) {
+               
+            }
+            if ($Usernota == 2) {
+                 echo "<script>window.onload = function(){setrank2()}</script>";
+            }
+            if ($Usernota == 3) {
+                echo "<script>window.onload = function(){setrank3()}</script>";
+            }
+            if ($Usernota == 4) {
+                echo "<script>window.onload = function(){setrank4()}</script>";
+            }
+            if ($Usernota == 5) {
+                echo "<script>window.onload = function(){setrank5()}</script>";
+            }
+            }     
+            
+        }
+          
+          
+          ?>     
+            
 <form>
             <label><samp  class="glyphicon glyphicon-star" style="font-size:300%;"/></label>
             <label><samp  id="star2" class="glyphicon glyphicon-star-empty" style="font-size:300%;"/></label>

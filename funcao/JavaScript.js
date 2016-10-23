@@ -135,6 +135,9 @@ function setrank2(){
     var c=document.getElementById("star2").className;
     if(c==="glyphicon glyphicon-star-empty"){
         document.getElementById("star2").className="glyphicon glyphicon-star";
+        document.getElementById("star3").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star4").className="glyphicon glyphicon-star-empty"
+        document.getElementById("star5").className="glyphicon glyphicon-star-empty"
         document.getElementById("nota").value="2";
     }else{
         document.getElementById("star3").className="glyphicon glyphicon-star-empty"
@@ -174,6 +177,8 @@ function setrank5(){
         document.getElementById("star5").className="glyphicon glyphicon-star";
         document.getElementById("nota").value="5";
 }
+
+
 function setranko(){
         document.getElementById("star2").className="glyphicon glyphicon-star-empty"
         document.getElementById("star3").className="glyphicon glyphicon-star-empty"

@@ -223,23 +223,23 @@ session_start();
         while ($User = mysql_fetch_object($sql_user)) {        
             $Usernota= $User->media_poderada;
             $Usernota= ceil($Usernota);
-            
+            echo "$Usernota";
             if (!empty($Usernota)) {
                   
             
-            if ($Usernota = 1) {
+            if ($Usernota == 1) {
                
             }
-            if ($Usernota = 2) {
+            if ($Usernota == 2) {
                  echo "<script>window.onload = function(){setrank2()}</script>";
             }
-            if ($Usernota = 3) {
+            if ($Usernota == 3) {
                 echo "<script>window.onload = function(){setrank3()}</script>";
             }
-            if ($Usernota = 4) {
+            if ($Usernota == 4) {
                 echo "<script>window.onload = function(){setrank4()}</script>";
             }
-            if ($Usernota = 5) {
+            if ($Usernota == 5) {
                 echo "<script>window.onload = function(){setrank5()}</script>";
             }
             }     

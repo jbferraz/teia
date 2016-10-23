@@ -50,12 +50,12 @@ session_start();
    <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/Sidenav.css">
-  <script src="../bootstrap-3.3.7-dist/js/jquery-3.1.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
     </head>
     <body id="bd">
-    
- <nav class="navbar navbar-inverse navbar-fixed-top" >
+     <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
         <button onclick="menutoglle()" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -214,40 +214,40 @@ session_start();
       <li><img class="img-responsive " src="<?php echo"Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
       <li style="margin-top:10px;font-size:20px"><?php echo $UserNome; ?></li>
       <hr style="width:75%;margin:10px auto">
-      <li style="padding:10px">
+        <li style="padding:10px">
           <h4>Rank</h4>
-           <?php         
+          
+          <?php         
              $sql_user = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserId");
         while ($User = mysql_fetch_object($sql_user)) {        
             $Usernota= $User->media_poderada;
             $Usernota= ceil($Usernota);
-            $Usernota = 2;
+            echo "$Usernota";
             if (!empty($Usernota)) {
                   
             
-            if ($Usernota = 1) {
+            if ($Usernota == 1) {
                
             }
-            if ($Usernota = 2) {
-                echo "<script>window.onload = function(){setrank2()}</script>";
+            if ($Usernota == 2) {
+                 echo "<script>window.onload = function(){setrank2()}</script>";
             }
-            if ($Usernota = 3) {
+            if ($Usernota == 3) {
                 echo "<script>window.onload = function(){setrank3()}</script>";
             }
-            if ($Usernota = 4) {
+            if ($Usernota == 4) {
                 echo "<script>window.onload = function(){setrank4()}</script>";
             }
-            if ($Usernota = 5) {
+            if ($Usernota == 5) {
                 echo "<script>window.onload = function(){setrank5()}</script>";
             }
-            }  else {
-                echo "<script>window.onload = function(){setrank()}</script>";
             }     
             
         }
           
           
           ?>     
+            
 <form>
             <label><samp  class="glyphicon glyphicon-star" style="font-size:300%;"/></label>
             <label><samp  id="star2" class="glyphicon glyphicon-star-empty" style="font-size:300%;"/></label>
