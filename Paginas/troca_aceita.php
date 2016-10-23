@@ -322,11 +322,11 @@ include '../funcao/conecta.php';
      <div class="col-sm-1">
  </div>
        <div class="col-sm-4">          
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
+           <p class="text-left lead" style=""><h5><?php echo $ProdNome_2; ?></h5></p>
+            <p class="text-left small" style=""><h5><?php echo $ProdEstado_2; ?></h5<p/>
+            <p class="text-left small" style=""><h5><?php echo $ProdCateg_2; ?></h5></p>
     
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
+       <p class="text-left small" style=""><h6>Descricao <br> <?php echo $ProdDecr_2; ?></h6></p>
              <form method="post" action="../funcao/insere_troca.php">   
               
  </div>
@@ -348,10 +348,10 @@ include '../funcao/conecta.php';
    
        <div class="col-sm-4">
           
-           <p class="text-left lead" style=""><h4><?php echo $ProdNome_1; ?></h4></p>
-            <p class="text-left small" style=""><h4><?php echo $ProdEstado_1; ?></h4><p/>
-            <p class="text-left small" style=""><h4><?php echo $ProdCateg_1; ?></h4></p>
-       <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_1; ?></h5></p>
+           <p class="text-left lead" style=""><h5><?php echo $ProdNome_1; ?></h5></p>
+            <p class="text-left small" style=""><h5><?php echo $ProdEstado_1; ?></h5><p/>
+            <p class="text-left small" style=""><h5><?php echo $ProdCateg_1; ?></h5></p>
+       <p class="text-left small" style=""><h6>Descricao <br> <?php echo $ProdDecr_1; ?></h6></p>
             
               
  </div>

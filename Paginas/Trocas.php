@@ -20,10 +20,7 @@ include '../funcao/conecta.php';
              $idUsuarioINT = $prod->idUsuarioINT;
              $idUsuarioOF= $prod->idUsuarioOF; 
         }
-        
-        
-       
-           
+             
      $sql_up_toca= "UPDATE `notificacao` SET `status`= true  WHERE `id_troca` = $id_troca";
     //executamos a instução SQL
     mysql_query("$sql_up_toca") or die (mysql_error())
@@ -230,12 +227,25 @@ include '../funcao/conecta.php';
         <div class="col-sm-2"></div>
      
        <div class="col-sm-8" >
-           <div class="col-sm-12"style="background-color:#0d1e04;max-height:80px;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px;">
+           <div class="col-sm-12"style="background-color:#0d1e04;max-height:100px;min-height:30px;margin-bottom:20px;padding:10px;color:#fff;font-size:20px;">
                <div class="col-sm-5">
            <img id="imguser" class="img-circle col-sm-3 " src="<?php echo "Listar.php?codigo=$idImagemUser1";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
          
            <h4 style="margin:5px 5px;width:40%;float:left;"><?php echo "$UserNome_1"; ?></h4><BR>
              <h5 style="width:40%;float:left;">DONO</h5>
+             
+             <div class="col-sm-12">
+         
+            
+            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            
+  
+                 
+             </div>
            </div>
                <div class="col-sm-1" >
        
@@ -245,6 +255,18 @@ include '../funcao/conecta.php';
            <img id="imguser" class="img-circle col-sm-3 " src="<?php echo "Listar.php?codigo=$idImagemUser2";?>"alt="Chania" style="min-height:3%;max-height:10%;margin:auto 0">
            <h4 style="margin:5px 5px;width:40%;float:left;"><?php echo "$UserNome_2"; ?></h4><BR>
           <h5 style="width:40%;float:left;">INTERESSADO</h5>
+             <div class="col-sm-12">
+         
+            
+            <label><samp onmouseover="mudaclass()" class="glyphicon glyphicon-star" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass2()" id="vt2" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass3()" id="vt3" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass4()" id="vt4" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            <label><samp onmouseover="mudaclass5()" id="vt5" class="glyphicon glyphicon-star-empty" style="font-size:20px;"/></label>
+            
+  
+                 
+             </div>    
                 </div>
          
            </div>

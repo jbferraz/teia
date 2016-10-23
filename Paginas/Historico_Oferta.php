@@ -251,7 +251,7 @@ session_start();
     </div>
     <!-- fim menu-->
 
-    <div class="col-sm12">
+    <div class="col-sm-12">
    
     <?php
     
@@ -269,7 +269,7 @@ session_start();
         <div class="col-lg-12" >
             
             <div class="col-lg-2"></div>
-            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:350px;">
+            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:300;">
                 <?php
                 $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
                 while ($Produtos = mysql_fetch_object($sql)) { 
@@ -308,31 +308,31 @@ session_start();
                   $ProdImg_2 =  $Produtos->img;
                   }
                 ?>
-            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:350px;">
+            <div class="col-lg-4" style="box-shadow:0px 4px 2px lightgray;padding:20px;height:300px;">
                 <div class="col-lg-5">
                     <img class="img-responsive" src="<?php echo "Listar.php?codigo=$ProdImg_2";?>" alt="Chania" style="min-height:50%;max-height:80%; margin-top:25px;">
                  </div> 
-              <div class="col-lg-4"></div>         
+              <div class="col-lg-4">         
                     <p class="text-left lead" style=""><h4><?php echo $ProdNome_2; ?></h4></p>
                     <p class="text-left small" style=""><h4><?php echo $ProdEstado_2; ?></h4><p/>
                     <p class="text-left small" style=""><h4><?php echo $ProdCateg_2; ?></h4></p>
                     <p class="text-left small" style=""><h5>Descricao <br> <?php echo $ProdDecr_2; ?></h5></p>
-            </div>
-            <div class="col-lg-2"></div>
-        </div>
+           </div>
+             
+            <div class="col-sm-4">
+           
+        </div> </div>
         
     <?PHP 
             if ($status == 0) {
-               ?>  
-        <div class="col-lg-12" ></div>
-      
+               ?>        
     <div class="col-sm-12" style="margin-bottom:30px;margin-top:30px;">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-4"align="right">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-4"align="center">
             <form>         
             </form>
-            <form action="../funcao/troca_recusar.php" method="post">  
-            <input class="btn-default " type="submit" value="Recusar" style="min-width:50%;min-height:30px">
+            <form action="../Paginas/Trocas.php" method="post">  
+            <input class="btn-default " type="submit" value="Abir troca" style="min-width:50%;min-height:30px">
             <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">
             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
             <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
@@ -341,23 +341,6 @@ session_start();
             </form>
            
         </div>
-         <div class="col-lg-1"></div>
-         <div class="col-lg-4 "align="left">
-             <form>         
-            </form>
-             <form action="../funcao/troca_aceita.php" method="post">
-            <input class="btn-default left" type="submit" value="Aceitar" style="min-width:50%;min-height:30px">
-            <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>"> 
-             <input type="hidden" name="user_i" id="idtroca" value="<?php echo $idUsuarioINT; ?>"> 
-            <input type="hidden" name="user_d" id="idtroca" value="<?php echo $idUsuarioOF; ?>"> 
-             <input type="hidden" name="ProdId_1" id="idtroca" value="<?php echo $ProdId_1; ?>"> 
-            <input type="hidden" name="ProdId_2" id="idtroca" value="<?php echo $ProdId_2; ?>"> 
-        </form>
-    </div>
-        
-        
-        
-        
       <?PHP 
                    }}}
     ?>

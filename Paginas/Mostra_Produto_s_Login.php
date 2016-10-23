@@ -24,7 +24,6 @@ include '../funcao/conecta.php';
 			$terminaEm = $linhas;
   
                         }
-                        
 ?>
 <html lang="en">
 <head>
@@ -110,15 +109,15 @@ include '../funcao/conecta.php';
      <div class="col-sm-1">
  </div>
        <div class="col-sm-4">
-           <p class="text-left lead" style=""><h3><?php echo $ProdNome; ?></h3></p>
-            <p class="text-left small" style=""><h3><?php echo "Estado do produto: $ProdEstado"; ?></h3><p/>
-            <p class="text-left small" style=""><h3><?php echo "Categoria do produto: $ProdCateg"; ?></h3></p>
-            <p class="text-left small" style=""><h4> <?php echo "$ProdDecr";?></h4></p>
+           <p class="text-left lead" style=""><h4><?php echo $ProdNome; ?></h4></p>
+            <p class="text-left small" style=""><h4><?php echo "Estado do produto: $ProdEstado"; ?></h4><p/>
+            <p class="text-left small" style=""><h4><?php echo "Categoria do produto: $ProdCateg"; ?></h4></p>
+            <p class="text-left small" style=""><h5> <?php echo "$ProdDecr";?></h5></p>
       
           
  </div>
       <form></form>
-      <form class="col-sm-12" align="center">    
+      <form class="col-sm-12" align="center"style="margin-top:20px">    
       <button id="btnOn" onclick="" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
       </form>
          <div class="col-sm-1">

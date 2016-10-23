@@ -315,9 +315,9 @@ session_start();
          <div class="col-sm-1">
      </div>
            <div class="col-sm-4">
-               <p class="text-left lead" style=""><h3><?php echo $ProdNome; ?></h3></p>
-                <p class="text-left small" style=""><h3><?php echo "Estado do produto: $ProdEstado"; ?></h3><p/>
-                <p class="text-left small" style=""><h3><?php echo "Categoria do produto: $ProdCateg"; ?></h3></p>
+               <p class="text-left lead" style=""><h4><?php echo $ProdNome; ?></h4></p>
+                <p class="text-left small" style=""><h4><?php echo "Estado do produto: $ProdEstado"; ?></h4><p/>
+                <p class="text-left small" style=""><h4><?php echo "Categoria do produto: $ProdCateg"; ?></h4></p>
            <div class="col-sm-12"style="float:left">
                <img id="imguser" class="img-thumbnail col-sm-4 " src="<?php echo "Listar.php?codigo=$idImagemUser";?>" alt="Chania" style="min-height:25%;max-height:50%;">
                     <div class="col-sm-8  text-left small">
