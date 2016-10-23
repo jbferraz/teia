@@ -54,15 +54,16 @@ include '../funcao/conecta.php';
     </div> 
    <div class="col-sm-4">
   <h2>Cadastrar</h2>
+       <div id="falha" style="display:block;margin:0" class="row">
+           <div class="alert alert-danger"><input type="text" id="msg" value="falha eamiel" disabled="true" style="background:transparent;border:0"></div>
+</div>
   <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../funcao/cadastroUser.php">
     <div class="form-group">
         <input name="nome" required type="nome" class="form-control" id="email" placeholder="Nome Completo">
     </div>
     <div class="form-group">
         <input onblur="Testa_Email()" name="email" required type="email" class="form-control" id="email" placeholder="E-mail">
-        <div id="falhaEmail" style="display:none;margin:0" class="row">
-	<div class="alert alert-danger">O email ja esta cadastrado</div>
-</div>
+   
     </div>
     <div class="form-group">
         <input name="senha" required type="password" class="form-control" id="senha1" placeholder="Senha">
@@ -71,9 +72,6 @@ include '../funcao/conecta.php';
     <div class="form-group">
         <input style="margin-bottom:10px;" onblur="testeSenha()" required name="confirmarSenha"  type="password" class="form-control" id="Senha2" placeholder="Confirmar Senha">
 
-        <div id="falhaSenha" style="display:none;margin:0" class="row">
-	<div class="alert alert-danger">As senhas não considem</div>
-</div>
     </div>
      <div class="form-group">
       <select class="form-control" id="sel1" name="ProdCategoria">

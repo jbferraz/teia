@@ -39,26 +39,6 @@ var z=document.getElementById("Btn-Cadatrar").className;
       }
 };
 
-
-
-    function Testa_Email(){
-        var x=document.getElementById("email").value;
-	$.ajax({
-		type:'post',		//Definimos o método HTTP usado
-		dataType:'json',//Definimos o tipo de retorno
-		url: 'Teste_Email_Existe.php/?id='+x,//Definindo o arquivo onde serão buscados os dados
-		success: function(dados){
-                    alert(dados)
-                   var y=dados;
-                   if (y===x){
-                     document.getElementById("falhaEmail").style.display="block";   
-                   }else{
-                       document.getElementById("falhaEmail").style.display="none";   
-                   }
-                   
-	}
-        })
-};
 function esolhebtnsidbar(){
     var x=document.getElementsByClassName("navbar-toggle").style.display;
     if (x==="block"){
@@ -278,4 +258,8 @@ function setrank5o1(){
         document.getElementById("star4o").className="glyphicon glyphicon-star";
         document.getElementById("star5o").className="glyphicon glyphicon-star";
         document.getElementById("nota").value="5";
+}
+function btnOferta(){
+    document.getElementById("btnOfer").className="btn btn-default";
+
 }

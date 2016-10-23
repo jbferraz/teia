@@ -458,7 +458,7 @@ session_start();
                 <form></form>
                 <form method="post" action="../funcao/insere_troca_user.php">
 
-                    <select class="form-control" id="sel1" name="prodDono">
+                    <select class="form-control" id="selctProdUser" name="prodDono" onchange="btnOferta()">
                       <option value="" disabled selected>Selecione um produto</option>
                 <?php
                     $sqlUserI = mysql_query("SELECT * FROM `listarproduto`  WHERE `IdUsuario` = $UserId"); 
@@ -483,7 +483,7 @@ session_start();
           </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-            <button type="submit" class="btn btn-default">Oferecer Troca</button>
+            <button id="btnOfer" type="submit" class="btn btn-default disabled">Oferecer Troca</button>
             </div>
                </form>
           </div>
