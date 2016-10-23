@@ -261,5 +261,7 @@ function setrank5o1(){
 }
 function btnOferta(){
     document.getElementById("btnOfer").className="btn btn-default";
-
+}
+function clique(){
+    alert("oi")
 }

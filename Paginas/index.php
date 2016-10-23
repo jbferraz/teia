@@ -49,8 +49,13 @@
       <div class="col-sm-12">
           <div class="container">
   <!--<h2>Responsive Embed</h2>-->
-  <div class="embed-responsive embed-responsive-16by9">
-      <iframe class="embed-responsive-item" src="../Imagens/Apresentação Projeto T.E.I.A..mp4"></iframe>
+  <div class="embed-responsive embed-responsive-16by9" style="background:#fff">
+      <video class="embed-responsive-item" controls="controls">
+          <source src="../Video/Apresentação Projeto T.E.I.A..mp4" type="video/mp4">
+          <object data="" class="embed-responsive-item">
+<embed width="320" height="240" src="../Video/Apresentação Projeto T.E.I.A..mp4">
+</object>
+</video>
   </div>
 </div>
       </div>

@@ -64,6 +64,7 @@ session_start();
         <span class="icon-bar"></span>
       </button>
     </div>
+      
       <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
           <li><div class="well-sm">
