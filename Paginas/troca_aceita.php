@@ -224,11 +224,19 @@ include '../funcao/conecta.php';
           <button class="btn-sidbar-tt" onclick="toogle()" ></button>
       </div>
   </div>
-  
+  <?php
+      if ($idUsuarioINT == $UserId){
+          $Prod_id_1 = $Prod_interece_id;
+          $Prod_id_2 = $Prod_dono_id;
+      } else {
+          $Prod_id_1 = $Prod_dono_id;
+          $Prod_id_2 = $Prod_interece_id;
+      } 
+  ?>
 
     <!-- fim menu-->
       <?php
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_interece_id");
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_id_1");
                 while ($Produtos2 = mysql_fetch_object($sql)) { 
                   $ProdId_2   = $Produtos2->IdProduto;
                   $ProdNome_2 = $Produtos2->NomeProduto;
@@ -240,7 +248,7 @@ include '../funcao/conecta.php';
                  $idImagemUser2 = $Produtos2->idImagemUser;
                   }
      
-    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_dono_id");
+    $sql = mysql_query("SELECT * FROM `listarproduto`  WHERE IdProduto = $Prod_id_2");
                 while ($Produtos = mysql_fetch_object($sql)) { 
                   $ProdId_1   = $Produtos->IdProduto;
                   $ProdNome_1 = $Produtos->NomeProduto;
