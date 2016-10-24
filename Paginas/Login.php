@@ -25,12 +25,13 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
           <li ><a href="../Paginas/index.php">Home</a></li>
-        <li class="dropdown">
+           <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sobre nos<span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
             <li><a href="../Paginas/Colaboradores.php">Colaboradores</a></li>
-            <!--<li><a href="#">Material Educacional</a></li>-->
+            <li><a href="../Paginas/Galeria.php">Galeria</a></li>
+            <li><a href="../Paginas/Material_Educacional.php">Material Educacional</a></li>
           </ul>
         </li>
         

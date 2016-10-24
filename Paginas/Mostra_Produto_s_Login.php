@@ -56,7 +56,8 @@ include '../funcao/conecta.php';
           <ul class="dropdown-menu">
            <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
             <li><a href="../Paginas/Colaboradores.php">Colaboradores</a></li>
-            <!--<li><a href="#">Material Educacional</a></li>-->
+            <li><a href="../Paginas/Galeria.php">Galeria</a></li>
+            <li><a href="../Paginas/Material_Educacional.php">Material Educacional</a></li>
           </ul>
         </li>
         <li><a href="Mostra_Produto_s_Login.php?pag=1">Trocas</a></li>

@@ -1,7 +1,7 @@
 <?php 
 include './conecta.php';
 
- $sql_1="  UPDATE `notificacao` SET `status`= 0 WHERE notificacao.data = CURRENT_DATE and notificacao.tipo = 2 and status = 1";
+ $sql_1="  UPDATE `notificacao` SET `status`= 0 WHERE notificacao.data = CURRENT_DATE and notificacao.tipo = 2 and status = 2";
 //executamos a instução SQL
             mysql_query("$sql_1") or die (mysql_error());
 if ((isset($_POST['Entrar']))) {          

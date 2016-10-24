@@ -25,12 +25,13 @@
       <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
           <li ><a href="../Paginas/index.php">Home</a></li>
-        <li class="dropdown">
+       <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sobre nos<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
+           <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
             <li><a href="../Paginas/Colaboradores.php">Colaboradores</a></li>
-            <!--<li><a href="#">Material Educacional</a></li>-->
+            <li><a href="../Paginas/Galeria.php">Galeria</a></li>
+            <li><a href="../Paginas/Material_Educacional.php">Material Educacional</a></li>
           </ul>
         </li>
         <li><a href="Mostra_Produto_s_Login.php?pag=1">Trocas</a></li>
@@ -71,11 +72,11 @@
   <div class="media"     <div class="media-body" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
 
     <div class="media-left">
-      <img src="" class="media-object" style="width:60px">
+        <img src="../Imagens/Colaboradores/Tiago.JPG" class="media-object" style="width:60px">
     </div>
     <div class="media-body" >
       <h4 class="media-heading text-justify">Tiago Marcos Alves</h4>
-      <p class="text-justify"> Professor do curso Técnico em informática do SENAC/RS e desenvolvedor mobile auxiliou no desenvolvimento do aplicativo do projeto.</p>
+      <p class="text-justify"> Professor do curso Técnico em informática do SENAC/RS e desenvolvedor mobile. Coorientador do projeto.</p>
     </div>
   </div>
     <!------->
@@ -85,7 +86,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Daiane Tavares</h4>
-      <p class="text-justify">Professora do curso Técnico em meio ambiente, renomada na area de meio ambiente, é responsavel pelo auxilio e instrução dos palestrantes do projeto.</p>
+      <p class="text-justify">Professora do curso Técnico em meio ambiente no SENAC/RS e Gestora Ambiental. Orientadora do projeto.</p>
     </div>
   </div>          
       <!------->
@@ -95,7 +96,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Jair Ferraz</h4>
-      <p class="text-justify">Coordenador dos cursos de informática do Senac Gravataí e desenvolvedor Web.</p>
+      <p class="text-justify">Coordenador dos cursos de informática do Senac Gravataí e desenvolvedor Web. Auxiliou com desenvolvimento do website.</p>
     </div>
   </div>       
    <!------->
@@ -105,7 +106,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Adriana zimmerman</h4>
-      <p class="text-justify">Coordenadora do curso Técnico em meio ambiente, é o braço de ferro do projeto, assim fazendo parte de todas os eixos do projeto.</p>
+      <p class="text-justify">Coordenadora do curso Técnico em meio ambiente, auxilia no processo de captação de parceiros.</p>
     </div>
   </div>         
      <!------->
@@ -116,17 +117,17 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Camila Helena</h4>
-      <p class="text-justify">Professora do curso Técnico em meio ambiente, coordenadora de ações envolvendo a comunidade.</p>
+      <p class="text-justify">Professora do curso Técnico em meio ambiente do SENAC/RS, auxilia nas ações ambientais.</p>
     </div>
   </div> 
      <!------->
   <div class="media" style="margin-bottom:30px;box-shadow:0px 4px 3px lightgrey;padding:20px;border-radius:10px">
     <div class="media-left">
-        <img src="../Imagens/Colaboradores/IMG-20161021-WA0005.jpg" class="media-object" style="width:60px">
+        <img src="../Imagens/Colaboradores/PauloMendes.jpg" class="media-object" style="width:60px">
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Paulo Mendes Souza</h4>
-      <p class="text-justify">Professor de design gráfico, auxilia no desenvolvimento do material gráfico do projeto.</p>
+      <p class="text-justify">Professor de design gráfico do SENAC/RS, auxilia no desenvolvimento do material gráfico do projeto.</p>
     </div>
   </div>
              <!------->
@@ -136,7 +137,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Sandro Teixeira </h4>
-      <p class="text-justify">Professor de Marketing, auxilia no planejamento de marketing do projeto</p>
+      <p class="text-justify">Professor de Marketing do SENAC/RS, auxilia no planejamento de marketing do projeto</p>
     </div>
   </div>
     <!------->
@@ -146,7 +147,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Vitor Hugo</h4>
-      <p class="text-justify">Deu ínicio ao projeto em 2015, Responsável pela manutenção dos computadores e oficinas de informática,palestrante do projeto.</p>
+      <p class="text-justify">Deu ínicio ao projeto em 2015, responsável pela criação do app T.E.I.A., manutenção dos computadores, desenvolvimento do site, e oficinas de informática,palestrante do projeto.</p>
     </div>
   </div>                    
     <!------->
@@ -155,8 +156,8 @@
         <img src="../Imagens/Colaboradores/Joao.jpg" class="media-object" style="width:60px">
     </div>
     <div class="media-body">
-      <h4 class="media-heading text-justify">João Vitor</h4>
-      <p class="text-justify">Se uniu ao projeto em Fevereiro de 2016, agregando muito valor, responsável pela parte de conscientização da população,palestrante do projeto.</p>
+      <h4 class="media-heading text-justify">João Otávio Jost</h4>
+      <p class="text-justify">Se uniu ao projeto em Fevereiro de 2016, agregando muito valor, responsável pela educação ambiental e midias sociais, palestrante do projeto.</p>
     </div>
   </div>          
       
@@ -167,7 +168,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Paulo da Silva</h4>
-      <p class="text-justify">Se uniu ao projeto em Fevereiro de 2016, assumindo a parte de parcerias com empresas, palestrante do projeto.</p>
+      <p class="text-justify">Se uniu ao projeto em Fevereiro de 2016, responsável pela educação ambiental e parcerias com empresas, palestrante do projeto.</p>
     </div>
   </div>   
         <!------->
@@ -177,7 +178,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Ismael Silva</h4>
-      <p class="text-justify">Desenvolvedor mobile responsável pelo aplicativo do projeto a ferramenta mais importante do projeto.</p>
+      <p class="text-justify">Auxílio no desenvolvimento do aplicativo T.E.I.A., manutenção de computadores e criação do website.</p>
     </div>
   </div> 
                <!------->
@@ -187,7 +188,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Matheus Pellisoli</h4>
-      <p class="text-justify">Desenvolvedor do web site.</p>
+      <p class="text-justify">Auxílio no desenvolvimento do aplicativo T.E.I.A., manutenção de computadores e criação do website.</p>
     </div>
   </div> 
                       <!------->
@@ -197,7 +198,7 @@
     </div>
     <div class="media-body">
       <h4 class="media-heading text-justify">Lucas Pellisoli</h4>
-      <p class="text-justify">Desenvolvedor do web site.</p>
+      <p class="text-justify">Auxílio no desenvolvimento do aplicativo T.E.I.A., manutenção de computadores e criação do website.</p>
     </div>
   </div> 
       

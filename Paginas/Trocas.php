@@ -55,12 +55,13 @@ include '../funcao/conecta.php';
                  <span id="menuSitepc" style="color:white" style="display:block" class="btn-sidbar navbar-collapse" onclick="toogle()"><span style="color:white" class="glyphicon glyphicon-th-list"></span></span><!--SITE NO NENU ABERTO-->
               </div></li>
           <li ><a href="../Paginas/index.php">Home</a></li>
-        <li class="dropdown">
+         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sobre nos<span class="caret"></span></a>
           <ul class="dropdown-menu">
-          <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
+           <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
             <li><a href="../Paginas/Colaboradores.php">Colaboradores</a></li>
-            <!--<li><a href="#">Material Educacional</a></li>-->
+            <li><a href="../Paginas/Galeria.php">Galeria</a></li>
+            <li><a href="../Paginas/Material_Educacional.php">Material Educacional</a></li>
           </ul>
         </li>
    
@@ -102,7 +103,7 @@ include '../funcao/conecta.php';
                                      
                          </div>
                                   <form class="form-horizontal"  method="post"  enctype="multipart/form-data" action="../Paginas/Trocas.php">
-                                      <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detales da oferta">
+                                      <input type="submit" class="btn btn-default" style="float: right; margin-right: 10px; margin-bottom: 5px" value="detalhes da oferta">
                                  <input type="hidden" name="id_troca" id="idtroca" value="<?php echo $id_troca; ?>">                                  
                                  </form>
                                      
