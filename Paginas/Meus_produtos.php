@@ -200,8 +200,8 @@ window.onload = function() {
     </div>
   </div>
 </nav>
-
     <!--Termina o menu -->
+    <div class="col-sm-12" style="background:#000;position:absolute;width:1000px;height:1000px;bottom:0;">
     <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
         <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
     <hr style="width:75%">
@@ -410,6 +410,6 @@ window.onload = function() {
      </div>
 
      </div>
-  
+  </div>
     </body>
 </html>

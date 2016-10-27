@@ -72,3 +72,23 @@
 .navbar-verde.navbar-default .navbar-toggle:focus .icon-bar {
     background-color: #003800;
 }
+::-webkit-scrollbar{ /* 1 */ 
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#003800+0,003800+100&1+0,0.5+0,0.5+100 */
+background: -moz-linear-gradient(top,  rgba(0,56,0,0.2) 0%, rgba(0,56,0,0.2) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(0,56,0,0.2) 0%,rgba(0,56,0,0.2) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(0,56,0,0.2) 0%,rgba(0,56,0,0.2) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80003800', endColorstr='#80003800',GradientType=0 ); /* IE6-9 */
+width:10px;
+
+}
+
+::-webkit-scrollbar-button-top{height:30px;}
+::-webkit-scrollbar-button{ /* 2 */ background:#003800;height:1px}
+::-webkit-scrollbar-track{ /* 3 */ }
+::-webkit-scrollbar-track-piece{ /* 4 */  }
+::-webkit-scrollbar-thumb{ /* 5 */background:#003800;border-radius:0px 0 0 5px;}
+::-webkit-scrollbar-corner{ /* 6 */ background:#003800 }
+::-webkit-scrollbar-thumb:vertical:hover,
+::-webkit-scrollbar-thumb:horizontal:hover {
+    background-color: #014201
+}
