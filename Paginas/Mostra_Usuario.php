@@ -224,7 +224,7 @@ session_start();
         while ($User = mysql_fetch_object($sql_user)) {        
             $Usernota= $User->media_poderada;
             $Usernota= ceil($Usernota);
-            echo "$Usernota";
+           
             if (!empty($Usernota)) {
                   
             
