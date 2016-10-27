@@ -299,9 +299,18 @@ include '../funcao/conecta.php';
                        // echo "<option value='$Categ_id'>$Categ_nome</option> ";
                     }
                     ?>
+          
       </select>
     
 </div>
+      
+      <div class="form-group">
+         <div class="col-sm-offset-1 col-sm-10">
+             <div class="well-lg">
+                 <input type="file" name="file"> 
+              </div> 
+    </div>
+     </div> 
         </div> 
       <div class="form-group">
       <div class="col-sm-offset-4 col-sm-10">
