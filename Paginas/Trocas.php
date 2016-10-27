@@ -26,7 +26,11 @@ include '../funcao/conecta.php';
     mysql_query("$sql_up_toca") or die (mysql_error())
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
-
+<script> 
+window.onload = function() {
+   toogle();
+};
+</script>
 <html>
     <head>
        <meta charset="UTF-8">

@@ -37,7 +37,11 @@ session_start();
                 }
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
-
+<script> 
+window.onload = function() {
+   toogle();
+};
+</script>
 <html>
     <head>
         <meta charset="UTF-8">
