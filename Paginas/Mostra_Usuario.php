@@ -43,6 +43,11 @@ session_start();
                
 ?>
 <script language="javascript" src="../funcao/JavaScript.js"></script>
+<script> 
+window.onload = function() {
+   toogle();
+};
+</script>
 <html>
     <head>
        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -53,6 +58,7 @@ session_start();
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap_personalizado.css">
+   
     </head>
     <body id="bd">
      <nav class="navbar navbar-verde navbar-default  navbar-fixed-top">
@@ -205,7 +211,7 @@ session_start();
 </nav>
     <!--Termina o menu -->
     <div class="jumbotron text-center" style="background:white; margin-top:40px;" align="center">
-     <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania">
+        <img class="img-responsive" src="Listar.php?codigo=0" alt="Chania" style="margin:0 auto">
     <hr style="width:75%">
 </div> 
   <!--Menu central do usuario menu-sidnav-->
