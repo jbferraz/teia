@@ -435,6 +435,7 @@ session_start();
             <br>
                <div class="form-group">
             <input type="hidden" name="userI" value="<?php echo "$UserId";?>"/>
+            <textarea class="form-control" rows="5" id="comment" style="resize:none" placeholder="Comentario"></textarea>
             <input id="ProdId" name="ProdutoId" type="hidden"/>
         </div>
           </div>
