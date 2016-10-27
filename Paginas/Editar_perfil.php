@@ -191,7 +191,13 @@ window.onload = function() {
       <div id="mySidenav" class="sidenav" align="center">
           <ul align="center" style="list-style:none;color:white;padding-left:5px"> 
       <li><img class="img-responsive " src="<?php echo"Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
-      <li><?php echo $UserNome; ?></li>
+      <li style="margin-top:10px;font-size:20px">
+          <form method="get" action="Mostra_Usuario.php?pag=1">
+                            <input name="idDono" type="hidden" id="idDono" value="<?php echo $UserId; ?>">
+                            <input name="pag" type="hidden" id="idDono" value="1">                            
+                            <input style="background:transparent;border:0" type="submit" value="<?php echo"$UserNome"; ?>">
+                        </form>
+      </li>
       <hr style="width:75%;margin:10px auto">
         <li style="padding:10px">
           <h4>Rank</h4>
@@ -271,7 +277,7 @@ window.onload = function() {
        
   </div>  
   
-  <form class="form-horizontal"  method="post" action="../funcao/editarProd.php" enctype="multipart/form-data">
+  <form class="form-horizontal"  method="post" action="../funcao/editarUser.php" enctype="multipart/form-data">
     <div class="form-group">
         <input name="UserNome" type="text" class="form-control" id="email" value="<?php echo $nome; ?>">
     </div>
@@ -318,7 +324,7 @@ window.onload = function() {
         </div> 
       <div class="form-group">
       <div class="col-sm-offset-4 col-sm-10">
-          <input type="hidden" name="prod_id" value=""/>
+          <input type="hidden" name="idUser" value="<?php echo $UserId; ?>"/>
           <button name="alterar" type="submit" class="btn btn-default">Editar</button>
           
       </div>

@@ -7,7 +7,7 @@ header('Content-Type: text/html; charset=utf-8');
     $Catg = $_POST['UserCategoria'];
     $id_img_a = $_POST['idUserImg'];  
     $data = date('y-m-d H:i:s'); //pega data atual do sistema
-    $img_nome = "User_$Nome".$data;    
+    $img_nome = "User_$IdUser"."_".$data;    
     //SELECT * FROM `categoria` WHERE `descricao` = 
     
     
@@ -62,7 +62,7 @@ $sql3 = "UPDATE `usuario` SET
 //executamos a instução SQL
 
 mysql_query("$sql3") or die ("Sql3: ".mysql_error());  
-header('Location:../Paginas/Meus_produtos.php?pag=1');
+header('Location:../Paginas/Mostra_produtos.php?pag=1');
     }  else {
      $sql5 = "UPDATE `usuario` SET 
     `nome`='$Nome',
@@ -71,7 +71,7 @@ header('Location:../Paginas/Meus_produtos.php?pag=1');
     WHERE `idUsuario`= $IdUser;";
 //executamos a instução SQL
 mysql_query("$sql5") or die ("Sql5: ".mysql_error());  
-header('Location:../Paginas/Meus_produtos.php?pag=1');
+header('Location:../Paginas/Mostra_produtos.php?pag=1');
 }
 
 
