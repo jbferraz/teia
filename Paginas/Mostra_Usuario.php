@@ -214,7 +214,13 @@ session_start();
  
   <ul align="center" style="list-style:none;color:white;padding-left:5px"> 
       <li><img class="img-responsive " src="<?php echo"Listar.php?codigo=$UserImg"; ?>" alt="Chania" style="min-height:150px;max-height:200px;margin:auto;"></li>
-      <li style="margin-top:10px;font-size:20px"><?php echo $UserNome; ?></li>
+      <li style="margin-top:10px;font-size:20px">
+          <form method="get" action="Mostra_Usuario.php?pag=1">
+                            <input name="idDono" type="hidden" id="idDono" value="<?php echo $UserId; ?>">
+                            <input name="pag" type="hidden" id="idDono" value="1">                            
+                            <input style="background:transparent;border:0" type="submit" value="<?php echo"$UserNome"; ?>">
+                        </form>
+      </li>
       <hr style="width:75%;margin:10px auto">
         <li style="padding:10px">
           <h4>Rank</h4>
@@ -224,7 +230,7 @@ session_start();
         while ($User = mysql_fetch_object($sql_user)) {        
             $Usernota= $User->media_poderada;
             $Usernota= ceil($Usernota);
-            echo "$Usernota";
+           
             if (!empty($Usernota)) {
                   
             
@@ -329,11 +335,23 @@ session_start();
             <label><samp  id="star4o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
             <label><samp  id="star5o" class="glyphicon glyphicon-star-empty" style="font-size:200%;"/></label>
         
+      <div>
+              <?php
+                        if ($UserId == $_DonoPag ){
+                 ?>           
+          <form action="../Paginas/Editar_perfil.php">
+              <input value="Editar perfil" type="submit" class="btn btn-default btn-lg" style="margin-top: 10px;" >              
+          </form>
+        
+           <?php
+                      }
+    ?> 
+          </div>      
       </div>
       
       <div class="col-sm-2"></div>
+  
   </div>
-
   <div class="col-sm-2" ></div>
     <div class="col-sm-8">
                     <?php
@@ -382,13 +400,20 @@ session_start();
            <br>
            <br>
                 <p class="text-left small" style=""><h5> <?php echo "$ProdDecr";?></h5></p>
-                 <form method="post" action="../funcao/p">   
+        <?php
+                        if ($UserId != $_DonoPag ){
+    ?>         
+           <form method="post" action="../funcao/p">   
                      <div>
                           <!-- Trigger the modal with a button -->
                 <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId;?>','<?php echo $ProdImg ;?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
       <!-- Modal -->
                      </div>
                        </form>
+           
+           <?php
+                        }
+            ?>     
            </div>
              <div class="col-sm-1">
      </div>

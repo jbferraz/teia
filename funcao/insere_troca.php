@@ -3,6 +3,7 @@ include '../funcao/conecta.php';
     $ProdD = $_POST['prodDono'];
 $UserI = $_POST['userI'];
 $ProdInt = $_POST['ProdutoId'];
+$comentario = $_POST['comentario'];
 $data = date('y-m-d H:i:s'); //pega data atual do sistema
  $sqlUserI = mysql_query("SELECT * FROM `produto`  WHERE `idProduto` = $ProdInt");
                     
@@ -10,8 +11,8 @@ $data = date('y-m-d H:i:s'); //pega data atual do sistema
                     $ProdIdUser = $Produtos->idUsuario;                   
                     
                 }
-        $sql = "INSERT INTO `trocaoferta`(`idUsuarioOF`, `idProdutoOF`, `idUsuarioINT`, `idProdutoINT`, `dataOferta`, `status`)
-        VALUES ('$UserI','$ProdD','$ProdIdUser','$ProdInt','$data',0)";
+        $sql = "INSERT INTO `trocaoferta`(`idUsuarioOF`, `idProdutoOF`, `idUsuarioINT`, `idProdutoINT`, `dataOferta`, `status`,`comentario`)
+        VALUES ('$UserI','$ProdD','$ProdIdUser','$ProdInt','$data',0,$comentario)";
         $res = mysql_query($sql);
         if ($res) {
          header('Location:../Paginas/Mostra_produtos.php');

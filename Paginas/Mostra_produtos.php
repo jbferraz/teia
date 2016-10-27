@@ -218,7 +218,13 @@ window.onload = function() {
               <img class="img-responsive" src="<?php echo"Listar.php?codigo=$UserImg";?>" alt="Chania" style="max-height:100%;" >
           </div>
           </li>
-      <li style="margin-top:10px;font-size:20px"><?php echo $UserNome; ?></li>
+          <li style="margin-top:10px;font-size:20px">
+          <form method="get" action="Mostra_Usuario.php?pag=1">
+                            <input name="idDono" type="hidden" id="idDono" value="<?php echo $UserId; ?>">
+                            <input name="pag" type="hidden" id="idDono" value="1">                            
+                            <input style="background:transparent;border:0" type="submit" value="<?php echo"$UserNome"; ?>">
+                        </form>
+      </li>
       <hr style="width:75%;margin:10px auto">
       <li style="padding:10px">
           <h4>Rank</h4>
@@ -227,8 +233,7 @@ window.onload = function() {
              $sql_user = mysql_query("SELECT * FROM `rank_list` WHERE idUsuario = $UserId");
         while ($User = mysql_fetch_object($sql_user)) {        
             $Usernota= $User->media_poderada;
-            $Usernota= ceil($Usernota);
-            echo "$Usernota";
+            $Usernota= ceil($Usernota);            
             if (!empty($Usernota)) {
                   
             
@@ -338,13 +343,16 @@ window.onload = function() {
            <br>
            <br>
                 <p class="text-left small" style=""><h5> <?php echo "$ProdDecr";?></h5></p>
+    
                  <form method="post" action="../funcao/p">   
                      <div>
                           <!-- Trigger the modal with a button -->
                 <button id="btnOn" onclick="pegaIdProfd('<?php echo $ProdId;?>','<?php echo $ProdImg ;?>')" type="button" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">Mostrar Interesse</button>
-      <!-- Modal -->
+      
+                         <!-- Modal -->
                      </div>
                        </form>
+    
            </div>
              <div class="col-sm-1">
      </div>
@@ -439,7 +447,7 @@ window.onload = function() {
             <br>
                <div class="form-group">
             <input type="hidden" name="userI" value="<?php echo "$UserId";?>"/>
-            <textarea class="form-control" rows="5" id="comment" style="resize:none" placeholder="Comentario"></textarea>
+            <textarea class="form-control" rows="5" id="comment" name="comentario" style="resize:none" placeholder="Comentario"></textarea>
             <input id="ProdId" name="ProdutoId" type="hidden"/>
         </div>
           </div>
