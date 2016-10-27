@@ -9,6 +9,7 @@ include '../funcao/conecta.php';
 $data = date('y-m-d H:i:s'); //pega data atual do sistema
 $img_nome = "Prod_$Nome".$data;
 
+if(file_exists($file_tmp = $_FILES["file"]["tmp_name"] )){ 
 
 $file_tmp = $_FILES["file"]["tmp_name"];
  //NOME DO ARQUIVO NO COMPUTADOR
@@ -44,6 +45,15 @@ $sql2 = mysql_query("SELECT * FROM `imagem` WHERE nomeArquivo ='".$img_nome."'")
 $sql3 = "INSERT INTO `produto`(`idProdutoEstado`, `idCategoria`, `idUsuario`, `nomeProduto`, `descricao`, `dataAdicao`, `ativo`, `idImagem`)
         VALUES ('$estado','$Catg','$UserId','$Nome','$Desc','$data','1','$imgID')";
 //executamos a instução SQL
-mysql_query("$sql3") or die (mysql_error());              
+mysql_query("$sql3") or die (mysql_error());      
+
+                    }  else {
+    $sql3 = "INSERT INTO `produto`(`idProdutoEstado`, `idCategoria`, `idUsuario`, `nomeProduto`, `descricao`, `dataAdicao`, `ativo`)
+        VALUES ('$estado','$Catg','$UserId','$Nome','$Desc','$data','1')";
+//executamos a instução SQL
+mysql_query("$sql3") or die (mysql_error()); 
+    
+          
+}        
 
  header('Location:../Paginas/Meus_produtos.php');

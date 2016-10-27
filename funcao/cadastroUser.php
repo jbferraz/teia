@@ -8,6 +8,7 @@ $_catg = $_POST['ProdCategoria'];
 $data = date('y-m-d H:i:s'); //pega data atual do sistema
 $img_nome = "User_$_email";
 
+if(file_exists($file_tmp = $_FILES["file"]["tmp_name"] )){ 
 
 $file_tmp = $_FILES["file"]["tmp_name"];
  //NOME DO ARQUIVO NO COMPUTADOR
@@ -61,6 +62,29 @@ if ($res2){
 }  else {
     echo "Falha ao tentar inserir".mysql_errno()." -- ".mysql_errno();
 }
-mysql_query("$sql3") or die (mysql_error());              
+mysql_query("$sql3") or die (mysql_error());    } else {
+        
+$sql3 = "INSERT INTO `usuario`(`nivelAcesso_id`, `nome`, `email`,  `dataCadastro`, `senha`)
+        VALUES (1,'$_nome','$_email','$data','$_senha')";//executamos a instução SQL
+
+    $res = mysql_query($sql3);
+if ($res){
+    $sql2 = mysql_query("SELECT * FROM `usuario` WHERE `email` = '$_email'");
+                    while ($user = mysql_fetch_object($sql2)) {
+                    $idUsuario = $user->idUsuario;
+            }   
+            echo "Id usuario = $idUsuario";
+                    }
+     $sql3 = "INSERT INTO `usuariocategoria`(`idUsuario`, `idCategoria`)
+              VALUES ('$idUsuario','$_catg')";
+//executamos a instução SQL
+     $res2 = mysql_query($sql3);
+if ($res2){           
+    echo "<script>window.location='../Paginas/Meus_produtos.php';</script>";
+}  else {
+    echo "Falha ao tentar inserir".mysql_errno()." -- ".mysql_errno();
+}
+    
+}
 
  header('Location:../Paginas/Login.php');
