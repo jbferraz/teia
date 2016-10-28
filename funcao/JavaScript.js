@@ -2,7 +2,6 @@ function menutoglle(){
 document.getElementById("menuSitepc").style.display="none";
 document.getElementById("menuSitemobile").style.display="block"; 
 };
-
 function toogle(){
     var div = document.getElementById("mySidenav-tt");
     if (div.style.display !=='none'){
@@ -21,7 +20,6 @@ document.getElementById("ProdId").value=x;
 function pegaIdProfdExcluir(x){
 document.getElementById("ProdIdExcluir").value=x; 
 }
-
 window.onload = function() {
    toogle();
 };
@@ -37,7 +35,6 @@ var z=document.getElementById("Btn-Cadatrar").className;
       
       }
 };
-
 function esolhebtnsidbar(){
     var x=document.getElementsByClassName("navbar-toggle").style.display;
     if (x==="block"){
@@ -102,7 +99,6 @@ function pagUsuario(x){
     document.getElementById("idDono").value=x;
     
 };
-
 function setrank(){
         document.getElementById("star2").className="glyphicon glyphicon-star-empty"
         document.getElementById("star3").className="glyphicon glyphicon-star-empty"
@@ -156,8 +152,6 @@ function setrank5(){
         document.getElementById("star5").className="glyphicon glyphicon-star";
         document.getElementById("nota").value="5";
 }
-
-
 function setranko(){
         document.getElementById("star2").className="glyphicon glyphicon-star-empty"
         document.getElementById("star3").className="glyphicon glyphicon-star-empty"
