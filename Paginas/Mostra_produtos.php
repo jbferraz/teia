@@ -33,6 +33,7 @@ session_start();
     
                     }
                  
+                    
 		$aPartirDeQual = ($qtitenspag * ($pagatual-1));
  
                 $terminaEm = $aPartirDeQual+$qtitenspag;
