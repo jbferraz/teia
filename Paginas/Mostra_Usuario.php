@@ -202,7 +202,6 @@ window.onload = function() {
                         }
             ?>     
                  
-             
         </li>
           <li><a href="../funcao/sair.php"><span class="glyphicon glyphicon-log-out"></span> Sair</a></li>
          </ul>
