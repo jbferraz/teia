@@ -56,7 +56,8 @@ window.onload = function() {
           <ul class="dropdown-menu">
             <li><a href="../Paginas/Oprojeto.php">O Projeto</a></li>
             <li><a href="../Paginas/Colaboradores.php">Colaboradores</a></li>
-            <!--<li><a href="#">Material Educacional</a></li>-->
+            <li><a href="../Paginas/Galeria.php">Galeria</a></li>
+            <li><a href="../Paginas/Material_Educacional.php">Material Educacional</a></li>
           </ul>
         </li>
    
